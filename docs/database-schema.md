@@ -1,13 +1,13 @@
 # Database schema
 
-Draft for [#3](https://github.com/Code-4-Community/bho/issues/3). PostgreSQL on AWS RDS. Created by `apps/backend/src/migrations/1790372888092-init_schema.ts`.
+Draft for [#3](https://github.com/Code-4-Community/bho/issues/3). PostgreSQL on AWS RDS.
 
 Sources:
 
 - **Daily sheet**: [DAILY - 07. July2026.xlsx](https://docs.google.com/spreadsheets/d/1cWloMpYHZDGkUFulmeW0g1bY3J97Ts4b/edit), tab `Sheet1`. One 60-row block per day. Cell references are for the July 1 block; add 60 rows for each later day.
 - **Historical sheet**: [BHO_WeatherRecords_Master_TestData.xlsx](https://docs.google.com/spreadsheets/d/1WI8CxTJ7edRajo3JHZX0WmTklvCqRy5x/edit), tab `All Daily Records`, rows 4-369.
 
-Column names are camelCase because the repo's naming strategy uses property names as column names.
+Column names are camelCase to match the repo's TypeORM naming strategy, which uses property names as column names.
 
 ## Relations
 
@@ -35,6 +35,7 @@ Source: the app, one row per uploaded spreadsheet.
 | ---------- | ----------- | ---- | ------------------------------------ |
 | id         | serial      | N    | PK                                   |
 | fileName   | text        | N    |                                      |
+| s3Key      | text        | N    | Key of the uploaded file in S3       |
 | uploadedBy | int         | N    | FK users                             |
 | uploadedAt | timestamptz | N    | Defaults to now                      |
 | status     | enum        | N    | `succeeded` or `failed`              |
