@@ -1,0 +1,12 @@
+{
+  "roster": [
+    "github-username-1",
+    "github-username-2"
+  ],
+  "github_to_slack": {
+    "github-username-1": "U0XXXXXXX1",
+    "github-username-2": "U0XXXXXXX2"
+  },
+  "always_reviewer_slack": "U0XXXXXXX0",
+  "slack_channel_id": "C0XXXXXXX"
+}
