@@ -25,7 +25,7 @@ erDiagram
 
 ## users
 
-The scaffold's existing `User` entity, unchanged: `id`, `status`, `firstName`, `lastName`, `email`. Linking to Cognito and dropping `status` (admin and staff are one role) belong to the auth work.
+The scaffold's existing `User` entity, unchanged: `id`, `status`, `firstName`, `lastName`, `email`.
 
 ## imports
 
