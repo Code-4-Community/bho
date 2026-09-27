@@ -1,12 +1,17 @@
 {
   "roster": [
-    "github-username-1",
-    "github-username-2"
+    "Ryaken-Nakamoto",
+    "naman0r",
+    "CharlesTChapman",
+    "cheangie"
   ],
   "github_to_slack": {
-    "github-username-1": "U0XXXXXXX1",
-    "github-username-2": "U0XXXXXXX2"
+    "Ryaken-Nakamoto": "U07MRCBJP7Z",
+    "naman0r": "U08NAJB9KAN",
+    "CharlesTChapman": "U0ASLV7TX50",
+    "cheangie": "U0ASM7ZV10S",
+    "Rayna-Yu": "U083UGSCU7P"
   },
-  "always_reviewer_slack": "U0XXXXXXX0",
+  "always_reviewer_slack": "U083UGSCU7P",
   "slack_channel_id": "C0XXXXXXX"
 }
