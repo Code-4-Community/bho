@@ -6,6 +6,8 @@
 
 ## Setup
 
+**Requires Node 24** (matching CI's `node-version: 24.x` in `.github/workflows/`) — an `.nvmrc` is checked in, so if you use [nvm](https://github.com/nvm-sh/nvm), just run `nvm use` (or `nvm install` if you don't have 24 yet) before installing dependencies. Without it, `yarn install` fails.
+
 Clone this repo and run `yarn` at the root to install this project's dependencies.
 
 You can optionally install `nx` globally with `npm install -g nx` - if you don't, you'll just need to prefix the commands below with `npx` (e.g. `npx nx serve frontend`).

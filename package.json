@@ -2,19 +2,17 @@
   "name": "@scaffolding/source",
   "version": "0.0.0",
   "license": "MIT",
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "scripts": {
-    "format:check": "prettier --no-error-on-unmatched-pattern --check apps/{frontend,backend}/src/**/*.{js,ts,tsx}",
-    "format": "prettier --no-error-on-unmatched-pattern --write apps/{frontend,backend}/src/**/*.{js,ts,tsx}",
-    "lint:check": "eslint 'apps/frontend/src/**/*.{ts,tsx}' && eslint 'apps/backend/src/**/*.{ts,tsx}'",
-    "lint": "eslint 'apps/frontend/src/**/*.{ts,tsx}' --fix && eslint 'apps/backend/src/**/*.{ts,tsx}' --fix",
+    "format:check": "prettier --no-error-on-unmatched-pattern --check \"apps/frontend/src/**/*.{js,ts,tsx}\" \"apps/backend/*/src/**/*.{js,ts,tsx}\"",
+    "format": "prettier --no-error-on-unmatched-pattern --write \"apps/frontend/src/**/*.{js,ts,tsx}\" \"apps/backend/*/src/**/*.{js,ts,tsx}\"",
+    "lint:check": "eslint --no-error-on-unmatched-pattern 'apps/frontend/src/**/*.{ts,tsx}' && eslint --no-error-on-unmatched-pattern 'apps/backend/*/src/**/*.{ts,tsx}'",
+    "lint": "eslint --no-error-on-unmatched-pattern 'apps/frontend/src/**/*.{ts,tsx}' --fix && eslint --no-error-on-unmatched-pattern 'apps/backend/*/src/**/*.{ts,tsx}' --fix",
     "prepush": "yarn run format:check && yarn run lint:check",
     "prepush:fix": "yarn run format && yarn run lint",
-    "prepare": "husky install",
-    "typeorm": "ts-node -r tsconfig-paths/register --project apps/backend/tsconfig.app.json ./node_modules/typeorm/cli.js",
-    "migration:generate": "yarn typeorm migration:generate apps/backend/src/migrations/$name -d apps/backend/src/data-source.ts",
-    "migration:run": "yarn typeorm migration:run -d apps/backend/src/data-source.ts",
-    "migration:revert": "yarn typeorm migration:revert -d apps/backend/src/data-source.ts",
-    "migration:create": "yarn typeorm migration:create apps/backend/src/migrations/$name",
+    "prepare": "husky",
     "test": "jest"
   },
   "private": true,

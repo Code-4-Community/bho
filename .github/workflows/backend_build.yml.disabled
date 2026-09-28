@@ -1,0 +1,39 @@
+# DISABLED (.disabled extension so GitHub Actions won't pick it up) — apps/backend
+# (NestJS) was removed as part of the Lambda-only architecture restructuring.
+# See docs/design-doc.md §5/§9/§10. Replace with real CI for the four new Lambda
+# apps (internal-serving-lambda, upload-lambda, ingestion-lambda, public-lambda)
+# once they're registered as Nx projects (Ticket A.6) — kept here for reference,
+# not deleted, in case any of this setup (env vars, node version) is reusable.
+name: Backend build
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use NodeJS 24.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 24.x
+        cache: 'yarn'
+
+    - name: Create .env file
+      run: |
+
+        echo "AWS_SECRET_ACCESS_KEY=dummy" >> .env
+        echo "AWS_ACCESS_KEY_ID=dummy" >> .env
+        echo "AWS_REGION=us-east-2" >> .env
+
+    - name: Install Dependencies
+      run: yarn install
+
+    - name: Build backend
+      run: npx nx build backend

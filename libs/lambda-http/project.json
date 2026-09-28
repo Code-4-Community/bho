@@ -1,0 +1,30 @@
+{
+  "name": "lambda-http",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/lambda-http/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc",
+        "cwd": "libs/lambda-http"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "jest --passWithNoTests",
+        "cwd": "libs/lambda-http"
+      }
+    },
+    "_lint_TODO_reenable_once_real_ts_files_exist": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/lambda-http/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
