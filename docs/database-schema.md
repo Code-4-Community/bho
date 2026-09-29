@@ -14,7 +14,8 @@ Column names are camelCase to match the repo's TypeORM naming strategy, which us
 ```mermaid
 erDiagram
   users ||--o{ imports : uploads
-  users ||--o{ audit_log : edits
+  users ||--o{ audit_log : changes
+  imports ||--o{ audit_log : produces
   imports ||--o{ daily_observations : creates
   imports ||--o{ daily_records : creates
   daily_observations ||--|{ hourly_observations : has
@@ -29,18 +30,26 @@ The scaffold's existing `User` entity, unchanged: `id`, `status`, `firstName`, `
 
 ## imports
 
-Source: the app, one row per uploaded spreadsheet.
+Source: the app, one row per uploaded spreadsheet. The uploaded file stays in S3 as the raw source of truth.
 
-| Column     | Type        | Null | Note                                 |
-| ---------- | ----------- | ---- | ------------------------------------ |
-| id         | serial      | N    | PK                                   |
-| fileName   | text        | N    |                                      |
-| s3Key      | text        | N    | Key of the uploaded file in S3       |
-| uploadedBy | int         | N    | FK users                             |
-| uploadedAt | timestamptz | N    | Defaults to now                      |
-| status     | enum        | N    | `succeeded` or `failed`              |
-| errors     | jsonb       | Y    | Flagged rows and the reason for each |
+| Column     | Type        | Null | Note                                            |
+| ---------- | ----------- | ---- | ----------------------------------------------- |
+| id         | serial      | N    | PK                                              |
+| kind       | text        | N    | `daily` or `historical`; text,       |
+| fileName   | text        | N    |                                                 |
+| s3Key      | text        | N    | Key of the uploaded file in S3                  |
+| fileHash   | text        | N    | SHA-256 of the file, to catch duplicate uploads |
+| uploadedBy | int         | N    | FK users                                        |
+| uploadedAt | timestamptz | N    | Defaults to now                                 |
+| status     | enum        | N    | `succeeded`, or `failed`             |
+| errors     | jsonb       | Y    | Flagged rows and the reason for each            |
 
+
+
+Ideas for later:
+
+- `rowCount` (rows imported): not sure what the existing parser looks like
+- `partial`? Do we want to allow for this, feels simpler to force a re-import and log that import failed
 ## daily_observations
 
 Source: daily sheet, "Summary of Day" and nearby rows. PK `date`.
@@ -67,7 +76,9 @@ Source: daily sheet, "Summary of Day" and nearby rows. PK `date`.
 | sunset               | time       | Y    | K30                                         |
 | observerInitials     | text       | Y    | H59 "MFD/AKJ"                               |
 | remarks              | text       | Y    | G47-G49 "Additional Notes"                  |
-| import               | int        | Y    | FK imports                                  |
+| importId             | int        | N    | FK imports; null for hand-entered rows      |
+
+Questions: how often are rows really "added"? Seems like they would only be edited, and what can we depend on being available and not? What should we require? (same applies to daily_records)
 
 Not stored: average temperature, normal, departure, and degree days (rows 46-50). They can be computed.
 
@@ -133,25 +144,23 @@ Source: historical sheet. One sheet row becomes one row. PK `(month, day)`. Each
 | peakGustDir         | varchar(3) | Y    | "Wind Dir"                                         |
 | peakGustIsEstimated | boolean    | N    | "Estimated?"                                       |
 | peakGustYears       | smallint[] | Y    | "Gust Year(s)"                                     |
-| import              | int        | Y    | FK imports                                         |
+| importId            | int        | Y    | FK imports; null for hand-entered rows             |
 
 ## audit_log
 
-Source: the app, one row per edited value.
+Source: a Postgres trigger, one row per inserted, updated, or deleted row in `daily_observations`, `hourly_observations`, `scheduled_observations`, and `daily_records`.
 
-| Column     | Type        | Null | Note                 |
-| ---------- | ----------- | ---- | -------------------- |
-| id         | serial      | N    | PK                   |
-| tableName  | text        | N    |                      |
-| rowKey     | jsonb       | N    | PK of the edited row |
-| columnName | text        | N    |                      |
-| oldValue   | text        | Y    |                      |
-| newValue   | text        | Y    |                      |
-| changedBy  | int         | N    | FK users             |
-| changedAt  | timestamptz | N    | Defaults to now      |
+| Column    | Type        | Null | Note                                           |
+| --------- | ----------- | ---- | ---------------------------------------------- |
+| id        | serial      | N    | PK                                             |
+| tableName | text        | N    |                                                |
+| rowKey    | jsonb       | N    | PK of the affected row                         |
+| action    | enum        | N    | `insert`, `update`, or `delete`                |
+| oldData   | jsonb       | Y    | Whole row before; null on insert               |
+| newData   | jsonb       | Y    | Whole row after; null on delete                |
+| changedBy | int         | Y    | FK users; null for system writes               |
+| importId  | int         | Y    | FK imports; set when an import made the change |
+| changedAt | timestamptz | N    | Defaults to now                                |
 
-## Not in this draft
+One SQL function is attached to the four data tables, so no code path can skip the log.
 
-- `normals`: no normals data yet.
-- `narratives`: no current source.
-- `live_readings`, `ingestion_runs`: waiting on the WeatherLink API format.
