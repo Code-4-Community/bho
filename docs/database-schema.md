@@ -19,11 +19,12 @@ erDiagram
   imports ||--o{ daily_observations : creates
   imports ||--o{ daily_records : creates
   stations ||--o{ daily_observations : records
+  stations ||--o{ daily_records : holds
   daily_observations ||--|{ hourly_observations : has
   daily_observations ||--|{ scheduled_observations : has
 ```
 
-`daily_records` joins to observations on month and day, not a foreign key.
+`daily_records` joins to observations on station, month, and day, not a foreign key.
 
 ## users
 
@@ -97,23 +98,25 @@ Not stored: average temperature, normal, departure, and degree days (rows 46-50)
 
 Source: daily sheet, rows 4-27 ("00-01" to "23-24"). PK `(stationId, date, hour)`. Deleting a day deletes its hours.
 
-| Column         | Type       | Null | Source                                  |
-| -------------- | ---------- | ---- | --------------------------------------- |
-| stationId      | int        | N    | FK daily_observations, with `date`      |
-| date           | date       | N    | FK daily_observations, with `stationId` |
-| hour           | smallint   | N    | A, start hour ("00-01" is 0)            |
-| tempF          | smallint   | Y    | B "Temp (°F)"                           |
-| precipIn       | numeric    | Y    | C "Precip"                              |
-| precipTrace    | boolean    | N    | Our flag for when C is `T`              |
-| windDir        | varchar(3) | Y    | D "Dir."                                |
-| windSpeedMph   | smallint   | Y    | E "Spd (mph)"                           |
-| sunshineMin    | smallint   | Y    | F "Sunshine (min)"                      |
-| skyCover       | smallint   | Y    | G "Sky Cover (0-8)"                     |
-| visibilityMi   | numeric    | Y    | H "Lwst VSBL" ("1/8" becomes 0.125)     |
-| presentWeather | text       | Y    | I "Prsnt WX" ("R-F")                    |
-| humidityPct    | smallint   | Y    | J "Rel Hum."                            |
-| mountainVis    | text       | Y    | K "Mnts VSBL" ("1@1.5")                 |
-| remarks        | text       | Y    | L "Notes"                               |
+| Column         | Type       | Null | Source                                           |
+| -------------- | ---------- | ---- | ------------------------------------------------ |
+| stationId      | int        | N    | FK daily_observations, with `date`               |
+| date           | date       | N    | FK daily_observations, with `stationId`          |
+| hour           | smallint   | N    | A, start hour ("00-01" is 0)                     |
+| tempF          | smallint   | Y    | B "Temp (°F)"                                    |
+| precipIn       | numeric    | Y    | C "Precip"                                       |
+| precipTrace    | boolean    | N    | Our flag for when C is `T`                       |
+| windDir        | varchar(3) | Y    | D "Dir."                                         |
+| windSpeedMph   | smallint   | Y    | E "Spd (mph)"                                    |
+| sunshineMin    | smallint   | Y    | F "Sunshine (min)"                               |
+| skyCover       | smallint   | Y    | G "Sky Cover (0-8)"                              |
+| visibilityMi   | numeric    | Y    | H "Lwst VSBL (mls)"; "1/8" mile stored as 0.125  |
+| presentWeather | text       | Y    | I "Prsnt WX"; codes, "RW-" is light rain showers |
+| humidityPct    | smallint   | Y    | J "Rel Hum."                                     |
+| mountainVis    | text       | Y    | K "Mnts VSBL" ("1@1.5")                          |
+| remarks        | text       | Y    | L "Notes"                                        |
+
+G, H, and I are only recorded at a few hours each day (06-07, 09-10, and 12-13 on July 21). An empty cell there means nobody observed that hour; `0` in I means they observed and there was no weather. Codes in I: `R` rain, `W` showers, `L` drizzle, `F` fog, `-` light, `+` heavy, so `R-F` (I370, July 7) is light rain and fog. These are the standard US codes; BHO has not confirmed them.
 
 ## scheduled_observations
 
@@ -139,10 +142,11 @@ Source: daily sheet, "Scheduled Observations", rows 34-38. PK `(stationId, date,
 
 ## daily_records
 
-Source: historical sheet. One sheet row becomes one row. PK `(month, day)`. Each element's value is null when the sheet says "None", and its years are null too. No `stationId`: these are the records for the one official dataset.
+Source: historical sheet. One sheet row becomes one row. PK `(stationId, month, day)`. Each element's value is null when the sheet says "None", and its years are null too.
 
 | Column              | Type       | Null | Source                                             |
 | ------------------- | ---------- | ---- | -------------------------------------------------- |
+| stationId           | int        | N    | FK stations; the station the upload is for         |
 | month               | smallint   | N    | "Month #"                                          |
 | day                 | smallint   | N    | "Day"                                              |
 | highF               | smallint   | Y    | "High °F"                                          |
