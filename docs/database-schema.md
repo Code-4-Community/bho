@@ -124,23 +124,26 @@ G, H, and I are only recorded at a few hours each day (06-07, 09-10, and 12-13 o
 
 Source: daily sheet, "Scheduled Observations", rows 34-38. PK `(stationId, date, obsTime)`. Deleting a day deletes its readings.
 
-| Column            | Type     | Null | Source                                  |
-| ----------------- | -------- | ---- | --------------------------------------- |
-| stationId         | int      | N    | FK daily_observations, with `date`      |
-| date              | date     | N    | FK daily_observations, with `stationId` |
-| obsTime           | time     | N    | A (700, 800, 1000, 1300, 1900)          |
-| stationPressureIn | numeric  | Y    | B, 0700 and 1900 only                   |
-| dryBulbF          | numeric  | Y    | C                                       |
-| wetBulbF          | numeric  | Y    | D                                       |
-| dewpointF         | smallint | Y    | E                                       |
-| humidityPct       | smallint | Y    | F (0.8 becomes 80)                      |
-| maxTempF          | smallint | Y    | G, 0700 only, 24 hours ending 0700      |
-| minTempF          | smallint | Y    | H, 0700 only                            |
-| precipIn          | numeric  | Y    | I, 0700 only                            |
-| precipTrace       | boolean  | N    | Our flag for when I is `T`              |
-| snowfallIn        | numeric  | Y    | J, 0700 only                            |
-| snowDepthIn       | numeric  | Y    | K, 0700 only                            |
-| vaporPressureMb   | numeric  | Y    | L                                       |
+| Column               | Type     | Null | Source                                                |
+| -------------------- | -------- | ---- | ----------------------------------------------------- |
+| stationId            | int      | N    | FK daily_observations, with `date`                    |
+| date                 | date     | N    | FK daily_observations, with `stationId`               |
+| obsTime              | time     | N    | A (700, 800, 1000, 1300, 1900); F52 1200 on some days |
+| stationPressureIn    | numeric  | Y    | B, 0700 and 1900 only                                 |
+| attachedThermC       | numeric  | Y    | C53 "Attached Therm."; F53 at 1200                    |
+| observedBarometerMb  | numeric  | Y    | C54 "Observed Barometer"; F54 at 1200                 |
+| pressureCorrectionMb | numeric  | Y    | C55 "Total Correction"; F55 at 1200                   |
+| dryBulbF             | numeric  | Y    | C                                                     |
+| wetBulbF             | numeric  | Y    | D                                                     |
+| dewpointF            | smallint | Y    | E                                                     |
+| humidityPct          | smallint | Y    | F (0.8 becomes 80)                                    |
+| maxTempF             | smallint | Y    | G, 0700 only, 24 hours ending 0700                    |
+| minTempF             | smallint | Y    | H, 0700 only                                          |
+| precipIn             | numeric  | Y    | I, 0700 only                                          |
+| precipTrace          | boolean  | N    | Our flag for when I is `T`                            |
+| snowfallIn           | numeric  | Y    | J, 0700 only                                          |
+| snowDepthIn          | numeric  | Y    | K, 0700 only                                          |
+| vaporPressureMb      | numeric  | Y    | L                                                     |
 
 ## daily_records
 
