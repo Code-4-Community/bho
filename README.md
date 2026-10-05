@@ -6,7 +6,7 @@ A [Code-4-Community](https://github.com/Code-4-Community) (C4C) project, in part
 
 ## Setup
 
-**Requires Node 24** (matching CI's `node-version: 24.x` in `.github/workflows/`) — an `.nvmrc` is checked in, so if you use [nvm](https://github.com/nvm-sh/nvm), just run `nvm use` (or `nvm install` if you don't have 24 yet) before installing dependencies. Without it, `yarn install` fails.
+**Requires Node 24** an `.nvmrc` is checked in, so if you have [nvm](https://github.com/nvm-sh/nvm), run `nvm use` (or `nvm install` if you don't have 24 yet) before installing dependencies. Without it, `yarn install` fails.
 
 Clone this repo and run `yarn` at the root to install this project's dependencies.
 
