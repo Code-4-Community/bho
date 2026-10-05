@@ -166,6 +166,7 @@ Source: historical sheet. One sheet row becomes one row. PK `(stationId, month, 
 | peakGustDir         | varchar(3) | Y    | "Wind Dir"                                         |
 | peakGustIsEstimated | boolean    | N    | "Estimated?"                                       |
 | peakGustYears       | smallint[] | Y    | "Gust Year(s)"                                     |
+| notes               | text       | Y    | "Notes"; internal to staff                         |
 | importId            | int        | N    | FK imports; the last upload that wrote it          |
 
 ## audit_log
