@@ -28,7 +28,15 @@ erDiagram
 
 ## users
 
-The scaffold's existing `User` entity, unchanged: `id`, `status`, `firstName`, `lastName`, `email`.
+Source: the app. `main` no longer has the scaffold's `User` entity, so this schema creates the table, with the same columns.
+
+| Column    | Type   | Null | Note                                     |
+| --------- | ------ | ---- | ---------------------------------------- |
+| id        | serial | N    | PK                                       |
+| email     | text   | N    | Unique                                   |
+| firstName | text   | N    |                                          |
+| lastName  | text   | N    |                                          |
+| status    | text   | N    | `ADMIN` or `STANDARD`; text, not an enum |
 
 ## stations
 
