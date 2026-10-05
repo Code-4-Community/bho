@@ -70,6 +70,8 @@ Source: daily sheet, "Summary of Day" and nearby rows. PK `(stationId, date)`.
 | date                 | date       | N    | J1 "Wednesday, July 1, 2026"                |
 | maxTempF             | smallint   | Y    | A44 "24HR Max"                              |
 | minTempF             | smallint   | Y    | B44 "24HR Min"                              |
+| avgTempF             | numeric    | Y    | D46 "Average Temperature"; 81.5             |
+| normalTempF          | smallint   | Y    | D47 "Normal Temperature"                    |
 | precipIn             | numeric    | Y    | C44 "24HR Precip"                           |
 | precipTrace          | boolean    | N    | Our flag for when C44 is `T` (July 5: C284) |
 | snowfallIn           | numeric    | Y    | E44 "Snowfall"                              |
@@ -92,7 +94,7 @@ Source: daily sheet, "Summary of Day" and nearby rows. PK `(stationId, date)`.
 
 Every row comes from an upload. Staff re-upload the month's sheet several times a day, and the most recent upload overwrites each day it contains. Weather values are nullable: an empty cell means no data and is stored as null, never 0. The same applies to `daily_records`.
 
-Not stored: average temperature, normal, departure, and degree days (rows 46-50). They can be computed.
+Not stored: departure and degree days (rows 48-50). They can be computed.
 
 ## hourly_observations
 
