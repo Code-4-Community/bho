@@ -1,13 +1,13 @@
 # Database schema
 
-Draft for [#3](https://github.com/Code-4-Community/bho/issues/3). PostgreSQL on AWS RDS.
+Draft for [#3](https://github.com/Code-4-Community/bho/issues/3). PostgreSQL on AWS RDS. Created by `db/migrations/0001_init_schema.ts`; Kysely table types are in `db/types.ts`.
 
 Sources:
 
 - **Daily sheet**: [DAILY - 07. July2026.xlsx](https://docs.google.com/spreadsheets/d/1cWloMpYHZDGkUFulmeW0g1bY3J97Ts4b/edit), tab `Sheet1`. One 60-row block per day. Cell references are for the July 1 block; add 60 rows for each later day.
 - **Historical sheet**: [BHO_WeatherRecords_Master_TestData.xlsx](https://docs.google.com/spreadsheets/d/1WI8CxTJ7edRajo3JHZX0WmTklvCqRy5x/edit), tab `All Daily Records`, rows 4-369.
 
-Column names are camelCase to match the repo's TypeORM naming strategy, which uses property names as column names.
+Column names are camelCase, so Kysely queries use the same names as the TypeScript types. Raw SQL has to quote them (`"maxTempF"`).
 
 ## Relations
 
@@ -60,7 +60,7 @@ Source: the app, one row per uploaded spreadsheet. The uploaded file stays in S3
 | fileHash   | text        | N    | SHA-256 of the file, to catch duplicate uploads |
 | uploadedBy | int         | N    | FK users                                        |
 | uploadedAt | timestamptz | N    | Defaults to now                                 |
-| status     | enum        | N    | `succeeded` or `failed`                         |
+| status     | text        | N    | `succeeded` or `failed`; text, not an enum      |
 | errors     | jsonb       | Y    | Flagged rows and the reason for each            |
 
 Ideas for later:
@@ -193,4 +193,4 @@ Source: a Postgres trigger, one row per inserted, updated, or deleted row in `da
 | importId  | int         | Y    | FK imports; set when an import made the change |
 | changedAt | timestamptz | N    | Defaults to now                                |
 
-One SQL function is attached to the four data tables, so no code path can skip the log.
+One SQL function is attached to the four data tables, so no code path can skip the log. Writers set `app.user_id` and `app.import_id` with `set_config(..., true)` inside their transaction, and the trigger copies them into `changedBy` and `importId`. Hourly and scheduled rows have no `importId` column, so the row alone can't say which import wrote it.
