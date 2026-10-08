@@ -3,14 +3,16 @@
     "Ryaken-Nakamoto",
     "naman0r",
     "CharlesTChapman",
-    "cheangie"
+    "cheangie",
+    "devluharuwalla"
   ],
   "github_to_slack": {
     "Ryaken-Nakamoto": "U07MRCBJP7Z",
     "naman0r": "U08NAJB9KAN",
     "CharlesTChapman": "U0ASLV7TX50",
     "cheangie": "U0ASM7ZV10S",
-    "Rayna-Yu": "U083UGSCU7P"
+    "Rayna-Yu": "U083UGSCU7P",
+    "devluharuwalla": "U0C531VUGT0"
   },
   "always_reviewer_slack": "U083UGSCU7P",
   "slack_channel_id": "C0C4VH09YRF"
