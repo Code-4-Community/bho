@@ -49,7 +49,7 @@ Source: the app. Starts with one row, `19737-02`; the client plans to add more. 
 
 ## imports
 
-Source: the app, one row per uploaded spreadsheet. The uploaded file stays in S3 as the raw source of truth.
+Source: the app, one row per uploaded spreadsheet. The uploaded file stays in S3 as the raw source of truth. Rows are never updated or deleted. Each upload, including a re-upload of the same file, adds a new row.
 
 | Column     | Type        | Null | Note                                            |
 | ---------- | ----------- | ---- | ----------------------------------------------- |
