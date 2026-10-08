@@ -1,9 +1,9 @@
 import type { ColumnType, Generated } from 'kysely';
 
 // Table types for Kysely, matching db/migrations. pg returns numeric as a
-// string so no precision is lost, and date/timestamptz as a Date.
+// string so no precision is lost, timestamptz as a Date, and date as
+// 'YYYY-MM-DD' when connected through createDb() in db/client.ts.
 type Numeric = ColumnType<string, number | string, number | string>;
-type DateColumn = ColumnType<Date, Date | string, Date | string>;
 type Json = ColumnType<unknown, string, string>;
 
 export interface UsersTable {
@@ -33,7 +33,7 @@ export interface ImportsTable {
 
 export interface DailyObservationsTable {
   stationId: number;
-  date: DateColumn;
+  date: string;
   maxTempF: number | null;
   minTempF: number | null;
   avgTempF: Numeric | null;
@@ -61,7 +61,7 @@ export interface DailyObservationsTable {
 
 export interface HourlyObservationsTable {
   stationId: number;
-  date: DateColumn;
+  date: string;
   hour: number;
   tempF: number | null;
   precipIn: Numeric | null;
@@ -79,7 +79,7 @@ export interface HourlyObservationsTable {
 
 export interface ScheduledObservationsTable {
   stationId: number;
-  date: DateColumn;
+  date: string;
   obsTime: string;
   stationPressureIn: Numeric | null;
   attachedThermC: Numeric | null;

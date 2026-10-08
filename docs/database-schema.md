@@ -1,6 +1,6 @@
 # Database schema
 
-Draft for [#3](https://github.com/Code-4-Community/bho/issues/3). PostgreSQL on AWS RDS. Created by `db/migrations/0001_init_schema.ts`; Kysely table types are in `db/types.ts`.
+Draft for [#3](https://github.com/Code-4-Community/bho/issues/3). PostgreSQL on AWS RDS. Created by `db/migrations/0001_init_schema.ts`; Kysely table types are in `db/types.ts`. Connect with `createDb()` in `db/client.ts`, which returns `date` columns as `'YYYY-MM-DD'` strings rather than a `Date` at local midnight.
 
 Sources:
 
