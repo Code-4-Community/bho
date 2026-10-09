@@ -21,6 +21,7 @@ The backend is **Lambda-only**. Four independent Lambda functions live under `ap
 - `ingestion-lambda` — EventBridge-scheduled, pulls live conditions from the Davis weather station
 - `public-lambda` — serve the public dashboard
 
+For a local Postgres and database migrations, see [db/README.md](db/README.md).
 
 ## Running tasks
 

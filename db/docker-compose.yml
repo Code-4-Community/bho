@@ -1,0 +1,22 @@
+# Disposable local Postgres for development only.
+# `yarn db:reset` deletes the volume and every row in it. Never point real data at this.
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: bho-postgres
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-password}
+      POSTGRES_DB: ${DB_NAME:-bho}
+    ports:
+      - '127.0.0.1:${DB_PORT:-5432}:5432'
+    volumes:
+      - bho-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}']
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+volumes:
+  bho-pgdata:
