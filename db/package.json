@@ -1,0 +1,23 @@
+{
+  "name": "@bho/db",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "db:up": "docker compose up -d --wait",
+    "db:down": "docker compose down",
+    "db:migrate": "kysely migrate:latest",
+    "db:make": "kysely migrate:make",
+    "db:reset": "docker compose down -v && yarn db:up && yarn db:migrate"
+  },
+  "dependencies": {
+    "kysely": "^0.27.0",
+    "pg": "^8.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/pg": "^8.11.0",
+    "kysely-ctl": "^0.21.0",
+    "typescript": "^5.4.0"
+  }
+}
