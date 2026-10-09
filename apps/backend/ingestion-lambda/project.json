@@ -19,7 +19,7 @@
         "passWithNoTests": true
       }
     },
-    "_lint_TODO_reenable_once_real_ts_files_exist": {
+    "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {

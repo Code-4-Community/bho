@@ -67,6 +67,7 @@
     "@nx/vite": "22.7.5",
     "@nx/webpack": "23.0.0",
     "@testing-library/react": "^15.0.7",
+    "@types/aws-lambda": "^8.10.162",
     "@types/jest": "^30.0.0",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.9.3",
