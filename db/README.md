@@ -1,88 +1,63 @@
 # Local database
 
-A disposable Postgres 16 container plus [kysely-ctl](https://github.com/kysely-org/kysely-ctl), the Kysely migration CLI. The schema here is shared by all the backend Lambdas.
+A disposable Postgres 16 container and [kysely-ctl](https://github.com/kysely-org/kysely-ctl) for migrations. The schema is shared by all the backend Lambdas.
 
-## Prerequisites
+## Setup
 
-- Node 24 (`nvm use` at the repo root). `kysely-ctl` needs Node 22 or later, and `yarn` fails on older versions.
-- A running Docker engine (Docker Desktop, Colima, or OrbStack) with Compose v2.1 or later (`docker compose version`)
-
-## Quick start
-
-Run everything from this `db/` folder, not the repo root.
+Requires Node 24 (`nvm use` at the repo root) and a running Docker engine with Compose v2.
 
 ```bash
 cd db
-yarn
-yarn db:up
-yarn db:migrate
+yarn install      # install this folder's dependencies
+yarn db:up        # start Postgres on 127.0.0.1:5432
+yarn db:migrate   # apply migrations
 ```
 
-With no migrations yet, `yarn db:migrate` prints `Migration skipped: no new migrations found` and exits 0. The `Ignoring .gitkeep` warning is harmless.
+Connection: user `postgres`, password `password`, `127.0.0.1:5432`, database `postgres`.
 
 ## Commands
 
-| Command | What it does |
-| --- | --- |
-| `yarn db:up` | Start Postgres and wait until it is healthy |
-| `yarn db:down` | Stop the container, keep the data |
-| `yarn db:migrate` | Apply all pending migrations |
-| `yarn db:make <name>` | Create a new timestamped migration file |
-| `yarn db:reset` | Delete the container and data, start fresh, re-run migrations |
-| `yarn kysely migrate:list` | Show which migrations have been applied |
+| Command               | What it does                                    |
+| --------------------- | ----------------------------------------------- |
+| `yarn db:up`          | Start Postgres                                  |
+| `yarn db:down`        | Stop it, keep the data                          |
+| `yarn db:migrate`     | Apply pending migrations                        |
+| `yarn db:make <name>` | Create `migrations/<timestamp>_<name>.ts`       |
+| `yarn db:reset`       | Delete the data, start fresh, re-run migrations |
 
-## Connection settings
-
-Defaults work out of the box. Override with environment variables:
-
-| Variable | Default |
-| --- | --- |
-| `DB_HOST` | `127.0.0.1` |
-| `DB_PORT` | `5432` |
-| `DB_USER` | `postgres` |
-| `DB_PASSWORD` | `password` |
-| `DB_NAME` | `bho` |
-
-Connect with psql: `docker compose exec postgres psql -U postgres -d bho`
+The same commands run from the repo root through Nx: `nx run db:install`, `nx run db:up`, `nx run db:migrate`, `nx run db:make <name>`, `nx run db:reset` (prefix with `npx` if `nx` isn't installed globally).
 
 ## Adding a migration
 
-Run `yarn db:make create_stations`. It creates `migrations/<timestamp>_create_stations.ts` with empty `up` and `down` functions. The timestamp prefix keeps migrations from different branches from colliding, and files run in filename order. Fill in the functions, for example:
+The database schema is defined by migrations: the schema is whatever all the migration files produce when run in order (oldest first). To change it, add a new migration file.
+
+Each migration exports an **`up`** function that applies the change: create a table, add a column, add an index. `yarn db:migrate` runs `up` for every migration that hasn't been applied yet. Kysely records the applied ones in a `kysely_migration` table, so each runs once.
+
+We are forward-only: don't write a `down` function (the one that would undo `up`). Leave the generated `down` stub empty (we don't need to support rollback in dev). For local dev we can just drop the database. To undo or fix a change that has been merged, add a new migration.
+
+Run `yarn db:make create_stations`, then fill in `up` in the generated file:
 
 ```ts
-import { Kysely } from 'kysely';
+import type { Kysely } from 'kysely';
 
 export async function up(db: Kysely<any>): Promise<void> {
   await db.schema
     .createTable('stations')
     .addColumn('id', 'serial', (col) => col.primaryKey())
-    .addColumn('name', 'text', (col) => col.notNull())
     .execute();
-}
-
-export async function down(db: Kysely<any>): Promise<void> {
-  await db.schema.dropTable('stations').execute();
 }
 ```
 
-Then run `yarn db:migrate`. Applied migrations are recorded in the `kysely_migration` table, so a second run does nothing.
+Never edit a migration that has been merged; add a new one. For example, to add a column to `stations` later, create a new migration whose `up` is `alterTable('stations').addColumn(...)`.
 
-## How this differs from RDS
+## Differs from RDS
 
-- Disposable: no backups, no Multi-AZ, no failover.
-- No TLS and no IAM auth. The default password is weak, so the port is bound to `127.0.0.1` only.
-- `yarn db:reset` destroys all data. Local use only.
-- Keep the Postgres major version in `docker-compose.yml` (16) in line with the RDS instance.
+Disposable: no backups - `yarn db:reset` deletes everything. This is bound to `127.0.0.1` only.
 
 ## Troubleshooting
 
-- **`Cannot connect to the Docker daemon`**: start Docker Desktop, then retry.
-- **`address already in use` / port 5432 busy**: another Postgres is running on your machine. Find it with `sudo lsof -nP -iTCP:5432 -sTCP:LISTEN`, or use another port: `DB_PORT=5433 yarn db:up` and `DB_PORT=5433 yarn db:migrate`.
-- **`yarn db:migrate` fails with `ECONNREFUSED`**: the container is not running. Run `yarn db:up`.
-- **`password authentication failed`**: you are connected to a different Postgres than the container, usually because of the port conflict above.
-- **`corrupted migrations: previously executed migration … is missing`**: you deleted or renamed a migration file that was already applied to your local database (for example after switching branches). Run `yarn db:reset`.
-- **`engine "node" is incompatible`**: run `nvm use` to switch to Node 24.
-
-## Note on workspaces
-
-This folder has its own `package.json` and `yarn.lock` because the repo root does not use Yarn workspaces. If workspaces are adopted, add `db/` to them and drop this lockfile.
+- **Cannot connect to the Docker daemon:** start Docker Desktop.
+- **Port 5432 already in use:** another Postgres is running. Find it with `sudo lsof -nP -iTCP:5432 -sTCP:LISTEN` and stop it.
+- **`ECONNREFUSED` right after `db:up`:** Postgres is still starting. Wait a few seconds and rerun.
+- **`corrupted migrations … is missing`:** a migration file that was already applied is gone (for example after switching branches). Run `yarn db:reset`.
+- **`engine "node" is incompatible`:** run `nvm use`.

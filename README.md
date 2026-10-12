@@ -21,7 +21,19 @@ The backend is **Lambda-only**. Four independent Lambda functions live under `ap
 - `ingestion-lambda` — EventBridge-scheduled, pulls live conditions from the Davis weather station
 - `public-lambda` — serve the public dashboard
 
-For a local Postgres and database migrations, see [db/README.md](db/README.md).
+### Database
+
+The data lives in PostgreSQL. The schema is shared by all the Lambdas and is defined by [Kysely](https://kysely.dev) migrations in `db/`. For local development, `db/` also provides a disposable Postgres container.
+
+```bash
+nx run db:install   # one-time install of db/'s dependencies
+nx run db:up        # start the local Postgres container (needs Docker)
+nx run db:migrate   # apply migrations
+nx run db:make <name>   # create a new migration
+nx run db:reset     # wipe the local database and re-apply everything
+```
+
+See [db/README.md](db/README.md) for details, writing migrations, and troubleshooting.
 
 ## Running tasks
 
