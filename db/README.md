@@ -17,15 +17,17 @@ Connection: user `postgres`, password `password`, `127.0.0.1:5432`, database `po
 
 ## Commands
 
-| Command               | What it does                                    |
-| --------------------- | ----------------------------------------------- |
-| `yarn db:up`          | Start Postgres                                  |
-| `yarn db:down`        | Stop it, keep the data                          |
-| `yarn db:migrate`     | Apply pending migrations                        |
-| `yarn db:make <name>` | Create `migrations/<timestamp>_<name>.ts`       |
-| `yarn db:reset`       | Delete the data, start fresh, re-run migrations |
+| Command                    | What it does                                    |
+| -------------------------- | ----------------------------------------------- |
+| `yarn db:up`               | Start Postgres                                  |
+| `yarn db:down`             | Stop it, keep the data                          |
+| `yarn db:migrate`          | Apply pending migrations                        |
+| `yarn db:make <name>`      | Create `migrations/<timestamp>_<name>.ts`       |
+| `yarn db:seed`             | Load the dev sample data (safe to re-run)       |
+| `yarn db:seed:make <name>` | Create `seeds/<timestamp>_<name>.ts`            |
+| `yarn db:reset`            | Delete the data, start fresh, re-run migrations |
 
-The same commands run from the repo root through Nx: `nx run db:install`, `nx run db:up`, `nx run db:migrate`, `nx run db:make <name>`, `nx run db:reset` (prefix with `npx` if `nx` isn't installed globally).
+The same commands run from the repo root through Nx: `nx run db:install`, `nx run db:up`, `nx run db:migrate`, `nx run db:make <name>`, `nx run db:seed`, `nx run db:seed-make <name>`, `nx run db:reset` (prefix with `npx` if `nx` isn't installed globally).
 
 ## Adding a migration
 
@@ -49,6 +51,10 @@ export async function up(db: Kysely<any>): Promise<void> {
 ```
 
 Never edit a migration that has been merged; add a new one. For example, to add a column to `stations` later, create a new migration whose `up` is `alterTable('stations').addColumn(...)`.
+
+## Seed data
+
+`yarn db:seed` runs every file in `db/seeds/` through kysely-ctl. `1791858320014_dev_data.ts` loads a small sample: one user, two imports, July 1-3 2026 of observations (July 1 has hourly and scheduled readings, taken from the daily sheet), and three daily records. It uses `onConflict(...).doNothing()`, so running it twice changes nothing. For a fresh seeded database: `yarn db:reset && yarn db:seed`. Dev only; never run it against RDS.
 
 ## Differs from RDS
 

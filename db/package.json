@@ -8,6 +8,8 @@
     "db:down": "docker compose down",
     "db:migrate": "kysely migrate:latest",
     "db:make": "kysely migrate:make",
+    "db:seed": "kysely seed run",
+    "db:seed:make": "kysely seed make",
     "db:reset": "docker compose down -v && yarn db:up && yarn db:migrate"
   },
   "dependencies": {
