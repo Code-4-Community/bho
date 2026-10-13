@@ -23,6 +23,14 @@
       "executor": "nx:run-commands",
       "options": { "command": "yarn db:make", "cwd": "db" }
     },
+    "seed": {
+      "executor": "nx:run-commands",
+      "options": { "command": "yarn db:seed", "cwd": "db" }
+    },
+    "seed-make": {
+      "executor": "nx:run-commands",
+      "options": { "command": "yarn db:seed:make", "cwd": "db" }
+    },
     "reset": {
       "executor": "nx:run-commands",
       "options": { "command": "yarn db:reset", "cwd": "db" }
