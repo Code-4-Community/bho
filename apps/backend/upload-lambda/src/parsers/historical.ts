@@ -50,6 +50,8 @@ const COMPASS = new Set(
 const INTEGER = /^-?\d+$/;
 const DECIMAL = /^\d+(\.\d+)?$/;
 const YEAR = /^\d{4}$/;
+// Blank or "None": the sheet has no record for that element.
+const NO_RECORD = /^(none)?$/i;
 
 // Returns every problem in the file rather than stopping at the first, so one
 // upload attempt shows staff everything to fix.
@@ -114,7 +116,7 @@ export function parseHistorical(csv: string): ParseResult<HistoricalRecord> {
     ): [T | null, number[] | null] => {
       const value = get(column);
       const years = get(yearsColumn);
-      if (value === '' || value.toLowerCase() === 'none') {
+      if (NO_RECORD.test(value)) {
         if (years !== '') fail(yearsColumn, `Years given but no ${column}`);
         return [null, null];
       }
@@ -187,16 +189,31 @@ export function parseHistorical(csv: string): ParseResult<HistoricalRecord> {
       integer,
     );
 
-    const dir = get(COLUMNS.peakGustDir).toUpperCase();
+    // Direction and Estimated? describe the gust, so they need one. FALSE is
+    // allowed without a gust: the sheet fills Estimated? on every row.
+    const noGust = NO_RECORD.test(get(COLUMNS.peakGustMph));
+    const rawDir = get(COLUMNS.peakGustDir);
+    const dir = rawDir.toUpperCase();
     if (dir !== '' && !COMPASS.has(dir)) {
-      fail(COLUMNS.peakGustDir, `Not a compass direction: "${dir}"`);
+      fail(COLUMNS.peakGustDir, `Not a compass direction: "${rawDir}"`);
+    } else if (dir !== '' && noGust) {
+      fail(
+        COLUMNS.peakGustDir,
+        `Direction given but no ${COLUMNS.peakGustMph}`,
+      );
     }
 
-    const estimated = get(COLUMNS.peakGustIsEstimated).toUpperCase();
+    const rawEstimated = get(COLUMNS.peakGustIsEstimated);
+    const estimated = rawEstimated.toUpperCase();
     if (estimated !== '' && estimated !== 'TRUE' && estimated !== 'FALSE') {
       fail(
         COLUMNS.peakGustIsEstimated,
-        `Expected TRUE or FALSE, got "${estimated}"`,
+        `Expected TRUE or FALSE, got "${rawEstimated}"`,
+      );
+    } else if (estimated === 'TRUE' && noGust) {
+      fail(
+        COLUMNS.peakGustIsEstimated,
+        `Marked estimated but no ${COLUMNS.peakGustMph}`,
       );
     }
 

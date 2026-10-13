@@ -158,9 +158,27 @@ describe('parseHistorical', () => {
       {
         row: 2,
         column: 'Estimated?',
-        reason: 'Expected TRUE or FALSE, got "YES"',
+        reason: 'Expected TRUE or FALSE, got "yes"',
       },
     ]);
+  });
+
+  it('rejects a direction or TRUE estimated flag without a gust', () => {
+    const noGust = { 'Peak Gust mph': 'None', 'Gust Year(s)': '' };
+    expect(errorsOf(sheet(noGust))).toEqual([
+      {
+        row: 2,
+        column: 'Wind Dir',
+        reason: 'Direction given but no Peak Gust mph',
+      },
+      {
+        row: 2,
+        column: 'Estimated?',
+        reason: 'Marked estimated but no Peak Gust mph',
+      },
+    ]);
+    const unchecked = { ...noGust, 'Wind Dir': '', 'Estimated?': 'FALSE' };
+    expect(parseHistorical(sheet(unchecked)).ok).toBe(true);
   });
 
   it('rejects days that are not on the calendar', () => {
