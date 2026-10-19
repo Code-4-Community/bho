@@ -15,7 +15,6 @@ export class UploadStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    // Uploaded CSVs are the raw source of truth, so they outlive the stack.
     this.bucket = new s3.Bucket(this, 'UploadBucket', {
       encryption: s3.BucketEncryption.S3_MANAGED,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
