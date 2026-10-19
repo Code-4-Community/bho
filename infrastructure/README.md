@@ -24,3 +24,7 @@ CSV uploaded -> S3 bucket -> OBJECT_CREATED (*.csv) -> upload Lambda (read-only 
 ```
 
 Because of `RETAIN`, destroying the stack leaves the bucket behind. A later deploy that creates a bucket of the same name will fail until the old bucket is emptied and deleted by hand.
+
+### Note: One Bucket Design Decision
+
+Historical and daily data are both going to be stored in the same s3 bucket. This is because they share the same access permissions. To differentiate them, they can be separated into two folders.
