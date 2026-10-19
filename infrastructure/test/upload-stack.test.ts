@@ -6,7 +6,6 @@ describe('UploadStack', () => {
   let template: Template;
 
   beforeAll(() => {
-    // An empty list skips esbuild bundling so the test stays fast.
     const app = new App({ context: { 'aws:cdk:bundling-stacks': [] } });
     template = Template.fromStack(new UploadStack(app, 'TestUploadStack'));
   });
