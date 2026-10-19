@@ -49,3 +49,6 @@ Thumbs.db
 # SQLite database files
 *.sqlite
 *.sqlite3
+
+# CDK synth output
+cdk.out
