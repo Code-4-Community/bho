@@ -32,3 +32,76 @@ export interface HistoricalRecord {
   peakGustYears: number[] | null;
   notes: string | null;
 }
+
+// One day of the daily sheet. Each part is a row of its table without stationId
+// (or importId, for daily_observations), which come from the upload. As in
+// HistoricalRecord, decimals (numeric columns) stay strings, and integers
+// (smallint columns) are numbers.
+export interface ParsedDay {
+  daily: DailyObservation;
+  hourly: HourlyObservation[];
+  scheduled: ScheduledObservation[];
+}
+
+export interface DailyObservation {
+  date: string; // ISO, e.g. "2026-07-01"
+  maxTempF: number | null;
+  minTempF: number | null;
+  avgTempF: string | null;
+  normalTempF: number | null;
+  precipIn: string | null;
+  precipTrace: boolean;
+  snowfallIn: string | null;
+  snowDepthIn: string | null;
+  sunshineMin: number | null;
+  sunshinePossibleMin: number | null;
+  sunshinePct: number | null;
+  fastestMileMph: number | null;
+  fastestMileDir: string | null;
+  fastestMileTime: string | null; // "HH:MM", EST
+  peakGustKts: number | null;
+  peakGustDir: string | null;
+  peakGustTime: string | null;
+  avgStationPressureMb: string | null;
+  sunrise: string | null;
+  sunset: string | null;
+  observerInitials: string | null;
+  remarks: string | null;
+}
+
+export interface HourlyObservation {
+  date: string;
+  hour: number; // start hour, "00-01" is 0
+  tempF: number | null;
+  precipIn: string | null;
+  precipTrace: boolean;
+  windDir: string | null;
+  windSpeedMph: number | null;
+  sunshineMin: number | null;
+  skyCover: number | null; // 0-8
+  visibilityMi: string | null; // "1/8" is "0.125"
+  presentWeather: string | null; // "0" means observed, no weather
+  humidityPct: number | null;
+  mountainVis: string | null; // e.g. "1@1.5"
+  remarks: string | null;
+}
+
+export interface ScheduledObservation {
+  date: string;
+  obsTime: string; // "HH:MM", EST
+  stationPressureIn: string | null;
+  attachedThermC: string | null;
+  observedBarometerMb: string | null;
+  pressureCorrectionMb: string | null;
+  dryBulbF: string | null;
+  wetBulbF: string | null;
+  dewpointF: number | null;
+  humidityPct: number | null;
+  maxTempF: number | null;
+  minTempF: number | null;
+  precipIn: string | null;
+  precipTrace: boolean;
+  snowfallIn: string | null;
+  snowDepthIn: string | null;
+  vaporPressureMb: string | null;
+}
