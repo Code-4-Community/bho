@@ -33,10 +33,9 @@ export interface HistoricalRecord {
   notes: string | null;
 }
 
-// One day of the daily sheet. Each part is a row of its table without stationId
-// (or importId, for daily_observations), which come from the upload. As in
-// HistoricalRecord, decimals (numeric columns) stay strings, and integers
-// (smallint columns) are numbers.
+// Each part is a row of its table without stationId (or importId, for 
+// daily_observations), which come from the upload. Decimals (numeric 
+// columns) stay strings, and integers (smallint columns) are numbers.
 export interface ParsedDay {
   daily: DailyObservation;
   hourly: HourlyObservation[];

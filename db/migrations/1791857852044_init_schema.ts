@@ -232,15 +232,5 @@ export async function up(db: Kysely<any>): Promise<void> {
   }
 }
 
-export async function down(db: Kysely<any>): Promise<void> {
-  await db.schema.dropTable('audit_log').execute();
-  await db.schema.dropType('audit_log_action').execute();
-  await db.schema.dropTable('daily_records').execute();
-  await db.schema.dropTable('scheduled_observations').execute();
-  await db.schema.dropTable('hourly_observations').execute();
-  await db.schema.dropTable('daily_observations').execute();
-  await sql`DROP FUNCTION audit_row()`.execute(db);
-  await db.schema.dropTable('imports').execute();
-  await db.schema.dropTable('stations').execute();
-  await db.schema.dropTable('users').execute();
-}
+// Forward-only: no rollback; see db/README.md.
+export async function down(_db: Kysely<any>): Promise<void> {}

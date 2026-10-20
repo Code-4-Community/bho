@@ -1,0 +1,40 @@
+{
+  "name": "db",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "targets": {
+    "install": {
+      "executor": "nx:run-commands",
+      "options": { "command": "yarn install --frozen-lockfile", "cwd": "db" }
+    },
+    "up": {
+      "executor": "nx:run-commands",
+      "options": { "command": "yarn db:up", "cwd": "db" }
+    },
+    "down": {
+      "executor": "nx:run-commands",
+      "options": { "command": "yarn db:down", "cwd": "db" }
+    },
+    "migrate": {
+      "executor": "nx:run-commands",
+      "options": { "command": "yarn db:migrate", "cwd": "db" }
+    },
+    "make": {
+      "executor": "nx:run-commands",
+      "options": { "command": "yarn db:make", "cwd": "db" }
+    },
+    "seed": {
+      "executor": "nx:run-commands",
+      "options": { "command": "yarn db:seed", "cwd": "db" }
+    },
+    "seed-make": {
+      "executor": "nx:run-commands",
+      "options": { "command": "yarn db:seed:make", "cwd": "db" }
+    },
+    "reset": {
+      "executor": "nx:run-commands",
+      "options": { "command": "yarn db:reset", "cwd": "db" }
+    }
+  },
+  "tags": []
+}
