@@ -1,0 +1,1859 @@
+t,,,,,,,,DATE: ,"Wednesday, July 1, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,68,,SW,13,,,,,84,,
+01-02,69,,SW,14,,,,,,,
+02-03,70,,SW,14,,,,,,,
+03-04,69,,SW,14,,,,,,,
+04-05,69,,SW,13,0,,,,,,
+05-06,70,,SSW,12,36,,,,,,
+06-07,72,,WSW,11,6,6,35,0,80,,BKN AC/ACC BKN CI HAZY
+07-08,74,,WSW,10, ,,,,81,1@1.5,
+08-09,79,,WSW,13,48,,,,,,
+09-10,84,,W,10,60,1,30,0,66,,CLR FEW AC ALQDS FEW CI ALQDS [1]
+10-11,88,,W,9,60,,,,,1@1,
+11-12,89,,WNW,5,60,,,,,,
+12-13,91,,W,4,60,5,30,0,54,,BKN CU BKN CI HAZY WND LGT
+13-14,93,,W,6,54,,,,,1@1,
+14-15,95,,W,4,60,,,,,,
+15-16,92,,WSW,8,60,,,,,,
+16-17,90,,SSW,9,60,,,,,,
+17-18,87,,SSW,8,60,,,,,,
+18-19,83,,SSW,8,36,,,,76,,
+19-20,81,,SSW,11,0,,,,,,
+20-21,80,,SW,12,,,,,,,
+21-22,79,,SW,11,,,,,,,
+22-23,79,,SW,11,,,,,,,
+23-24,78,,WSW,10,,,,,,,
+Sum.,,0.00,,240,660,,,,,TIME:,
+Aver.,79.25,,Prevail.,10.0,Poss 914,,,,,0411E,SUNRISE
+Misc.,,,SW,,77%,,,,,1925E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.285,72.2,67.9,66,80%,88,68, ,0.0,0,21.8
+1900,29.268,83,,75,76%,,,,,,29.6
+0800,,74.1,70.0,68,81%,,,,Average ->,,25.7
+1000,,84.2,75.1,72,66%,,,,,,
+1300,,90.8,76.9,72,54%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+95,68,0.00,,0.0,0,704,77%,17,SW,0245E,20 WSW @ 0854E
+,,,,,,"Wednesday, July 1, 2026",,,,,
+Average Temperature,,,82,,,Additional Notes:,,,,,
+Normal Temperature,,,71,,, , ,,,,
+Departure from Normal,,,11,,,[1] K LYR ALF ALQDS HAZY,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,17,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,21.3,,,,,,,,,
+Observed Barometer,,995.5,,,,,,,,,
+Total Correction,,-3.8,,,,,,,,,
+Station Pressure,,991.7,991.1,991,,,,,,,
+Barograph Reading,,29.277,29.264,,,,,,,,
+Barograph Correction,,0.008,0.004,,,,,,,,
+,,,,,,INITIALS:,MFD/AKJ,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Thursday, July 2, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,76,0.04,W,15,,,,,98,,TB05E30 RW-B17E39 OCNL LTGIC [1]
+01-02,75,T,WSW,5,,,,,,,RW-B16E56 PCPN VRY LGT
+02-03,74,,WSW,10,,,,,,,
+03-04,73,,W,10,,,,,,,
+04-05,72,,W,13,0,,,,,,
+05-06,74,,WSW,11,36,,,,,,
+06-07,79,,W,12,60,4,35,0,76,,THN BKN CI CB DSNT S [2]
+07-08,83,,WNW,10,60,,,,69,1@1.5,
+08-09,87,,WNW,9,60,,,,,,
+09-10,91,,WNW,10,60,1,35,0,52,,CLR FEW AC DSNT N-ESE [3]
+10-11,93,,WNW,7,60,,,,,1@1.5,
+11-12,96,,WNW,8,60,,,,,,
+12-13,97,,WNW,10,60,1,30,0,43,,CLR FEW SML CU ALQDS HAZY HX 105
+13-14,98,,W,10,60,,,,,1@1,
+14-15,98,,W,14,60,,,,,,
+15-16,96,,W,14,60,,,,,,
+16-17,96,,W,14,60,,,,,,
+17-18,94,,W,13,60,,,,,,
+18-19,90,,W,11,36,,,,49,,
+19-20,88,,WSW,10,0,,,,,,
+20-21,87,,WSW,13,,,,,,,
+21-22,85,,WSW,10,,,,,,,
+22-23,84,,WSW,8,,,,,,,
+23-24,82,,WSW,11,,,,,,,TB45 TRW WSW-S MOV ESE [4]
+Sum.,,0.04,,258,792,,,,,TIME:,
+Aver.,86.17,,Prevail.,10.8,Poss 913,,,,,0412E,SUNRISE
+Misc.,86.00,,W,,90%,,,,,1925E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.276,78.9,73.2,71,76%,95,72,0.04,0.0,0,25.9
+1900,29.235,90,,68,49%,,,,,,23.4
+0800,,83.3,75.1,72,69%,,,,Average ->,,24.7
+1000,,91.1,76.6,71,52%,,,,,,
+1300,,97.0,78.0,71,43%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+99,72,0.04,,0.0,0,822,90%,26,W,0018E,35 W @ 0017E
+,,,,,,"Thursday, July 2, 2026",,,,,
+Average Temperature,,,86,,,Additional Notes:,,,,,
+Normal Temperature,,,71,,,,,,,,
+Departure from Normal,,,15,,,[1] PK WND 2635/17/,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,21,,,[2] FEW AC DSNT WNW-NW HAZY,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,[3] FEW CI DSNT ESE-SSW HAZY HX 98,,,,,
+Attached Therm.,,22.2,,,,,,,,,
+Observed Barometer,,995.3,,,,[4] OCNL LTGICCG  WSW-S,,,,,
+Total Correction,,-3.9,,,,,,,,,
+Station Pressure,,991.4,990.0,991,,,,,,,
+Barograph Reading,,29.272,29.237,,,,,,,,
+Barograph Correction,,0.004,-0.002,,,,,,,,
+,,,,,,INITIALS:,MFD,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Friday, July 3, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,80,,WSW,10,,,,,71,,TE15 TRW S DSPTD
+01-02,79,,W,12,,,,,,,
+02-03,79,,WNW,12,,,,,,,
+03-04,78,,WNW,11,,,,,,,
+04-05,78,,WNW,11,6,,,,,,
+05-06,80,,WNW,10,60,,,,,,
+06-07,82,,WNW,9,60,1,30,0,71,,CLR FEW CI N-ENE HAZY
+07-08,85,,WNW,10,60,,,,63,1@1,
+08-09,89,,WNW,10,60,,,,,,
+09-10,91,,WNW,10,60,1,35,0,52,,CLR FEW CI NNW-NE HAZY HX 98
+10-11,93,,WNW,10,60,,,,,1@1.5,
+11-12,95,,WNW,9,60,,,,,,
+12-13,96,,W,12,60,1,35,0,38,,CLR FEW CU E AND S-WSW FEW CI NNW-NE [1]
+13-14,97,,WNW,14,60,,,,,1@1.5,
+14-15,96,,W,12,60,,,,,,
+15-16,96,,WNW,15,60,,,,,,
+16-17,94,,WNW,17,60,,,,,,
+17-18,90,,WNW,15,36,,,,,,
+18-19,87,,WNW,14,6,,,,44,,
+19-20,85,,WNW,15,0,,,,,,
+20-21,84,,WNW,16,,,,,,,
+21-22,82,,WNW,12,,,,,,,
+22-23,81,,WNW,11,,,,,,,
+23-24,80,,WNW,11,,,,,,,
+Sum.,,0.00,,288,768,,,,,TIME:,
+Aver.,86.54,,Prevail.,12.0,Poss 912,,,,,0412E,SUNRISE
+Misc.,86.50,,WNW,,88%,,,,,1924E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.249,82.3,75.1,72,71%,99,77,0.00,0.0,0,26.9
+1900,29.185,87,,63,44%,,,,,,19.6
+0800,,85.4,75.2,71,63%,,,,Average ->,,23.3
+1000,,90.6,76.1,71,52%,,,,,,
+1300,,95.6,75.2,67,38%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+98,77,0.00,,0.0,0,803,88%,23,WNW,1646E,"28 WNW @ 1631E, 1651E"
+,,,,,,"Friday, July 3, 2026",,,,,
+Average Temperature,,,88,,,Additional Notes:,,,,,
+Normal Temperature,,,72,,,,,,,,
+Departure from Normal,,,16,,,[1] HAZY HX 100,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,23,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,1200E,,,,,,
+Attached Therm.,,22.2,,,22.6,,,,,,
+Observed Barometer,,994.4,,,993.6,,,,,,
+Total Correction,,-3.9,,,-3.9,,,,,,
+Station Pressure,,990.5,988.3,989,989.7,,,,,,
+Barograph Reading,,29.251,29.194,,,,,,,,
+Barograph Correction,,-0.002,-0.009,,,,,,,,
+,,,,,,INITIALS:,AKJ,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Saturday, July 4, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,79,,WNW,10,,,,,66,,
+01-02,79,,WNW,10,,,,,,,
+02-03,77,,WNW,10,,,,,,,
+03-04,75,,WNW,9,,,,,,,
+04-05,75,,WNW,10,0,,,,,,
+05-06,77,,WNW,8,54,,,,,,
+06-07,82,,WNW,5,60,2,30,0,72,,THN SCT CI FEW AC/ACC DSNT WSW-N HAZY [1]
+07-08,84,,WNW,6,60,,,,65,1@1,
+08-09,87,,WNW,6,60,,,,,,
+09-10,89,,W,8,60,4,35,0,50,,BKN CU BKN AC HAZY
+10-11,90,,WNW,11,60,,,,,1@1.5,
+11-12,92,,WNW,12,54,,,,,,
+12-13,92,,WNW,14,48,5,40,0,49,,BKN CU BKN AC BKN CI CB DSNT N-NNW [2]
+13-14,92,,WNW,13,60,,,,,2@0,
+14-15,92,,WNW,15,54,,,,,,
+15-16,89,,WNW,12,48,,,,,,
+16-17,89,,WNW,12,48,,,,,,
+17-18,88,,WNW,11,60,,,,,,
+18-19,80,,NNW,8,12,,,,71,,
+19-20,78,,NNW,9,0,,,,,,
+20-21,77,T,NNW,9,,,,,,,R-B22 PCPN VRY LGT
+21-22,74,0.01,N,10,,,,,,,R-E41
+22-23,74,,WNW,1,,,,,,,
+23-24,73,,W,4,,,,,,,
+Sum.,,0.01,,223,738,,,,,TIME:,
+Aver.,82.67,,Prevail.,9.3,Poss 911,,,,,0413E,SUNRISE
+Misc.,83.25,,WNW,,84%,,,,,1924E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.196,81.8,74.8,72,72%,98,75,0.00,0.0,0,26.9
+1900,29.184,80,,70,71%,,,,,,25.0
+0800,,84.3,74.8,71,65%,,,,Average ->,,26.0
+1000,,89.0,74.0,68,50%,,,,,,
+1300,,91.8,76.0,70,49%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+94,73,0.01,,0.0,0,765,84%,21,WNW,1455E,25 WNW @ 1454E
+,,,,,,"Saturday, July 4, 2026",,,,,
+Average Temperature,,,84,,,Additional Notes:,,,,,
+Normal Temperature,,,72,,,,,,,,
+Departure from Normal,,,12,,,[1] WND LGT,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,19,,,[2] MDT CU ALQDS HAZY HX 98,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,22.2,,,,,,,,,
+Observed Barometer,,992.6,,,,,,,,,
+Total Correction,,-3.9,,,,,,,,,
+Station Pressure,,988.7,988.3,989,,,,,,,
+Barograph Reading,,29.201,29.180,,,,,,,,
+Barograph Correction,,-0.007,0.004,,,,,,,,
+,,,,,,INITIALS:,MFD,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Sunday, July 5, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,71,T,ESE,2,,,,,86,,R-B01E13 PCPN VRY LGT
+01-02,70,,E,3,,,,,,,
+02-03,71,,NNE,6,,,,,,,
+03-04,71,,ENE,9,,,,,,,
+04-05,69,,ENE,9,6,,,,,,
+05-06,70,,NE,9,6,,,,,,
+06-07,73,,ENE,7,48,6,30,0,59,,SCT AC BKN CI THN F ALQDS K PLUME ENE [1]
+07-08,74,,ENE,4,18,,,,57,1@1,
+08-09,77,,E,6,42,,,,,,
+09-10,79,,ESE,6,60,5,30,0,51,,SCT AC BKN CI K PLUME ENE HAZY WND L/V
+10-11,79,,SE,6,42,,,,,1@1,
+11-12,82,,SE,5,54,,,,,,
+12-13,80,,SE,4,36,5,30,0,49,,SCT CU SCT AC BKN CI K PLUME ENE HAZY [2]
+13-14,82,,S,3,18,,,,,1@1,
+14-15,81,,S,2,6,,,,,,
+15-16,80,,SSE,4,6,,,,,,
+16-17,78,,SE,8,0,,,,,,
+17-18,76,,SE,8,0,,,,,,
+18-19,75,,SE,7,0,,,,71,,
+19-20,73,,SE,8,0,,,,,,
+20-21,72,,SE,8,,,,,,,
+21-22,71,,SSE,9,,,,,,,
+22-23,71,,SSE,9,,,,,,,
+23-24,70,T,SSE,9,,,,,,,R-B57 PCPN VRY LGT
+Sum.,,T,,151,342,,,,,TIME:,
+Aver.,74.79,,Prevail.,6.3,Poss 910,,,,,0414E,SUNRISE
+Misc.,74.75,,SE,,39%,,,,,1924E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.311,73.3,63.7,58,59%,94,69,0.01,0.0,0,16.4
+1900,29.366,75,,65,71%,,,,,,21.1
+0800,,74.0,63.9,58,57%,,,,Average ->,,18.8
+1000,,78.6,65.7,59,51%,,,,,,
+1300,,80.4,66.8,60,49%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+83,69,T,,0.0,0,355,39%,12,SSE,2349E,17 SSE @ 2349E
+,,,,,,"Sunday, July 5, 2026",,,,,
+Average Temperature,,,76,,,Additional Notes:,,,,,
+Normal Temperature,,,72,,,,,,,,
+Departure from Normal,,,4,,,[1] SUN DMLY VSBL WND LGT,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,11,,,[2] WND L/V,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,22.0,,,,,,,,,
+Observed Barometer,,996.5,,,,,,,,,
+Total Correction,,-3.9,,,,,,,,,
+Station Pressure,,992.6,994.4,994,,,,,,,
+Barograph Reading,,29.300,29.358,,,,,,,,
+Barograph Correction,,-0.011,0.008,,,,,,,,
+,,,,,,INITIALS:,AKJ,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Monday, July 6, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,69,T,S,10,,,,,70,,R-E05B15 PCPN VRY LGT
+01-02,68,T,SSW,11,,,,,,,R-E00 PCPN VRY LGT
+02-03,67,T,S,12,,,,,,,R-B13E29 PCPN VRY LGT
+03-04,65,,S,10,,,,,,,
+04-05,64,,S,8,0,,,,,,
+05-06,64,,SSE,8,0,,,,,,
+06-07,63,,SE,6,0,8,35,0,86,,OVC AS BKN AC WND LGT
+07-08,64,T,ESE,5,0,,,,82,1@1.5,R-B11E42 PCPN VRY LGT
+08-09,66,T,ESE,6,0,,,,,,R-B05E25 PCPN VRY LGT
+09-10,67,,SSE,4,0,8,35,0,75,,OVC AS SCT AC WND LGT
+10-11,70,,ESE,6,0,,,,,1@1.5,
+11-12,72,,E,8,12,,,,,,
+12-13,71,,ESE,9,0,8,40,0,64,,OVC AS FEW CU ESE-SSW
+13-14,70,,E,8,0,,,,,2@0,
+14-15,69,,ESE,8,0,,,,,,
+15-16,67,T,ESE,9,0,,,,,,R-B56 PCPN VRY LGT
+16-17,65,T,ESE,8,0,,,,,,R-CTD
+17-18,63,T,ESE,7,0,,,,,,R-CTD PCPN VRY LGT
+18-19,60,0.04,SE,10,0,,,,94,,R-CTD
+19-20,60,0.01,E,10,0,,,,,,R-CTD PCPN VRY LGT
+20-21,60,T,ESE,10,,,,,,,R-CTD PCPN VRY LGT
+21-22,61,T,ESE,10,,,,,,,R-E40 OCON VRY LGT
+22-23,61,,E,14,,,,,,,
+23-24,61,T,E,11,,,,,,,R-B37E42
+Sum.,,0.05,,208,12,,,,,TIME:,
+Aver.,65.29,,Prevail.,8.7,Poss 910,,,,,0414E,SUNRISE
+Misc.,65.50,,ESE,,1%,,,,,1924E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.471,62.8,59.9,59,86%,83,63,T,0.0,0,17.0
+1900,29.507,60,,58,94%,,,,,,16.4
+0800,,63.9,60.4,58,82%,,,,Average ->,,16.7
+1000,,67.0,61.8,59,75%,,,,,,
+1300,,71.0,63.0,59,64%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+74,60,0.05,,0.0,0,9,1%,16,E,2202E,21 E @ 2200E
+,,,,,,"Monday, July 6, 2026",,,,,
+Average Temperature,,,67,,,Additional Notes:,,,,,
+Normal Temperature,,,72,,,,,,,,
+Departure from Normal,,,-5,,,,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,2,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,21.4,,,,,,,,,
+Observed Barometer,,1001.8,,,,,,,,,
+Total Correction,,-3.8,,,,,,,,,
+Station Pressure,,998.0,999.2,999,,,,,,,
+Barograph Reading,,29.458,29.492,,,,,,,,
+Barograph Correction,,0.013,0.015,,,,,,,,
+,,,,,,INITIALS:,AKJ,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Tuesday, July 7, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,61,T,E,13,,,,,90,,R-B04
+01-02,61,T,ENE,13,,,,,,,R-E24B57 PCPN VRY LGT
+02-03,61,0.01,ENE,13,,,,,,,R-E44
+03-04,61,0.01,ENE,14,,,,,,,R-B10E19B40
+04-05,61,0.02,NE,15,0,,,,,,R-CTD
+05-06,61,0.04,ENE,14,0,,,,,,R-CTD
+06-07,62,0.04,NE,15,0,8,1/8,R-F,100,,OVC ST VSBY 1 ENE-S
+07-08,63,0.04,NE,14,0,,,,100,0@0,R-CTD
+08-09,64,0.03,ENE,14,0,,,,,,R-CTD OCNL R
+09-10,65,0.12,ENE,16,0,8,10,R-,100,,BKN STFA BKN ST OVC AS F W-NE [1]
+10-11,65,0.01,ENE,16,0,,,,,0@0,R-CTD
+11-12,65,0.03,ENE,16,0,,,,,,R-CTD BCMG R
+12-13,65,0.20,NE,16,0,8,1/2,RF,100,,OVC ST VSBY 1 ESE-SSE 
+13-14,64,0.18,NE,17,0,,,,,0@0,R-CTD
+14-15,63,0.14,NE,17,0,,,,,,R BCMG R-
+15-16,63,0.04,NE,20,0,,,,,,R-CTD
+16-17,62,0.21,NNE,17,0,,,,,,R- BCMG R
+17-18,62,0.39,NE,20,0,,,,,,R BCMG R+
+18-19,61,0.30,ENE,17,0,,,,100,,R+ BCMG R
+19-20,62,0.08,ENE,16,0,,,,,,R-CTD OCNL R-
+20-21,61,0.17,NE,15,,,,,,,R-CTD OCNL R+
+21-22,61,0.03,NE,14,,,,,,,R BCMG R-
+22-23,61,0.01,NNE,12,,,,,,,R- BCMG L-
+23-24,61,0.01,N,12,,,,,,,L-E03 R-B03E31B41E47
+Sum.,,2.11,,366,0,,,,,TIME:,
+Aver.,62.33,,Prevail.,15.3,Poss 908,,,,,0415E,SUNRISE
+Misc.,62.50,,NE,,0%,,,,,1923E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.415,62.2,62.2,62,100%,74,60,0.17,0.0,0,19.0
+1900,29.350,61,,61,100%,,,,,,18.3
+0800,,62.7,62.7,63,100%,,,,Average ->,,18.7
+1000,,64.5,64.5,65,100%,,,,,,
+1300,,65.0,65.0,65,100%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+65,61,2.11,,0.0,0,0,0%,23,NE,1746E,35 ENE @ 1743E
+,,,,,,"Tuesday, July 7, 2026",,,,,
+Average Temperature,,,63,,,Additional Notes:,,,,,
+Normal Temperature,,,72,,,,,,,,
+Departure from Normal,,,-9,,,[1] VSBY 3/4 W-NE,,,,,
+Heating Degree Days,,,2,,,,,,,,
+Cooling Degree Days,,,0,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,1205,,,,,,
+Attached Therm.,,21.5,,,22.1,,,,,,
+Observed Barometer,,999.9,,,998.8,,,,,,
+Total Correction,,-3.8,,,-4.1,,,,,,
+Station Pressure,,996.1,993.9,995,994.7,,,,,,
+Barograph Reading,,29.400,29.350,,,,,,,,
+Barograph Correction,,0.015,0.010,,,,,,,,
+,,,,,,INITIALS:,KAG,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Wednesday, July 8, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,61,,N,11,,,,,100,,
+01-02,61,T,N,10,,,,,,,L-B32
+02-03,60,0.01,N,10,,,,,,,L-CTD
+03-04,59,T,N,7,,,,,,,L-E20
+04-05,58,,NNW,10,0,,,,,,
+05-06,60,,N,10,0,,,,,,
+06-07,62,,NE,9,54,2,40,0,88,,SCT SC THN F ALQDS
+07-08,66,,NE,9,60,,,,83,2@0,
+08-09,69,,NE,10,60,,,,,,
+09-10,72,,NE,10,60,2,35,0,62,,SCT CU
+10-11,74,,NE,9,60,,,,,1@1.5,
+11-12,75,,NE,7,60,,,,,,
+12-13,76,,E,4,60,1,35,0,59,,CLR FEW CU SSE-WNW WND LGT
+13-14,78,,SE,2,60,,,,,1@1.5,
+14-15,81,,WSW,2,60,,,,,,
+15-16,82,,WNW,4,60,,,,,,
+16-17,82,,WNW,6,60,,,,,,
+17-18,80,,W,5,60,,,,,,
+18-19,77,,WSW,5,42,,,,57,,
+19-20,74,,SW,7,0,,,,,,
+20-21,72,,SW,9,,,,,,,
+21-22,70,,SW,10,,,,,,,
+22-23,69,,WSW,11,,,,,,,
+23-24,69,,WSW,11,,,,,,,
+Sum.,,0.01,,188,756,,,,,TIME:,
+Aver.,70.29,,Prevail.,7.8,Poss 908,,,,,0415E,SUNRISE
+Misc.,69.75,,NE,,86%,,,,,1923E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.341,62.3,61.4,59,88%,65,58,2.00,0.0,0,16.4
+1900,29.263,77,,61,57%,,,,,,18.3
+0800,,65.9,62.4,61,83%,,,,Average ->,,17.4
+1000,,72.4,63.7,59,62%,,,,,,
+1300,,76.4,65.0,59,54%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+83,58,0.01,,0.0,0,780,86%,15,N,0004E,23 N @ 0016E
+,,,,,,"Wednesday, July 8, 2026",,,,,
+Average Temperature,,,71,,,Additional Notes:,,,,,
+Normal Temperature,,,72,,,,,,,,
+Departure from Normal,,,-1,,,,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,6,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,21.4,,,,,,,,,
+Observed Barometer,,997.4,,,,,,,,,
+Total Correction,,-3.8,,,,,,,,,
+Station Pressure,,993.6,991.0,992,,,,,,,
+Barograph Reading,,29.337,29.261,,,,,,,,
+Barograph Correction,,0.004,0.002,,,,,,,,
+,,,,,,INITIALS:,AKJ,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Thursday, July 9, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,67,,WSW,12,,,,,96,,
+01-02,67,,WSW,13,,,,,,,
+02-03,66,,WSW,13,,,,,,,
+03-04,66,,WSW,13,,,,,,,
+04-05,65,,WSW,11,12,,,,,,
+05-06,69,,W,11,60,,,,,,
+06-07,73,,W,10,60,1,60,0,73,,SCT CI FEW CU SSE HAZY
+07-08,78,,WSW,5,60,,,,68,3@0,
+08-09,82,,WSW,5,60,,,,,,
+09-10,85,,W,7,60,0,70,0,53,,CLR FEW CU ALQDS FEW CI ESE-N HAZY
+10-11,88,,WSW,8,60,,,,,3@1,
+11-12,89,,WSW,9,60,,,,,,
+12-13,91,,SW,11,60,1,60,0,43,,SCT CI FEW CU ALQDS HAZY
+13-14,90,,WSW,11,60,,,,,3@0,
+14-15,89,,SSW,11,60,,,,,,
+15-16,88,,SSW,13,48,,,,,,
+16-17,86,,SW,14,54,,,,,,
+17-18,84,,SW,14,60,,,,,,
+18-19,80,,SW,13,24,,,,76,,
+19-20,78,,SW,14,0,,,,,,
+20-21,76,,SSW,13,,,,,,,
+21-22,74,,SW,14,,,,,,,
+22-23,73,,SW,14,,,,,,,
+23-24,72,,SW,13,,,,,,,
+Sum.,,0.00,,272,798,,,,,TIME:,
+Aver.,78.17,,Prevail.,11.3,Poss 906,,,,,0416E,SUNRISE
+Misc.,78.25,,WSW,,92%,,,,,1922E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.238,73.2,67.1,64,73%,82,62,0.00,0.0,0,21.1
+1900,29.117,80,,72,76%,,,,,,26.9
+0800,,77.9,70.0,66,68%,,,,Average ->,,24.0
+1000,,85.3,72.1,66,53%,,,,,,
+1300,,90.5,72.8,65,43%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+91,65,0.00,,0.0,0,834,92%,20,WSW,1657E,25 SW @2130E
+,,,,,,"Thursday, July 9, 2026",,,,,
+Average Temperature,,,78,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,5,,,,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,13,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,22.9,,,,,,,,,
+Observed Barometer,,994.1,,,,,,,,,
+Total Correction,,-4.0,,,,,,,,,
+Station Pressure,,990.1,986.1,988,,,,,,,
+Barograph Reading,,29.237,29.122,,,,,,,,
+Barograph Correction,,0.001,-0.005,,,,,,,,
+,,,,,,INITIALS:,KAG,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Friday, July 10, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,72,,SW,12,,,,,92,,
+01-02,71,,SW,11,,,,,,,
+02-03,71,,SW,11,,,,,,,
+03-04,70,,SW,9,,,,,,,
+04-05,69,,WSW,10,12,,,,,,
+05-06,71,,W,10,60,,,,,,
+06-07,76,,WNW,9,60,2,35,0,84,,SCT CI FEW SC SE-SSE HAZY
+07-08,80,,WNW,8,60,,,,68,1@1.5,
+08-09,83,,NW,9,60,,,,,,
+09-10,83,,NW,9,48,6,40,0,63,,BKN CU BKN AC BKN CI
+10-11,85,,NW,7,54,,,,,2@0,
+11-12,86,,NW,10,60,,,,,,
+12-13,88,,NW,9,60,5,50,0,50,,SCT CU SCT AC BKN CI
+13-14,88,,NW,9,60,,,,,2@1,
+14-15,88,,NW,8,60,,,,,,
+15-16,81,,N,9,18,,,,,,
+16-17,80,,ENE,9,30,,,,,,
+17-18,78,,E,4,18,,,,,,
+18-19,76,,ESE,6,36,,,,78,,
+19-20,74,,SSE,6,0,,,,,,
+20-21,73,,SSW,5,,,,,,,
+21-22,72,,WSW,5,,,,,,,
+22-23,70,,W,6,,,,,,,
+23-24,70,,NW,8,,,,,,,
+Sum.,,0.00,,199,696,,,,,TIME:,
+Aver.,77.29,,Prevail.,8.3,Poss 905,,,,,0417E,SUNRISE
+Misc.,78.25,,NW,,80%,,,,,1922E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.090,75.9,72.1,71,84%,91,69,0.00,0.0,0,25.9
+1900,29.165,76,,69,78%,,,,,,24.2
+0800,,80.1,72.8,69,68%,,,,Average ->,,25.1
+1000,,82.6,72.9,69,63%,,,,,,
+1300,,87.5,72.9,67,50%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+88,69,0.00,,0.0,0,724,80%,15,SW,0001E,18 NE @ 1551E
+,,,,,,"Friday, July 10, 2026",,,,,
+Average Temperature,,,79,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,6,,,,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,14,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,22.9,,,,,,,,,
+Observed Barometer,,989.1,,,,,,,,,
+Total Correction,,-4.0,,,,,,,,,
+Station Pressure,,985.1,987.6,986,,,,,,,
+Barograph Reading,,29.098,29.060,,,,,,,,
+Barograph Correction,,-0.008,0.105,,,,,,,,
+,,,,,,INITIALS:,AKJ,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Saturday, July 11, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,69,,N,9,,,,,84,,
+01-02,70,,NNE,9,,,,,,,
+02-03,70,,NNE,9,,,,,,,
+03-04,68,,NNE,8,,,,,,,
+04-05,66,,N,8,0,,,,,,
+05-06,69,,N,6,36,,,,,,
+06-07,73,,N,8,60,5,35,0,66,,SCT AC BKN CI HAZY WND LGT
+07-08,76,,NNE,5,60,,,,58,1@1.5,
+08-09,76,,ENE,7,54,,,,,,
+09-10,78,,ENE,7,54,5,35,0,45,,SCT CU SCT CI HAZY WND LGT
+10-11,79,,ENE,6,60,,,,,1@1.5,
+11-12,82,,NE,5,60,,,,,,
+12-13,81,,NE,7,60,4,35,0,45,,SCT CU SCT CI HAZY WND LGT
+13-14,82,,ENE,5,60,,,,,1@1.5,
+14-15,80,,ENE,6,54,,,,,,
+15-16,80,,ENE,8,54,,,,,,
+16-17,79,,ESE,6,48,,,,,,
+17-18,77,,ESE,6,60,,,,,,
+18-19,74,,SE,6,48,,,,54,,
+19-20,71,,SE,8,0,,,,,,
+20-21,70,,SE,8,,,,,,,
+21-22,69,,S,8,,,,,,,
+22-23,68,,SSW,7,,,,,,,
+23-24,67,,SW,4,,,,,,,
+Sum.,,0.00,,166,768,,,,,TIME:,
+Aver.,73.92,,Prevail.,6.9,Poss 903,,,,,0418E,SUNRISE
+Misc.,74.75,,ENE,,88%,,,,,1921E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.291,72.9,65.3,61,60%,88,66,0.00,0.0,0,18.3
+1900,29.353,74,,56,54%,,,,,,15.3
+0800,,75.9,65.8,61,58%,,,,Average ->,,16.8
+1000,,77.8,65.2,58,45%,,,,,,
+1300,,81.2,66.1,58,45%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+82,66,0.00,,0.0,0,795,88%,14,E,0836E,17 E @ 0830E
+,,,,,,"Saturday, July 11, 2026",,,,,
+Average Temperature,,,74,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,1,,,,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,9,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,1200E,,,,,,
+Attached Therm.,,22.2,,,21.8,,,,,,
+Observed Barometer,,995.8,,,997.2,,,,,,
+Total Correction,,-3.9,,,-3.8,,,,,,
+Station Pressure,,991.9,994.0,993,993.4,,,,,,
+Barograph Reading,,29.180,29.340,,,,,,,,
+Barograph Correction,,0.111,0.013,,,,,,,,
+,,,,,,INITIALS:,AKJ,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Sunday, July 12, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,67,,WSW,6,,,,,66,,
+01-02,67,,WSW,7,,,,,,,
+02-03,66,,W,9,,,,,,,
+03-04,63,,WNW,7,,,,,,,
+04-05,62,,N,10,12,,,,,,
+05-06,65,,NNE,10,54,,,,,,
+06-07,69,,NNE,10,60,3,40,0,72,,SCT AC HAZY
+07-08,73,,NE,9,60,,,,66,2@0,
+08-09,75,,ENE,9,60,,,,,,
+09-10,77,,ENE,10,60,1,50,0,53,,CLR FEW CU S-W-NNW
+10-11,78,,NE,9,60,,,,,2@1,
+11-12,80,,NE,8,60,,,,,,
+12-13,81,,ENE,7,60,3,50,0,39,,SCT CU K PLUME SE WND LGT
+13-14,81,,ENE,8,60,,,,,2@1,
+14-15,80,,E,8,60,,,,,,
+15-16,79,,E,7,60,,,,,,
+16-17,78,,ESE,5,60,,,,,,
+17-18,76,,ESE,7,60,,,,,,
+18-19,72,,SE,6,60,,,,45,,
+19-20,69,,SSE,10,6,,,,,,
+20-21,68,,S,10,,,,,,,
+21-22,66,,SSW,10,,,,,,,
+22-23,65,,SSW,11,,,,,,,
+23-24,65,,SW,12,,,,,,,
+Sum.,,0.00,,205,852,,,,,TIME:,
+Aver.,71.75,,Prevail.,8.5,Poss 903,,,,,0418E,SUNRISE
+Misc.,72.50,,ENE,,98%,,,,,1921E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.483,69.2,63.4,60,72%,82,61,0.00,0.0,0,17.6
+1900,29.521,72,,50,45%,,,,,,12.3
+0800,,72.6,64.8,61,66%,,,,Average ->,,15.0
+1000,,77.0,65.2,59,53%,,,,,,
+1300,,81.1,64.2,54,39%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+81,61,0.00,,0.0,0,884,98%,13,SW,2350E,16 ENE @ 1123E
+,,,,,,"Sunday, July 12, 2026",,,,,
+Average Temperature,,,71,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,-2,,,,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,6,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,22.2,,,,,,,,,
+Observed Barometer,,1002.3,,,,,,,,,
+Total Correction,,-3.9,,,,,,,,,
+Station Pressure,,998.4,999.7,999,,,,,,,
+Barograph Reading,,29.470,29.513,,,,,,,,
+Barograph Correction,,0.013,0.008,,,,,,,,
+,,,,,,INITIALS:,AKJ,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Monday, July 13, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,64,,SW,11,,,,,73,,
+01-02,64,,SSW,11,,,,,,,
+02-03,63,,SW,11,,,,,,,
+03-04,62,,SSW,11,,,,,,,
+04-05,62,,SSW,10,12,,,,,,
+05-06,66,,SSW,10,60,,,,,,
+06-07,70,,SSW,8,60,1,35,0,75,,CLR FEW AC/ACC ALQDS FEW CI ALQDS HAZY
+07-08,75,,SSW,8,60,,,,61,1@1.5,
+08-09,79,,SW,9,60,,,,,,
+09-10,82,,SW,12,60,5,35,0,55,,THN BKN CI FEW AC/ACC DSNT WSW-NNW HAZY
+10-11,83,,SW,11,60,,,,,1@1.5,
+11-12,82,,SW,13,48,,,,,,
+12-13,84,,SW,13,42,5,35,0,56,,SCT CU BKN AC BKN CI FEW TCU DSNT NW [1]
+13-14,84,,SSW,13,60,,,,,1@1.5,
+14-15,83,,SSW,15,60,,,,,,
+15-16,81,,SSW,16,60,,,,,,
+16-17,81,,SSW,14,60,,,,,,
+17-18,79,,SSW,14,18,,,,,,
+18-19,75,,S,12,42,,,,72,,
+19-20,72,,SSW,13,0,,,,,,
+20-21,71,,SSW,14,,,,,,,
+21-22,71,,SSW,15,,,,,,,
+22-23,70,,SW,17,,,,,,,
+23-24,69,,SW,16,,,,,,,
+Sum.,,0.00,,297,762,,,,,TIME:,
+Aver.,73.83,,Prevail.,12.4,Poss 901,,,,,0419E,SUNRISE
+Misc.,73.75,,SSW,,88%,,,,,1920E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.539,70.0,64.6,62,75%,81,62,0.00,0.0,0,19.0
+1900,29.417,75,,66,72%,,,,,,21.8
+0800,,75.1,67.2,63,61%,,,,Average ->,,20.4
+1000,,81.9,69.8,64,55%,,,,,,
+1300,,84.1,72.1,67,56%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+86,62,0.00,,0.0,0,793,88%,20,SW,2249E,26 SW @ 2347E
+,,,,,,"Monday, July 13, 2026",,,,,
+Average Temperature,,,74,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,1,,,[1] HAZY,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,9,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,21.9,,,,,,,,,
+Observed Barometer,,1004.2,,,,,,,,,
+Total Correction,,-3.9,,,,,,,,,
+Station Pressure,,1000.3,996.2,998,,,,,,,
+Barograph Reading,,29.524,29.413,,,,,,,,
+Barograph Correction,,0.015,0.004,,,,,,,,
+,,,,,,INITIALS:,MFD,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Tuesday, July 14, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,68,,SW,16,,,,,71,,
+01-02,67,,SW,14,,,,,,,
+02-03,67,,WSW,14,,,,,,,
+03-04,67,,WSW,13,,,,,,,
+04-05,67,,WSW,12,6,,,,,,
+05-06,70,,WSW,12,42,,,,,,
+06-07,73,,WSW,12,42,6,35,0,73,,THN BKN CI FEW AC DSNT NE-SE-SSW HAZY
+07-08,78,,WSW,12,60,,,,62,1@1.5,
+08-09,80,,WSW,10,60,,,,,,
+09-10,83,,WSW,11,60,6,30,0,59,,THN BKN CI K LYR ALF ALQDS HAZY
+10-11,83,,WSW,11,18,,,,,1@1,
+11-12,83,,WSW,11,0,,,,,,
+12-13,83,,WSW,15,0,8,30,0,63,,OVC K LYR SUN DMLY VSBL HAZY
+13-14,84,,WSW,17,54,,,,,1@1,
+14-15,86,,WSW,15,60,,,,,,
+15-16,87,,WSW,15,60,,,,,,
+16-17,86,,WSW,13,54,,,,,,
+17-18,84,,SW,12,6,,,,,,
+18-19,82,,SW,15,0,,,,66,,
+19-20,80,,SSW,14,0,,,,,,
+20-21,79,,SSW,14,,,,,,,
+21-22,77,,SW,13,,,,,,,
+22-23,76,,SW,14,,,,,,,
+23-24,75,,SW,13,,,,,,,
+Sum.,,0.00,,318,522,,,,,TIME:,
+Aver.,77.71,,Prevail.,13.3,Poss 900,,,,,0420E,SUNRISE
+Misc.,77.25,,WSW,,60%,,,,,1920E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.326,73.2,67.2,64,73%,86,67,0.00,0.0,0,20.3
+1900,29.158,82,,70,66%,,,,,,25.0
+0800,,78.2,68.7,64,62%,,,,Average ->,,22.7
+1000,,83.0,72.1,67,59%,,,,,,
+1300,,83.2,73.5,70,63%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+88,67,0.00,,0.0,0,540,60%,22,W,1330E,"28 WSW @ 1343E, 1407E"
+,,,,,,"Tuesday, July 14, 2026",,,,,
+Average Temperature,,,78,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,5,,,,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,13,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,21.9,,,,,,,,,
+Observed Barometer,,997.0,,,,,,,,,
+Total Correction,,-3.9,,,,,,,,,
+Station Pressure,,993.1,987.4,990,,,,,,,
+Barograph Reading,,29.328,29.168,,,,,,,,
+Barograph Correction,,-0.002,-0.010,,,,,,,,
+,,,,,,INITIALS:,MFD,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Wednesday, July 15, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,74,,WSW,14,,,,,84,,
+01-02,74,,WSW,13,,,,,,,
+02-03,74,,WSW,13,,,,,,,
+03-04,75,,W,17,,,,,,,
+04-05,75,,WNW,14,0,,,,,,
+05-06,76,,W,15,0,,,,,,
+06-07,78,,W,13,0,8,10,0,76,,BKN CC OVC CI K LYR ALQDS HAZY
+07-08,78,,WNW,12,0,,,,79,0@0,
+08-09,79,,WNW,11,0,,,,,,
+09-10,80,,WNW,13,6,8,10,0,78,,BKN AC OVC K LYR SFC K LYR HAZY
+10-11,80,,WNW,12,0,,,,,0@0,
+11-12,82,,NW,10,12,,,,,,
+12-13,80,,NW,13,0,8,10,0,61,,OVC K LYR SUN DMLY VSBL SFC K LYR HAZY
+13-14,81,,NW,14,18,,,,,0@0,
+14-15,79,,WNW,15,6,,,,,,
+15-16,77,,WNW,12,0,,,,,,
+16-17,77,,WNW,15,0,,,,,,
+17-18,76,,WNW,16,0,,,,,,
+18-19,75,,WNW,13,0,,,,50,,
+19-20,73,,WNW,12,0,,,,,,
+20-21,71,,WNW,13,,,,,,,
+21-22,69,,WNW,11,,,,,,,
+22-23,68,,NW,11,,,,,,,
+23-24,67,,WNW,11,,,,,,,
+Sum.,,0.00,,313,42,,,,,TIME:,
+Aver.,75.75,,Prevail.,13.0,Poss 898,,,,,0421E,SUNRISE
+Misc.,76.50,,WNW,,5%,,,,,1919E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.087,77.9,72.0,70,76%,88,73,0.00,0.0,0,25.0
+1900,29.121,75,,55,50%,,,,,,14.7
+0800,,78.0,73.0,71,79%,,,,Average ->,,19.9
+1000,,80.3,74.8,73,78%,,,,,,
+1300,,80.0,70.0,66,61%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+82,67,0.00,,0.0,0,45,5%,22,WNW,1728E,29 WNW @ 1420E
+,,,,,,"Wednesday, July 15, 2026",,,,,
+Average Temperature,,,75,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,2,,,,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,10,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,1200,,,,,,
+Attached Therm.,,21.6,,,21.5,,,,,,
+Observed Barometer,,988.8,,,989.1,,,,,,
+Total Correction,,-3.8,,,-3.8,,,,,,
+Station Pressure,,985.0,986.1,986,985.3,,,,,,
+Barograph Reading,,29.101,29.129,,,,,,,,
+Barograph Correction,,-0.014,-0.008,,,,,,,,
+,,,,,,INITIALS:,MFD,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Thursday, July 16, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,66,,WNW,12,,,,,64,,
+01-02,66,,WNW,12,,,,,,,
+02-03,65,,WNW,12,,,,,,,
+03-04,65,,WNW,12,,,,,,,
+04-05,64,,WNW,11,12,,,,,,
+05-06,66,,WNW,9,60,,,,,,
+06-07,70,,W,8,60,1,35,0,63,,CLR FEW CI DSNT SE-SW-W HAZY WND LGT
+07-08,75,,W,8,60,,,,63,1@1.5,
+08-09,79,,W,7,60,,,,,,
+09-10,82,,W,10,60,1,30,0,51,,CLR FEW CI DSNT SE-SW-W AND [1]
+10-11,83,,W,12,60,,,,,1@1,
+11-12,84,,W,15,60,,,,,,
+12-13,84,,W,18,60,5,30,0,43,,BKN CI FEW CU ALQDS THN K LYR ALF ALQDS[2]
+13-14,85,,W,16,60,,,,,1@1,
+14-15,84,,WSW,15,60,,,,,,
+15-16,84,,W,17,60,,,,,,
+16-17,83,,W,17,60,,,,,,
+17-18,75,,NW,17,30,,,,,,
+18-19,73,,NNW,14,6,,,,56,,
+19-20,72,,NW,9,0,,,,,,
+20-21,71,,NW,6,,,,,,,
+21-22,69,,NW,7,,,,,,,
+22-23,67,,NW,9,,,,,,,
+23-24,66,,NW,10,,,,,,,
+Sum.,,0.00,,283,768,,,,,TIME:,
+Aver.,74.08,,Prevail.,11.8,Poss 896,,,,,0422E,SUNRISE
+Misc.,74.50,,W,,89%,,,,,1918E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.202,70.0,63.1,59,63%,82,63,0.00,0.0,0,17.0
+1900,29.143,73,,56,56%,,,,,,15.3
+0800,,74.5,65.8,61,63%,,,,Average ->,,16.2
+1000,,82.0,68.7,62,51%,,,,,,
+1300,,84.4,68.0,60,43%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+86,63,0.00,,0.0,0,797,89%,24,W,1614E,29 W @ 1614E
+,,,,,,"Thursday, July 16, 2026",,,,,
+Average Temperature,,,75,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,2,,,[1] DSNT NW-NE HAZY,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,10,,,[2] HAZY PK WND 2827/59/,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,21.6,,,,,,,,,
+Observed Barometer,,992.7,,,,,,,,,
+Total Correction,,-3.8,,,,,,,,,
+Station Pressure,,988.9,986.6,988,,,,,,,
+Barograph Reading,,29.200,29.150,,,,,,,,
+Barograph Correction,,0.002,-0.007,,,,,,,,
+,,,,,,INITIALS:,MFD,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Friday, July 17, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,66,,WNW,11,,,,,77,,
+01-02,65,,NW,12,,,,,,,
+02-03,65,,NW,13,,,,,,,
+03-04,63,,NW,13,,,,,,,
+04-05,62,,NW,12,12,,,,,,
+05-06,62,,NW,10,60,,,,,,
+06-07,67,,NW,10,60,3,40,0,61,,SCT CI THN K LYR ALF ALQDS
+07-08,71,,NW,12,60,,,,50,2@0,
+08-09,73,,NW,13,54,,,,,,
+09-10,75,,WNW,13,54,5,40,0,41,,BKN CS/CI THN K LYR ALF ALQDS
+10-11,78,,WNW,12,60,,,,,2@0,
+11-12,78,,WNW,14,60,,,,,,
+12-13,81,,WNW,12,60,3,40,0,39,,SCT CI/CS THN K LYR ALF ALQDS
+13-14,82,,WNW,10,60,,,,,2@0,
+14-15,83,,WNW,11,60,,,,,,
+15-16,82,,WNW,10,60,,,,,,
+16-17,80,,WNW,10,48,,,,,,
+17-18,79,,NW,9,54,,,,,,
+18-19,75,,NW,7,36,,,,34,,
+19-20,72,,WNW,6,0,,,,,,
+20-21,70,,WNW,4,,,,,,,
+21-22,70,,NW,3,,,,,,,
+22-23,70,,W,2,,,,,,,
+23-24,69,,SW,4,,,,,,,
+Sum.,,0.00,,233,798,,,,,TIME:,
+Aver.,72.42,,Prevail.,9.7,Poss 895,,,,,0423E,SUNRISE
+Misc.,72.50,,WNW,,92%,,,,,1918E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.323,67.2,58.9,54,61%,86,61,0.00,0.0,0,14.2
+1900,29.331,75,,45,34%,,,,,,10.2
+0800,,71.2,59.0,51,50%,,,,Average ->,,12.2
+1000,,75.4,60.0,50,41%,,,,,,
+1300,,80.6,63.9,54,39%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+83,61,0.00,,0.0,0,823,92%,18,WNW,1132E,24 NW @ 0948E
+,,,,,,"Friday, July 17, 2026",,,,,
+Average Temperature,,,72,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,-1,,,,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,7,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,21.6,,,,,,,,,
+Observed Barometer,,996.8,,,,,,,,,
+Total Correction,,-3.8,,,,,,,,,
+Station Pressure,,993.0,993.3,993,,,,,,,
+Barograph Reading,,29.320,29.282,,,,,,,,
+Barograph Correction,,0.003,0.003,,,,,,,,
+,,,,,,INITIALS:,AKJ,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Saturday, July 18, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,68,,SW,7,,,,,47,,
+01-02,68,,SW,9,,,,,,,
+02-03,66,,SW,8,,,,,,,
+03-04,66,,SW,10,,,,,,,
+04-05,66,,SW,11,0,,,,,,
+05-06,66,,SW,9,24,,,,,,
+06-07,70,,SW,10,42,5,10,0,76,,BKN CI FEW AC DSNT NNE-E K LYR ALQDS HAZY
+07-08,73,,SSW,11,60,,,,71,0@0,
+08-09,76,,SSW,13,60,,,,,,
+09-10,79,,SSW,14,54,5,9,0,60,,BKN CI K LYR ALQDS HAZY
+10-11,78,,SSW,16,18,,,,,0@0,
+11-12,76,T,SSW,14,0,,,,,,RW-B35E43 PCPN VRY LGT
+12-13,74,,SSW,15,0,8,9,0,74,,OVC AC K LYR ALQDS HAZY PK WND 1926/51/
+13-14,72,T,SSW,17,0,,,,,0@0,RW-B00E53 PCPN VRY LGT
+14-15,68,0.12,SSW,17,0,,,,,,RW-B19 OCNL RW
+15-16,67,0.02,SSW,19,0,,,,,,RW-E20B51E57
+16-17,67,,SSW,21,0,,,,,,
+17-18,66,T,SSW,21,0,,,,,,RW-B17E26B43E47B56
+18-19,65,0.05,SSW,22,0,,,,100,,RW-E35 TB28E49 OCNL LTGICCG ESE MOV E
+19-20,64,T,SSW,24,0,,,,,,RW-B05E21 PCPN VRY LGT
+20-21,66,T,SSW,21,,,,,,,RW-B52
+21-22,68,0.01,SSW,22,,,,,,,RW-E40
+22-23,69,0.03,SSW,18,,,,,,,RW-B05E52
+23-24,69,,SW,16,,,,,,,
+Sum.,,0.23,,365,258,,,,,TIME:,
+Aver.,69.46,,Prevail.,15.2,Poss 894,,,,,0423E,SUNRISE
+Misc.,69.25,,SSW,,30%,,,,,1917E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.323,70.0,65.0,62,76%,83,65,0.00,0.0,0,19.0
+1900,29.035,65,,65,100%,,,,,,21.1
+0800,,72.9,66.3,63,71%,,,,Average ->,,20.1
+1000,,79.3,69.0,64,60%,,,,,,
+1300,,74.4,68.5,66,74%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+80,64,0.23,,0.0,0,268,30%,29,S,1936E,36 SSW @ 1827E
+,,,,,,"Saturday, July 18, 2026",,,,,
+Average Temperature,,,72,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,-1,,,,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,7,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,21.7,,,,,,,,,
+Observed Barometer,,996.8,,,,,,,,,
+Total Correction,,-3.8,,,,,,,,,
+Station Pressure,,993.0,983.2,988,,,,,,,
+Barograph Reading,,29.319,29.043,,,,,,,,
+Barograph Correction,,0.004,-0.008,,,,,,,,
+,,,,,,INITIALS:,MFD,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Sunday, July 19, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,68,,SW,15,,,,,100,,
+01-02,68,,WSW,13,,,,,,,
+02-03,68,,W,15,,,,,,,
+03-04,67,,W,17,,,,,,,
+04-05,67,,W,14,0,,,,,,
+05-06,67,,NW,15,18,,,,,,
+06-07,67,,NW,18,60,1,40,0,64,,CLR FEW SC DSNT ESE-S-W-N [1]
+07-08,69,,NW,18,60,,,,61,2@0,
+08-09,71,,NW,18,60,,,,,,
+09-10,72,,NW,20,60,2,40,0,50,,SCT SC K LYR ALF DSNT E-S-SW [2]
+10-11,76,,NW,19,60,,,,,2@0,
+11-12,76,,NW,18,60,,,,,,
+12-13,77,,NW,15,60,1,50,0,42,,CLR FEW CU ALQDS K PLUME DSNT SSE
+13-14,79,,NW,13,60,,,,,2@1,
+14-15,79,,WNW,12,60,,,,,,
+15-16,79,,WNW,13,60,,,,,,
+16-17,78,,NW,14,60,,,,,,
+17-18,76,,NW,14,60,,,,,,
+18-19,72,,NW,9,54,,,,37,,
+19-20,70,,WNW,8,0,,,,,,
+20-21,68,,W,7,,,,,,,
+21-22,65,,NNW,9,,,,,,,
+22-23,65,,N,10,,,,,,,
+23-24,63,,NNW,8,,,,,,,
+Sum.,,0.00,,332,792,,,,,TIME:,
+Aver.,71.13,,Prevail.,13.8,Poss 892,,,,,0424E,SUNRISE
+Misc.,71.50,,NW,,92%,,,,,1916E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.022,66.8,59.2,54,64%,80,64,0.23,0.0,0,14.2
+1900,29.156,72,,45,37%,,,,,,10.2
+0800,,68.5,60.1,55,61%,,,,Average ->,,12.2
+1000,,72.2,60.2,52,50%,,,,,,
+1300,,77.2,62.0,52,42%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+79,63,0.00,,0.0,0,820,92%,29,NW,0918E,"37 NW @ 0917E, WNW 0933E"
+,,,,,,"Sunday, July 19, 2026",,,,,
+Average Temperature,,,71,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,-2,,,[1] FEW CI DSNT WNW-NW THN K LYR ALF ALQDS PK WND 3237/30/,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,6,,,[2] PK WND 3037/33/,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,1200,,,,,,
+Attached Therm.,,21.3,,,21.5,,,,,,
+Observed Barometer,,986.5,,,988.2,,,,,,
+Total Correction,,-3.7,,,-3.8,,,,,,
+Station Pressure,,982.8,987.3,985,984.4,,,,,,
+Barograph Reading,,29.032,29.161,,,,,,,,
+Barograph Correction,,-0.010,-0.005,,,,,,,,
+,,,,,,INITIALS:,MFD,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Monday, July 20, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,61,,NW,7,,,,,55,,
+01-02,60,,WNW,8,,,,,,,
+02-03,59,,WNW,12,,,,,,,
+03-04,58,,WNW,10,,,,,,,
+04-05,58,,WNW,9,0,,,,,,
+05-06,60,,WNW,10,48,,,,,,
+06-07,65,,WNW,8,60,5,60,0,62,,BKN CI THN K LYR ALF ALQDS WND LGT
+07-08,70,,NW,5,60,,,,60,3@0,
+08-09,71,,WNW,3,60,,,,,,
+09-10,76,,WNW,4,60,5,50,0,44,,BKN CI FEW CU ALQDS WND L/V/
+10-11,79,,WSW,6,60,,,,,2@1,
+11-12,79,,WSW,8,60,,,,,,
+12-13,81,,SW,9,60,5,50,0,37,,BKN CI FEW CU ALQDS
+13-14,81,,SW,7,60,,,,,2@1,
+14-15,82,,WSW,8,60,,,,,,
+15-16,80,,SW,9,60,,,,,,
+16-17,77,,SSW,12,60,,,,,,
+17-18,74,,SSW,13,60,,,,,,
+18-19,70,,S,12,48,,,,47,,
+19-20,67,,S,11,0,,,,,,
+20-21,65,,S,11,,,,,,,
+21-22,64,,SSW,11,,,,,,,
+22-23,63,,SSW,11,,,,,,,
+23-24,62,,SSW,12,,,,,,,
+Sum.,,0.00,,216,816,,,,,TIME:,
+Aver.,69.25,,Prevail.,9.0,Poss 890,,,,,0425E,SUNRISE
+Misc.,69.50,,WNW,,95%,,,,,1915E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.309,65.2,57.4,52,62%,79,58,0.00,0.0,0,13.2
+1900,29.297,70,,49,47%,,,,,,11.8
+0800,,69.8,60.8,55,60%,,,,Average ->,,12.5
+1000,,76.4,62.0,53,44%,,,,,,
+1300,,80.9,63.3,52,37%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+83,58,0.00,,0.0,0,846,95%,16,SSW,1708E,"21 SSW @ 1705E, 1807E"
+,,,,,,"Monday, July 20, 2026",,,,,
+Average Temperature,,,71,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,-2,,,,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,6,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,21.6,,,,,,,,,
+Observed Barometer,,996.3,,,,,,,,,
+Total Correction,,-3.8,,,,,,,,,
+Station Pressure,,992.5,992.1,992,,,,,,,
+Barograph Reading,,29.300,29.298,,,,,,,,
+Barograph Correction,,0.009,-0.001,,,,,,,,
+,,,,,,INITIALS:,MFD/IM,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Tuesday, July 21, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,62,,SSW,12,,,,,93,,
+01-02,61,,SSW,12,,,,,,,
+02-03,61,,S,11,,,,,,,
+03-04,62,,S,11,,,,,,,
+04-05,62,,S,12,0,,,,,,
+05-06,64,,SSE,12,0,,,,,,
+06-07,66,,S,11,0,8,40,0,92,,OVC CI/CS FEW THN SPTS IOVC SW-NNW [1]
+07-08,70,,S,12,30,,,,85,1@1,
+08-09,73,,SSW,14,36,,,,,,
+09-10,75,,S,16,6,8,30,0,66,,SCT CU OVC CS SUN DMLY VSBL HAZY
+10-11,75,,S,16,12,,,,,1@1,
+11-12,75,,S,15,0,,,,,,
+12-13,74,T,S,15,0,8,30,RW-,68,,BKN AC/NS OVC CS FEW SC DSNT W-NNE [2]
+13-14,75,T,SSE,13,0,,,,,1@1,RW-E05B20 PCPN VRY LGT
+14-15,72,T,SE,12,0,,,,,,RW-E15B44 TB53 OCNL LTGIC PCPN VRY LGT
+15-16,68,0.07,SE,12,0,,,,,,RW-CTD OCNL RW TE08 OCNL LTGIC
+16-17,66,0.58,ESE,15,0,,,,,,RW- BCMG RW OCNL RW+ TB03 OCNL LTGICCC
+17-18,67,0.28,SE,11,0,,,,,,RW BCMG RW- RW-E44 TE15 OCNL LTGICCC
+18-19,70,0.17,SSE,11,0,,,,100,,RW-B04 OCNL RW
+19-20,70,0.04,S,16,0,,,,,,RW-CTD OCNL RW
+20-21,70,0.01,SSW,17,,,,,,,RW-E10
+21-22,70,,SSW,14,,,,,,,
+22-23,71,,SSW,12,,,,,,,
+23-24,71,,SSW,11,,,,,,,
+Sum.,,1.15,,313,84,,,,,TIME:,
+Aver.,68.75,,Prevail.,13.0,Poss 889,,,,,0426E,SUNRISE
+Misc.,69.00,,S,,10%,,,,,1915E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.285,66.4,64.8,64,92%,83,60,0.00,0.0,0,20.3
+1900,29.175,70,,70,100%,,,,,,25.0
+0800,,70.1,66.9,65,85%,,,,Average ->,,22.7
+1000,,75.1,67.2,63,66%,,,,,,
+1300,,74.0,66.5,63,68%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+76,60,1.15,,0.0,0,89,10%,23,S,1105E,30 S @ 1046E
+,,,,,,"Tuesday, July 21, 2026",,,,,
+Average Temperature,,,68,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,-5,,,[1] FEW STFRA DSNT W-WNW SUN DMLY VSBL VSBY 30 W-WNW,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,3,,,[2] SUN DMLY VSBL RW-B24 PCPN VRY LGT HAZY,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,21.8,,,,,,,,,
+Observed Barometer,,995.5,,,,,,,,,
+Total Correction,,-3.8,,,,,,,,,
+Station Pressure,,991.7,988.0,990,,,,,,,
+Barograph Reading,,29.287,29.188,,,,,,,,
+Barograph Correction,,-0.002,-0.013,,,,,,,,
+,,,,,,INITIALS:,MFD/JN,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Wednesday, July 22, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,71,,SSW,13,,,,,100,,
+01-02,71,,SSW,15,,,,,,,
+02-03,70,,SW,16,,,,,,,
+03-04,69,,SW,14,,,,,,,
+04-05,70,,SSW,15,0,,,,,,
+05-06,70,,SW,13,0,,,,,,
+06-07,71,,SW,14,0,8,30,0,95,,BKN SC OVC AS FEW LWR STFRA ALQDS [1]
+07-08,73,,SW,13,6,,,,93,1@1,
+08-09,76,,SW,13,42,,,,,,
+09-10,77,,SW,13,36,6,35,0,80,,BKN CU/SC BKN AC FEW LWR CUFRA ALQDS [2]
+10-11,80,,SW,14,42,,,,,1@1.5,
+11-12,80,,SW,15,48,,,,,,
+12-13,81,,SSW,14,54,5,40,0,74,,BKN CU HAZY
+13-14,83,,SSW,14,60,,,,,2@0,
+14-15,82,,SSW,16,60,,,,,,TB39 OCNL LTGICCG W-NNW MOV E
+15-16,73,0.23,W,11,6,,,,,,TCTD RW-B19 OCNL RW/RW+ [3]
+16-17,72,T,SW,5,0,,,,,,RW-E00 TE15
+17-18,72,,SW,9,18,,,,,,
+18-19,72,,WSW,10,0,,,,100,,
+19-20,71,,W,10,0,,,,,,
+20-21,68,,NW,11,,,,,,,
+21-22,66,,NW,13,,,,,,,
+22-23,65,,NW,10,,,,,,,
+23-24,64,,NW,9,,,,,,,
+Sum.,,0.23,,300,372,,,,,TIME:,
+Aver.,72.79,,Prevail.,12.5,Poss 887,,,,,0427E,SUNRISE
+Misc.,74.50,,SW,,44%,,,,,1914E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.010,71.3,70.3,70,95%,76,65,1.15,0.0,0,25.0
+1900,29.151,72,,72,100%,,,,,,26.9
+0800,,73.3,71.7,71,93%,,,,Average ->,,26.0
+1000,,77.0,72.4,71,80%,,,,,,
+1300,,81.0,74.5,72,74%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+83,64,0.23,,0.0,0,390,44%,24,SSW,1502E,28 SSW @ 1501E
+,,,,,,"Wednesday, July 22, 2026",,,,,
+Average Temperature,,,74,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,1,,,[1] THN F ALQDS,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,9,,,[2] HAZY,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,[3] OCNL LTGICCCCGCA WSHFT 17,,,,,
+Attached Therm.,,21.4,,,,,,,,,
+Observed Barometer,,986.1,,,,,,,,,
+Total Correction,,-3.7,,,,,,,,,
+Station Pressure,,982.4,987.2,985,,,,,,,
+Barograph Reading,,29.029,29.163,,,,,,,,
+Barograph Correction,,-0.019,-0.012,,,,,,,,
+,,,,,,INITIALS:,MFD,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Thursday, July 23, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,63,,WNW,8,,,,,82,,
+01-02,61,,WNW,9,,,,,,,
+02-03,59,,WNW,9,,,,,,,
+03-04,59,,NW,9,,,,,,,
+04-05,59,,NW,10,0,,,,,,
+05-06,60,,NW,11,48,,,,,,
+06-07,63,,NW,11,60,2,80,0,76,,SCT CI FEW AC ENE-SSE
+07-08,67,,NNW,10,60,,,,61,3@2,
+08-09,70,,NNW,10,60,,,,,,
+09-10,72,,NNW,11,60,2,80,0,50,,SCT CI FEW AC DSNT E-SSE AND W
+10-11,74,,NW,10,60,,,,,3@2,
+11-12,76,,NW,9,60,,,,,,
+12-13,77,,NW,9,60,2,70,0,43,,SCT CI FEW AC ALQDS
+13-14,78,,NW,8,60,,,,,2@1,
+14-15,78,,NW,8,60,,,,,,
+15-16,78,,WNW,8,60,,,,,,
+16-17,77,,W,6,60,,,,,,
+17-18,76,,WNW,6,60,,,,,,
+18-19,71,,NW,6,42,,,,52,,
+19-20,69,,WNW,5,0,,,,,,
+20-21,65,,SE,5,,,,,,,
+21-22,64,,SSE,7,,,,,,,
+22-23,63,,S,6,,,,,,,
+23-24,62,,S,6,,,,,,,
+Sum.,,0.00,,197,810,,,,,TIME:,
+Aver.,68.38,,Prevail.,8.2,Poss 887,,,,,0428E,SUNRISE
+Misc.,68.75,,NW,,95%,,,,,1913E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.365,62.9,58.3,55,76%,83,57,0.23,0.0,0,14.7
+1900,29.455,71,,53,52%,,,,,,13.7
+0800,,66.9,58.6,53,61%,,,,Average ->,,14.2
+1000,,71.6,60.0,52,50%,,,,,,
+1300,,76.6,62.1,53,43%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+78,57,0.00,,0.0,0,841,95%,15,NW,0639E,20 NNW @ 0637E
+,,,,,,"Thursday, July 23, 2026",,,,,
+Average Temperature,,,68,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,-5,,,,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,3,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,1200E,,,,,,
+Attached Therm.,,21.8,,,21.2,,,,,,
+Observed Barometer,,998.2,,,999.9,,,,,,
+Total Correction,,-3.8,,,-3.8,,,,,,
+Station Pressure,,994.4,997.5,996,996.1,,,,,,
+Barograph Reading,,29.360,29.470,,,,,,,,
+Barograph Correction,,0.005,-0.015,,,,,,,,
+,,,,,,INITIALS:,AKJ,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Friday, July 24, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,62,,SSW,7,,,,,88,,
+01-02,63,,SW,7,,,,,,,
+02-03,63,,SW,7,,,,,,,
+03-04,62,,WSW,7,,,,,,,
+04-05,61,,WNW,5,6,,,,,,
+05-06,63,,NW,4,60,,,,,,
+06-07,67,,NNW,5,60,1,60,0,66,,CLR FEW CI NNE-ESE WND LGT
+07-08,72,,NNW,2,60,,,,61,3@0,
+08-09,76,,S,1,60,,,,,,
+09-10,78,,SSE,3,60,1,60,0,44,,CLR FEW CU ALQDS WND LGT
+10-11,79,,S,5,60,,,,,3@0,
+11-12,81,,SSW,5,60,,,,,,
+12-13,81,,S,5,60,2,50,0,42,,SCT CU WND L/V
+13-14,81,,SSW,4,60,,,,,2@1,
+14-15,80,,SSW,5,60,,,,,,
+15-16,80,,S,4,54,,,,,,
+16-17,75,,SE,11,42,,,,,,
+17-18,73,,SSE,13,42,,,,,,
+18-19,71,,SSE,12,30,,,,52,,
+19-20,68,,S,10,0,,,,,,
+20-21,66,,SSW,11,,,,,,,
+21-22,64,,SSW,9,,,,,,,
+22-23,64,,SSW,11,,,,,,,
+23-24,63,,SW,9,,,,,,,
+Sum.,,0.00,,162,774,,,,,TIME:,
+Aver.,70.54,,Prevail.,6.8,Poss 883,,,,,0429E,SUNRISE
+Misc.,71.00,,SSW,,91%,,,,,1912E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.548,67.0,60.0,56,66%,78,61,0.00,0.0,0,15.3
+1900,29.503,71,,53,52%,,,,,,13.7
+0800,,72.2,63.3,58,61%,,,,Average ->,,14.5
+1000,,77.6,62.8,54,44%,,,,,,
+1300,,80.8,64.8,56,42%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+82,61,0.00,,0.0,0,804,91%,16,SSE,1742E,23 SSE @ 1736E
+,,,,,,"Friday, July 24, 2026",,,,,
+Average Temperature,,,72,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,-1,,,,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,7,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,21.4,,,,,,,,,
+Observed Barometer,,1004.4,,,,,,,,,
+Total Correction,,-3.8,,,,,,,,,
+Station Pressure,,1000.6,999.1,1000,,,,,,,
+Barograph Reading,,29.560,29.510,,,,,,,,
+Barograph Correction,,-0.012,-0.007,,,,,,,,
+,,,,,,INITIALS:,AKJ,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Saturday, July 25, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,63,,WSW,9,,,,,77,,
+01-02,61,,W,9,,,,,,,
+02-03,61,,W,9,,,,,,,
+03-04,61,,W,8,,,,,,,
+04-05,61,,WNW,7,6,,,,,,
+05-06,64,,NW,6,60,,,,,,
+06-07,70,,NNW,4,60,1,50,0,57,,CLR FEW AC DSNT ESE-SW [1]
+07-08,72,,NW,2,60,,,,48,2@1,
+08-09,74,,SE,3,60,,,,,,
+09-10,76,,ESE,5,60,1,50,0,43,,CLR FEW CU DSNT W-N [2]
+10-11,78,,ESE,7,60,,,,,2@1,
+11-12,78,,ESE,8,60,,,,,,
+12-13,79,,ESE,9,60,1,50,0,41,,CLR FEW CU DSNT W-N FEW CI DSNT ESE-S [3]
+13-14,78,,ESE,10,60,,,,,2@1,
+14-15,77,,ESE,11,60,,,,,,
+15-16,75,,ESE,12,60,,,,,,
+16-17,73,,ESE,10,60,,,,,,
+17-18,70,,ESE,9,60,,,,,,
+18-19,66,,E,8,42,,,,49,,
+19-20,64,,ESE,9,0,,,,,,
+20-21,63,,ESE,9,,,,,,,
+21-22,62,,E,10,,,,,,,
+22-23,61,,E,9,,,,,,,
+23-24,61,,E,10,,,,,,,
+Sum.,,0.00,,193,828,,,,,TIME:,
+Aver.,68.67,,Prevail.,8.0,Poss 881,,,,,0430E,SUNRISE
+Misc.,68.75,,ESE,,98%,,,,,1911E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.498,69.8,60.2,54,57%,82,60,0.00,0.0,0,14.2
+1900,29.373,66,,46,49%,,,,,,10.6
+0800,,72.4,59.9,52,48%,,,,Average ->,,12.4
+1000,,76.2,61.4,52,43%,,,,,,
+1300,,79.0,63.0,53,41%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+79,60,0.00,,0.0,0,863,98%,14,SE,1554E,20 E @ 1342E
+,,,,,,"Saturday, July 25, 2026",,,,,
+Average Temperature,,,70,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,-3,,,[1] THN K LYR ALF ALQDS WND LGT,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,5,,,[2] FEW AC DSNT SSE-SSW FEW CI DSNT ESE-SSW THN K LYR ALD ALQDS WND LGT,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,[3] THN K LYR ALF ALQDS WND 08V14,,,,,
+Attached Therm.,,21.6,,,,,,,,,
+Observed Barometer,,1002.7,,,,,,,,,
+Total Correction,,-3.8,,,,,,,,,
+Station Pressure,,998.9,994.7,997,,,,,,,
+Barograph Reading,,29.500,29.438,,,,,,,,
+Barograph Correction,,-0.002,-0.065,,,,,,,,
+,,,,,,INITIALS:,MFD,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Sunday, July 26, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,59,,ENE,9,,,,,89,,
+01-02,58,,NNE,7,,,,,,,
+02-03,57,,NNE,7,,,,,,,
+03-04,57,,N,10,,,,,,,
+04-05,56,,N,10,6,,,,,,
+05-06,59,,NNE,10,54,,,,,,
+06-07,64,,NE,9,36,3,60,0,70,,SCT AC SCT CI FEW SC DSNT ESE-SSE WND LGT
+07-08,67,,NE,6,60,,,,65,3@0,
+08-09,70,,NE,8,60,,,,,,
+09-10,72,,NE,9,60,2,60,0,54,,SCT CI FEW AC DSNT ENE-S
+10-11,73,,ENE,9,60,,,,,3@0,
+11-12,73,,ENE,12,60,,,,,,
+12-13,73,,ENE,12,60,4,50,0,49,,BKN CI FEW AC DSNT NE-SE-SW
+13-14,73,,ENE,10,60,,,,,2@1,
+14-15,72,,ENE,10,54,,,,,,
+15-16,71,,ENE,9,30,,,,,,
+16-17,69,,NE,8,18,,,,,,
+17-18,67,,ENE,6,54,,,,,,
+18-19,63,,ENE,8,42,,,,66,,
+19-20,62,,ENE,8,0,,,,,,
+20-21,61,,NE,9,,,,,,,
+21-22,59,,NE,10,,,,,,,
+22-23,59,,NE,9,,,,,,,
+23-24,58,,ENE,5,,,,,,,
+Sum.,,0.00,,210,714,,,,,TIME:,
+Aver.,64.67,,Prevail.,8.8,Poss 879,,,,,0431E,SUNRISE
+Misc.,65.00,,ENE,,84%,,,,,1910E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.291,64.0,58.1,54,70%,79,56,0.00,0.0,0,14.2
+1900,29.203,63,,52,66%,,,,,,13.2
+0800,,67.4,60.0,55,65%,,,,Average ->,,13.7
+1000,,72.0,61.0,54,54%,,,,,,
+1300,,73.1,60.8,53,49%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+73,56,0.00,,0.0,0,738,84%,14*,E,1142E,19 E @ 1140E
+,,,,,,"Sunday, July 26, 2026",,,,,
+Average Temperature,,,65,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,-8,,,*ADDITIONAL FASTEST MILE 14 ENE @ 1214E,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,0,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,21.7,,,,,,,,,
+Observed Barometer,,995.7,,,,,,,,,
+Total Correction,,-3.8,,,,,,,,,
+Station Pressure,,991.9,988.9,990,,,,,,,
+Barograph Reading,,29.360,29.208,,,,,,,,
+Barograph Correction,,-0.069,-0.005,,,,,,,,
+,,,,,,INITIALS:,MFD/LC,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Monday, July 27, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,58,,NNE,4,,,,,97,,
+01-02,56,,NNE,6,,,,,,,
+02-03,55,,NW,7,,,,,,,
+03-04,54,,NW,6,,,,,,,
+04-05,56,,NNW,8,0,,,,,,
+05-06,60,,N,7,0,,,,,,
+06-07,64,,NE,5,6,5,50,0,59,,BKN AC/ACC FEW SC DSNT ENE-SSE WND LGT
+07-08,67,,ENE,1,12,,,,63,2@1,
+08-09,73,,ENE,2,54,,,,,,
+09-10,76,,NE,3,60,1,40,0,45,,CLR FEW CU DSNT WSW [1]
+10-11,78,,NE,3,60,,,,,2@0,
+11-12,80,,E,4,60,,,,,,
+12-13,81,,SE,4,60,1,40,0,39,,CLR FEW CB DSNT WSW-W [2]
+13-14,82,,ESE,5,60,,,,,2@0,
+14-15,82,,SE,4,60,,,,,,
+15-16,83,,SE,5,60,,,,,,
+16-17,79,,ENE,4,60,,,,,,
+17-18,77,,SE,8,60,,,,,,
+18-19,74,,SSE,9,36,,,,63,,
+19-20,70,,S,10,0,,,,,,
+20-21,68,,SSW,11,,,,,,,
+21-22,67,,SSW,9,,,,,,,
+22-23,66,,SSW,9,,,,,,,
+23-24,65,,SSW,8,,,,,,,
+Sum.,,0.00,,142,648,,,,,TIME:,
+Aver.,69.63,,Prevail.,5.9,Poss 877,,,,,0432E,SUNRISE
+Misc.,68.75,,SE,,77%,,,,,1909E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.182,64.4,56.0,50,59%,73,54,0.00,0.0,0,12.3
+1900,29.131,74,,61,63%,,,,,,18.3
+0800,,66.8,59.0,54,63%,,,,Average ->,,15.3
+1000,,75.9,62.0,53,45%,,,,,,
+1300,,81.0,64.0,54,39%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+83,54,0.00,,0.0,0,675,77%,14,SSW,1957E,16 S @ 1849E
+,,,,,,"Monday, July 27, 2026",,,,,
+Average Temperature,,,69,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,-4,,,[1] FEW AC/ACC ALQDS THN K LYR ALF DSNT ENE-S HAZY WND L/V/,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,4,,,[2] FEW CU DSNT SW-NNW FEW AC/ACC DSNT NE-SSE HAZY WND LGT,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,1200,,,,,,
+Attached Therm.,,21.8,,,21.2,,,,,,
+Observed Barometer,,992.0,,,991.6,,,,,,
+Total Correction,,-3.8,,,-3.7,,,,,,
+Station Pressure,,988.2,986.5,987,987.9,,,,,,
+Barograph Reading,,29.192,29.137,,,,,,,,
+Barograph Correction,,-0.010,-0.006,,,,,,,,
+,,,,,,INITIALS:,MFD,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Tuesday, July 28, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,65,,SSW,8,,,,,100,,
+01-02,65,,SSW,9,,,,,,,
+02-03,65,,SSW,8,,,,,,,
+03-04,65,,S,7,,,,,,,
+04-05,66,,SSW,10,0,,,,,,
+05-06,66,,SSW,9,0,,,,,,
+06-07,69,,SSW,9,0,8,15,0,96,,BKN STFRA OVC ST THN F ALQDS WND LGT
+07-08,74,,SSW,8,36,,,,82,0@0,
+08-09,77,,SSW,9,60,,,,,,
+09-10,81,,SSW,8,60,6,30,0,69,,BKN CU BKN CI MDT CU ALQDS HAZY
+10-11,82,,SSW,8,60,,,,,1@1,
+11-12,83,,S,10,60,,,,,,
+12-13,82,,S,14,60,6,25,0,64,,BKN CU BKN AC BKN CI HAZY
+13-14,80,,S,15,60,,,,,1@0.5,
+14-15,76,,SSW,16,6,,,,,,
+15-16,76,,S,14,0,,,,,,
+16-17,74,,S,16,0,,,,,,
+17-18,73,,S,16,0,,,,,,
+18-19,72,,S,13,0,,,,78,,
+19-20,70,,S,12,0,,,,,,
+20-21,69,,S,13,,,,,,,
+21-22,67,,SSE,11,,,,,,,
+22-23,66,,SSE,13,,,,,,,
+23-24,66,,SSE,13,,,,,,,
+Sum.,,0.00,,269,402,,,,,TIME:,
+Aver.,72.04,,Prevail.,11.2,Poss 875,,,,,0433E,SUNRISE
+Misc.,72.25,,SSW,,48%,,,,,1908E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.117,69.0,68.2,68,96%,83,64,0.00,0.0,0,23.4
+1900,29.065,72,,65,78%,,,,,,21.1
+0800,,74.0,70.0,68,82%,,,,Average ->,,22.3
+1000,,80.7,73.0,70,69%,,,,,,
+1300,,81.9,72.5,69,64%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+84,65,0.00,,0.0,0,420,48%,20,S,1702E,27 S @ 1625E
+,,,,,,"Tuesday, July 28, 2026",,,,,
+Average Temperature,,,75,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,2,,,,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,10,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,21.9,,,,,,,,,
+Observed Barometer,,989.8,,,,,,,,,
+Total Correction,,-3.8,,,,,,,,,
+Station Pressure,,986.0,984.3,985,,,,,,,
+Barograph Reading,,29.122,29.072,,,,,,,,
+Barograph Correction,,-0.005,-0.007,,,,,,,,
+,,,,,,INITIALS:,MFD/IM,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Wednesday, July 29, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,67,,SSE,13,,,,,96,,
+01-02,66,,SSE,14,,,,,,,
+02-03,66,,SE,12,,,,,,,
+03-04,66,,SE,12,,,,,,,
+04-05,67,,SE,13,0,,,,,,
+05-06,67,,ESE,14,0,,,,,,
+06-07,68,,ESE,15,0,8,30,0,89,,BKN AC OVC CS FEW STFRA DSNT ALQDS [1]
+07-08,69,T,ESE,16,0,,,,90,1@1,RW-B33 PCPN VRY LGT
+08-09,67,T,ESE,18,0,,,,,,RW-CTD PCPN VRY LGT
+09-10,65,0.17,ESE,18,0,8,20,RW-,99,,BKN STFRA BKN SC OVC NS [2]
+10-11,65,0.01,ESE,21,0,,,,,1@0,RW-CTD
+11-12,66,0.04,ESE,19,0,,,,,,RW-CTD OCNL RW
+12-13,68,0.13,ESE,17,0,8,1,RW-F,100,,X W3 PK WND 1228/57/
+13-14,68,0.07,ESE,16,0,,,,,0@0,RW-CTD OCNL RW
+14-15,68,0.04,ESE,14,0,,,,,,RW-E38
+15-16,68,,ESE,13,0,,,,,,
+16-17,67,T,ESE,14,0,,,,,,RW-B45
+17-18,66,0.13,E,12,0,,,,,,RW-CTD OCNL RW
+18-19,64,0.19,E,15,0,,,,100,,RW-CTD OCNL RW
+19-20,64,0.16,E,13,0,,,,,,RW-CTD OCNL RW
+20-21,64,0.01,E,13,,,,,,,RW-E20
+21-22,64,0.01,ENE,11,,,,,,,RW-B05E23 R-B54
+22-23,63,0.05,NE,12,,,,,,,R-CTD
+23-24,63,0.06,NE,13,,,,,,,R-CTD
+Sum.,,1.07,,348,0,,,,,TIME:,
+Aver.,66.08,,Prevail.,14.5,Poss 873,,,,,0434E,SUNRISE
+Misc.,66.75,,ESE,,0%,,,,,1907E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.013,68.0,65.7,65,89%,84,66,0.00,0.0,0,21.1
+1900,29.021,64,,64,100%,,,,,,20.3
+0800,,68.8,66.7,66,90%,,,,Average ->,,20.7
+1000,,65.2,65.0,65,99%,,,,,,
+1300,,68.0,68.0,68,100%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+69,63,1.07,,0.0,0,0,0%,26,ESE,1056E,31 ESE @ 1015E
+,,,,,,"Wednesday, July 29, 2026",,,,,
+Average Temperature,,,66,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,-7,,,[1] FEW AS DSNT SE-SW-WNW THN F ALQDS,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,1,,,[2] FEW LWR STFRA ALQDS THN F ALQDS PCPN VRY LGT VSBY 10 N-NNE,,,,,
+Station Pressure Computations,,,,,,PK WND 1227/57/,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,21.7,,,,,,,,,
+Observed Barometer,,986.3,,,,,,,,,
+Total Correction,,-3.8,,,,,,,,,
+Station Pressure,,982.5,982.8,983,,,,,,,
+Barograph Reading,,29.020,29.029,,,,,,,,
+Barograph Correction,,-0.007,-0.008,,,,,,,,
+,,,,,,INITIALS:,MFD,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Thursday, July 30, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,63,0.02,NE,11,,,,,100,,R-CTD
+01-02,62,0.03,NE,11,,,,,,,R-CTD
+02-03,62,0.04,NNE,11,,,,,,,R-E24B42 L-B24E42
+03-04,61,0.09,NNE,10,,,,,,,R-CTD
+04-05,61,0.06,NNE,12,0,,,,,,R-CTD
+05-06,62,0.04,NNE,11,0,,,,,,R-CTD
+06-07,62,0.01,NNE,10,0,8,1/8,L-F,100,,X W2 R-E23 L-B42
+07-08,62,0.03,NNE,12,0,,,,100,0@0,L-CTD
+08-09,63,0.01,NNE,13,0,,,,,,L-E24
+09-10,63,,NE,12,0,8,1,F,100,,X W2
+10-11,64,,NNE,8,0,,,,,0@0,
+11-12,67,,NE,9,0,,,,,,
+12-13,69,,NE,10,18,8,30,0,87,,BKN SC OVC NS [1]
+13-14,67,,ENE,8,6,,,,,1@0,
+14-15,68,,ENE,6,6,,,,,,
+15-16,66,T,ENE,6,6,,,,,,RW-B45 PCPN VRY LGT
+16-17,65,T,E,9,0,,,,,,RW-E00B29E35 PCPN VRY LGT
+17-18,65,T,ENE,9,0,,,,,,RW-B18 PCPN VRY LGT
+18-19,63,0.01,ENE,10,0,,,,100,,RW-E13
+19-20,63,,NNE,6,0,,,,,,
+20-21,63,,NW,4,,,,,,,
+21-22,63,,NW,7,,,,,,,
+22-23,64,,NW,6,,,,,,,
+23-24,64,,NW,6,,,,,,,
+Sum.,,0.34,,217,36,,,,,TIME:,
+Aver.,63.83,,Prevail.,9.0,Poss 871,,,,,0435E,SUNRISE
+Misc.,63.50,,NNE,,4%,,,,,1906E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.060,62.0,62.0,62,100%,69,61,1.36,0.0,0,19.0
+1900,29.161,63,,63,100%,,,,,,19.6
+0800,,62.3,62.3,62,100%,,,,Average ->,,19.3
+1000,,63.3,63.3,63,100%,,,,,,
+1300,,68.8,66.2,65,87%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+70,61,0.34,,0.0,0,35,4%,17,NNE,0850E,23 NNE @ 0835E
+,,,,,,"Thursday, July 30, 2026",,,,,
+Average Temperature,,,66,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,-7,,,[1] FEW LWR STFRA DSNT W-NNE THN F ALQDS VIRGA DSNT WNW-NW VSBY 20,,,,,
+Heating Degree Days,,,0,,,WNW 10 NW,,,,,
+Cooling Degree Days,,,1,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,,,,,,,
+Attached Therm.,,22.0,,,,,,,,,
+Observed Barometer,,987.9,,,,,,,,,
+Total Correction,,-3.8,,,,,,,,,
+Station Pressure,,984.1,987.5,986,,,,,,,
+Barograph Reading,,29.061,29.160,,,,,,,,
+Barograph Correction,,-0.001,0.001,,,,,,,,
+,,,,,,INITIALS:,MFD/AKJ/IM/LC,,,,STATION NO. 19-0737-02
+,,,,,,,,,,,
+"Blue Hill Observatory        Milton, MA 02186",,,,,,,,DATE: ,"Friday, July 31, 2026",,
+,,Precip,W I N D,,Sunshine,Sky,Lwst,Prsnt,Rel.,Mnts,
+Time (EST),Temp (°F),(inches),Dir.,Spd (mph),(min),Cover (0-8),VSBL (mls),WX,Hum.,VSBL,Notes
+00-01,64,,NW,7,,,,,100,,
+01-02,64,,WNW,7,,,,,,,
+02-03,63,,WNW,6,,,,,,,
+03-04,62,,NW,6,,,,,,,
+04-05,62,,NW,6,0,,,,,,
+05-06,63,,NNW,5,6,,,,,,
+06-07,67,,N,3,60,2,35,0,92,,SCT AC FEW SC NE-SSE WND L/V
+07-08,70,,NNW,3,60,,,,84,1@1.5,
+08-09,72,,NW,3,60,,,,,,
+09-10,74,,NW,4,60,6,40,0,72,,BKN CU WND L/V
+10-11,76,,NW,5,48,,,,,2@1,
+11-12,76,,NE,5,60,,,,,,
+12-13,76,,ESE,2,54,5,40,0,69,,BKN CU WND L/V
+13-14,77,,WSW,4,48,,,,,2@1,
+14-15,77,,E,3,24,,,,,,
+15-16,73,0.20,NW,6,24,,,,,,RW-B01E45 OCNL RW
+16-17,72,,E,2,36,,,,,,
+17-18,72,,SSE,5,36,,,,,,
+18-19,70,,SSE,8,12,,,,100,,
+19-20,69,,S,7,0,,,,,,
+20-21,68,,SSW,7,,,,,,,
+21-22,68,,SSW,8,,,,,,,
+22-23,68,,SSW,8,,,,,,,
+23-24,68,,SSW,7,,,,,,,
+Sum.,,0.20,,127,588,,,,,TIME:,
+Aver.,69.63,,Prevail.,5.3,Poss 869,,,,,0436E,SUNRISE
+Misc.,70.00,,NW,,71%,,,,,1905E,SUNSET
+,,,,,Scheduled Observations,,,,,,
+,Station,Dry,Wet,,Relative,    Temperature,,,Snow-07E,,
+Time (EST),Pressure,Bulb,Bulb,Dewpoint,Humidity,Max,Min,Precip,Fall,Depth,Vapor Pressure
+0700,29.252,67.1,65.2,65,92%,70,61,0.05,0.0,0,21.1
+1900,29.252,70,,70,100%,,,,,,25.0
+0800,,69.6,66.3,65,84%,,,,Average ->,,23.1
+1000,,74.4,67.9,65,72%,,,,,,
+1300,,76.4,69.2,66,69%,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,Summary of Day (Midnight to Midnight),,,,,,
+Temperature,,24HR Precip,,24HR,Snow,Sunshine,,*    *    W    I    N    D    *    *,,,
+24HR Max,24HR Min,Water Equiv.,,Snowfall,Dpth 0700,Total Min.,% poss.,Fast. Mile/Dir,,Time,Peak Gust (KTS)
+80,61,0.20,,0.0,0,616,71%,16,NW,1508E,20 WNW @ 1517E
+,,,,,,"Friday, July 31, 2026",,,,,
+Average Temperature,,,71,,,Additional Notes:,,,,,
+Normal Temperature,,,73,,,,,,,,
+Departure from Normal,,,-2,,,,,,,,
+Heating Degree Days,,,0,,,,,,,,
+Cooling Degree Days,,,6,,,,,,,,
+Station Pressure Computations,,,,,,,,,,,
+Time (EST),,0700,1900,AVG,1200E,,,,,,
+Attached Therm.,,21.8,,,22.2,,,,,,
+Observed Barometer,,994.4,,,994.6,,,,,,
+Total Correction,,-3.8,,,-3.9,,,,,,
+Station Pressure,,990.6,990.6,991,990.7,,,,,,
+Barograph Reading,,29.242,29.258,,,,,,,,
+Barograph Correction,,0.010,-0.006,,,,,,,,
+,,,,,,INITIALS:,AKJ,,,,STATION NO. 19-0737-02
