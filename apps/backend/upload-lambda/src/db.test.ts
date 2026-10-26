@@ -55,4 +55,18 @@ describe('getDb', () => {
       expect.objectContaining({ max: 1 }),
     );
   });
+
+  it('times out connection attempts and keeps the connection open between invocations', async () => {
+    const getDb = await loadGetDb();
+
+    getDb();
+
+    expect(mockCreateDb).toHaveBeenCalledWith(
+      expect.objectContaining({
+        connectionTimeoutMillis: 5000,
+        idleTimeoutMillis: 0,
+        keepAlive: true,
+      }),
+    );
+  });
 });

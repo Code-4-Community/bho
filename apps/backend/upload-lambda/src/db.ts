@@ -31,6 +31,9 @@ export const getDb = (): Db => {
     database: process.env.DB_NAME,
     ssl: process.env.DB_SSL === 'true',
     max: 1,
+    connectionTimeoutMillis: 5000,
+    idleTimeoutMillis: 0,
+    keepAlive: true,
   });
 
   return db;
