@@ -3,10 +3,13 @@ import { mockClient } from 'aws-sdk-client-mock';
 import { createHash } from 'crypto';
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import { parseHistoricalUpload } from './historical-upload';
+import { parseUpload } from './parse-upload';
+import { parseHistorical } from './parsers/historical';
 
 const s3 = mockClient(S3Client);
 const location = { bucket: 'bho-uploads', key: 'historical/records.csv' };
+const fixture = (name: string) =>
+  readFileSync(join(__dirname, 'parsers/__fixtures__', name), 'utf8');
 
 // Only the part of the SDK's stream type that the helper reads.
 const body = (text: string) =>
@@ -14,15 +17,12 @@ const body = (text: string) =>
 
 beforeEach(() => s3.reset());
 
-describe('parseHistoricalUpload', () => {
+describe('parseUpload', () => {
   it('reads the object at the location, parses it and hashes it', async () => {
-    const csv = readFileSync(
-      join(__dirname, 'parsers/__fixtures__/historical.csv'),
-      'utf8',
-    );
+    const csv = fixture('historical.csv');
     s3.on(GetObjectCommand).resolves({ Body: body(csv) });
 
-    const { fileHash, result } = await parseHistoricalUpload(location);
+    const { fileHash, result } = await parseUpload(location, parseHistorical);
 
     expect(result.ok && result.rows).toHaveLength(366);
     expect(fileHash).toBe(createHash('sha256').update(csv).digest('hex'));
@@ -35,7 +35,7 @@ describe('parseHistoricalUpload', () => {
   it("returns the parser's errors for a bad file", async () => {
     s3.on(GetObjectCommand).resolves({ Body: body('a,b\n1,2') });
 
-    expect((await parseHistoricalUpload(location)).result).toEqual({
+    expect((await parseUpload(location, parseHistorical)).result).toEqual({
       ok: false,
       errors: [{ reason: 'No header row with "Month #" and "Day"' }],
     });
@@ -44,8 +44,9 @@ describe('parseHistoricalUpload', () => {
   it('treats an object with no body as an empty file', async () => {
     s3.on(GetObjectCommand).resolves({});
 
-    expect((await parseHistoricalUpload(location)).result).toMatchObject({
+    expect((await parseUpload(location, parseHistorical)).result).toEqual({
       ok: false,
+      errors: [{ reason: 'No header row with "Month #" and "Day"' }],
     });
   });
 
@@ -54,6 +55,8 @@ describe('parseHistoricalUpload', () => {
       new NoSuchKey({ message: 'gone', $metadata: {} }),
     );
 
-    await expect(parseHistoricalUpload(location)).rejects.toThrow(NoSuchKey);
+    await expect(parseUpload(location, parseHistorical)).rejects.toThrow(
+      NoSuchKey,
+    );
   });
 });
