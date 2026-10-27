@@ -5,7 +5,8 @@
     "rootDir": "./src",
     "module": "commonjs",
     "target": "es2020",
-    "declaration": true
+    "declaration": true,
+    "types": ["jest", "node"]
   },
   "include": ["src/**/*.ts"]
 }
