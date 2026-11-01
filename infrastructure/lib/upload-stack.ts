@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { RemovalPolicy, Stack, StackProps } from 'aws-cdk-lib';
+import { Duration, RemovalPolicy, Stack, StackProps } from 'aws-cdk-lib';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import * as s3 from 'aws-cdk-lib/aws-s3';
@@ -9,6 +9,8 @@ import { Construct } from 'constructs';
 const REPO_ROOT = path.join(__dirname, '../..');
 
 export class UploadStack extends Stack {
+  private static readonly CSV_SUFFIXES = ['.csv', '.CSV'];
+
   public readonly bucket: s3.Bucket;
   public readonly uploadFunction: NodejsFunction;
 
@@ -20,6 +22,7 @@ export class UploadStack extends Stack {
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       enforceSSL: true,
       removalPolicy: RemovalPolicy.RETAIN,
+      lifecycleRules: [{ expiration: Duration.days(30) }],
     });
 
     this.uploadFunction = new NodejsFunction(this, 'UploadFunction', {
@@ -28,13 +31,16 @@ export class UploadStack extends Stack {
       runtime: lambda.Runtime.NODEJS_24_X,
       projectRoot: REPO_ROOT,
       depsLockFilePath: path.join(REPO_ROOT, 'yarn.lock'),
+      timeout: Duration.seconds(30),
     });
 
-    this.bucket.addEventNotification(
-      s3.EventType.OBJECT_CREATED,
-      new s3n.LambdaDestination(this.uploadFunction),
-      { suffix: '.csv' },
-    );
+    for (const suffix of UploadStack.CSV_SUFFIXES) {
+      this.bucket.addEventNotification(
+        s3.EventType.OBJECT_CREATED,
+        new s3n.LambdaDestination(this.uploadFunction),
+        { suffix },
+      );
+    }
 
     this.bucket.grantRead(this.uploadFunction);
   }

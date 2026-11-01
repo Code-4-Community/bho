@@ -48,6 +48,14 @@ describe('UploadStack', () => {
       });
     });
 
+    it('expires objects after 30 days', () => {
+      template.hasResourceProperties('AWS::S3::Bucket', {
+        LifecycleConfiguration: {
+          Rules: [{ ExpirationInDays: 30, Status: 'Enabled' }],
+        },
+      });
+    });
+
     it('is retained when the stack is deleted or replaced', () => {
       template.hasResource('AWS::S3::Bucket', {
         DeletionPolicy: 'Retain',
@@ -63,26 +71,36 @@ describe('UploadStack', () => {
         Runtime: 'nodejs24.x',
       });
     });
+
+    it('has a 30 second timeout', () => {
+      template.hasResourceProperties('AWS::Lambda::Function', {
+        Handler: 'index.handler',
+        Timeout: 30,
+      });
+    });
   });
 
   describe('notification', () => {
-    it('invokes the lambda for .csv objects created in the bucket', () => {
-      template.hasResourceProperties('Custom::S3BucketNotifications', {
-        NotificationConfiguration: {
-          LambdaFunctionConfigurations: [
-            {
-              Events: ['s3:ObjectCreated:*'],
-              Filter: {
-                Key: {
-                  FilterRules: [{ Name: 'suffix', Value: '.csv' }],
+    it.each(['.csv', '.CSV'])(
+      'invokes the lambda for %s objects created in the bucket',
+      (suffix) => {
+        template.hasResourceProperties('Custom::S3BucketNotifications', {
+          NotificationConfiguration: {
+            LambdaFunctionConfigurations: Match.arrayWith([
+              {
+                Events: ['s3:ObjectCreated:*'],
+                Filter: {
+                  Key: {
+                    FilterRules: [{ Name: 'suffix', Value: suffix }],
+                  },
                 },
+                LambdaFunctionArn: Match.anyValue(),
               },
-              LambdaFunctionArn: Match.anyValue(),
-            },
-          ],
-        },
-      });
-    });
+            ]),
+          },
+        });
+      },
+    );
 
     it('lets S3 invoke the lambda', () => {
       template.hasResourceProperties('AWS::Lambda::Permission', {
