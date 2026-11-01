@@ -13,7 +13,8 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-      "@bho/weather-parsing": ["./libs/weather-parsing/src/index.ts"]
+      "@bho/weather-parsing": ["./libs/weather-parsing/src/index.ts"],
+      "@bho/lambda-auth": ["./libs/lambda-auth/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
