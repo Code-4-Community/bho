@@ -13,6 +13,7 @@ export interface PresignedUploadUrlRequest {
   bucket: string;
   uploadType: UploadType;
   fileName: string;
+  metadata?: Record<string, string>;
 }
 
 export interface PresignedUploadUrl {
@@ -26,6 +27,7 @@ export const createPresignedUploadUrl = async ({
   bucket,
   uploadType,
   fileName,
+  metadata,
 }: PresignedUploadUrlRequest): Promise<PresignedUploadUrl> => {
   if (!UPLOAD_TYPES.includes(uploadType)) {
     throw new Error(`Unknown upload type: ${uploadType}`);
@@ -50,6 +52,7 @@ export const createPresignedUploadUrl = async ({
       Bucket: bucket,
       Key: key,
       ContentType: CSV_CONTENT_TYPE,
+      Metadata: metadata,
     }),
     {
       expiresIn: UPLOAD_URL_EXPIRES_IN_SECONDS,

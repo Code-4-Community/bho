@@ -24,8 +24,91 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
+  /imports/{kind}:
+    post:
+      summary: Request an upload URL
+      description: >-
+        Returns a presigned S3 URL for uploading a spreadsheet. The client PUTs
+        the file to `uploadUrl` with `Content-Type: text/csv` before
+        `expiresAt`. The uploader and original file name are stored as object
+        metadata for the upload handler. See `docs/upload-keys.md`.
+      operationId: createUploadUrl
+      tags:
+        - Imports
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: kind
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - daily
+              - historical
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUploadUrlRequest'
+            example:
+              fileName: July 2026.csv
+      responses:
+        '200':
+          description: The upload URL was created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateUploadUrlResponse'
+              example:
+                uploadUrl: https://bho-uploads.s3.us-east-1.amazonaws.com/daily/2026-10-26/3f2b6c1e-8a4d-4b7e-9c2f-1d5e6a7b8c9d.csv?X-Amz-Algorithm=AWS4-HMAC-SHA256&...
+                s3Key: daily/2026-10-26/3f2b6c1e-8a4d-4b7e-9c2f-1d5e6a7b8c9d.csv
+                expiresAt: '2026-10-26T12:05:00.000Z'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Cognito access token.
+
   schemas:
+    CreateUploadUrlRequest:
+      type: object
+      required:
+        - fileName
+      properties:
+        fileName:
+          type: string
+          description: Original file name. Must end in `.csv`.
+    CreateUploadUrlResponse:
+      type: object
+      required:
+        - uploadUrl
+        - s3Key
+        - expiresAt
+      properties:
+        uploadUrl:
+          type: string
+          format: uri
+          description: Presigned PUT URL.
+        s3Key:
+          type: string
+          description: Key the file will be stored under, `<kind>/<date>/<uuid>.csv`.
+        expiresAt:
+          type: string
+          format: date-time
+          description: When `uploadUrl` stops working, 5 minutes after creation.
     HealthResponse:
       type: object
       required:
@@ -44,6 +127,30 @@ components:
           type: string
 
   responses:
+    BadRequest:
+      description: The request has an invalid path parameter or body.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: 'kind must be one of: daily, historical'
+    Unauthorized:
+      description: The request has no valid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Unauthorized
+    Forbidden:
+      description: The user is signed in but isn't staff or an admin.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Forbidden
     InternalServerError:
       description: Unexpected error while handling the request.
       content:
