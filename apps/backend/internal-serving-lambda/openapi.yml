@@ -160,6 +160,54 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
+  /imports/{id}:
+    get:
+      summary: Get an import
+      description: Returns one upload, including the rows that failed and why.
+      operationId: getImport
+      tags:
+        - Imports
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 2147483647
+      responses:
+        '200':
+          description: The import.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Import'
+              example:
+                id: 2
+                kind: daily
+                fileName: July 2026.csv
+                s3Key: daily/2026-10-26/3f2b6c1e-8a4d-4b7e-9c2f-1d5e6a7b8c9d.csv
+                fileHash: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
+                uploadedBy: 1
+                uploadedAt: '2026-10-26T12:00:00.000Z'
+                status: failed
+                errors:
+                  - row: 14
+                    column: A
+                    reason: 24HR Max is not a number
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
 components:
   securitySchemes:
     bearerAuth:
@@ -234,6 +282,32 @@ components:
           enum:
             - succeeded
             - failed
+    Import:
+      description: One upload, including its `errors`.
+      allOf:
+        - $ref: '#/components/schemas/ImportSummary'
+        - type: object
+          required:
+            - errors
+          properties:
+            errors:
+              type: array
+              nullable: true
+              description: Problems found while importing the file. Null if there were none.
+              items:
+                $ref: '#/components/schemas/RowError'
+    RowError:
+      type: object
+      required:
+        - reason
+      properties:
+        row:
+          type: integer
+          description: 1-based spreadsheet row. Absent when the problem is with the whole file.
+        column:
+          type: string
+        reason:
+          type: string
     ImportList:
       type: object
       required:
@@ -295,6 +369,14 @@ components:
             $ref: '#/components/schemas/Error'
           example:
             message: Forbidden
+    NotFound:
+      description: No resource has this id.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Import not found
     InternalServerError:
       description: Unexpected error while handling the request.
       content:

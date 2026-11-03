@@ -24,8 +24,8 @@ const IMPORT = {
   uploadedAt: new Date('2026-10-26T12:00:00Z'),
   status: 'failed',
   errors: [
-    { row: 14, message: 'Max temp is not a number' },
-    { row: 31, message: 'Missing date' },
+    { row: 14, column: 'A', reason: '24HR Max is not a number' },
+    { reason: 'Missing date' },
   ],
 };
 
