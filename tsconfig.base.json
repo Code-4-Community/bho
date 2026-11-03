@@ -13,6 +13,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
+      "@bho/db-client": ["./libs/db-client/src/index.ts"],
       "@bho/weather-parsing": ["./libs/weather-parsing/src/index.ts"]
     }
   },
