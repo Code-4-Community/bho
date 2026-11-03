@@ -13,6 +13,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
+      "@bho/weather-db": ["./libs/weather-db/src/index.ts"],
       "@bho/weather-parsing": ["./libs/weather-parsing/src/index.ts"]
     }
   },
