@@ -23,7 +23,6 @@ paths:
                 status: ok
         '500':
           $ref: '#/components/responses/InternalServerError'
-
   /imports:
     get:
       summary: List imports
