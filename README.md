@@ -23,7 +23,7 @@ The backend is **Lambda-only**. Four independent Lambda functions live under `ap
 
 ### Database
 
-The data lives in PostgreSQL. The schema is shared by all the Lambdas and is defined by [Kysely](https://kysely.dev) migrations in `db/`. For local development, `db/` also provides a disposable Postgres container.
+The data lives in PostgreSQL. The schema is shared by all the Lambdas and is defined by [Kysely](https://kysely.dev) migrations in `db/`. For local development, `db/` also provides a disposable Postgres container. The Kysely client (`createDb`) and table types (`Database`) live in `libs/db-client`; import them from `@bho/db-client`.
 
 ```bash
 nx run db:install   # one-time install of db/'s dependencies
