@@ -2,7 +2,7 @@ import type { ColumnType, Generated } from 'kysely';
 
 // Table types for Kysely, matching db/migrations. pg returns numeric as a
 // string so no precision is lost, timestamptz as a Date, and date as
-// 'YYYY-MM-DD' when connected through createDb() in db/client.ts.
+// 'YYYY-MM-DD' when connected through createDb() in libs/db-client/src/client.ts.
 type Numeric = ColumnType<string, number | string, number | string>;
 type Json = ColumnType<unknown, string, string>;
 
