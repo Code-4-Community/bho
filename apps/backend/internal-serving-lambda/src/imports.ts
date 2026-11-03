@@ -57,3 +57,7 @@ export const listImports = async (
 
   return { imports, total: Number(total) };
 };
+
+// Every column, including errors. undefined if no import has this id.
+export const getImport = (db: Kysely<Database>, id: number) =>
+  db.selectFrom('imports').selectAll().where('id', '=', id).executeTakeFirst();

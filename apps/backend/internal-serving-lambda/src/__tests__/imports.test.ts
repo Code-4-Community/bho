@@ -8,7 +8,7 @@ import {
   type Driver,
 } from 'kysely';
 import type { Database } from '@bho/db-client';
-import { listImports } from '../imports';
+import { getImport, listImports } from '../imports';
 
 const ROWS = [
   { id: 2, kind: 'daily', status: 'failed' },
@@ -16,14 +16,14 @@ const ROWS = [
 ];
 
 // Records each query instead of running it. The count query gets a total;
-// every other query gets ROWS.
-const buildDb = () => {
+// every other query gets `rows`.
+const buildDb = (rows: unknown[] = ROWS) => {
   const queries: CompiledQuery[] = [];
   const connection: DatabaseConnection = {
     executeQuery: async <R>(query: CompiledQuery) => {
       queries.push(query);
-      const rows = query.sql.includes('count(*)') ? [{ total: '42' }] : ROWS;
-      return { rows: rows as R[] };
+      const result = query.sql.includes('count(*)') ? [{ total: '42' }] : rows;
+      return { rows: result as R[] };
     },
     streamQuery: () => {
       throw new Error('not implemented');
@@ -149,5 +149,28 @@ describe('listImports', () => {
     expect(count()?.sql).toBe(
       'select count(*) as "total" from "imports" where "kind" = $1 and "status" = $2 and "uploadedAt" >= $3 and "uploadedAt" <= $4',
     );
+  });
+});
+
+describe('getImport', () => {
+  it('selects every column, including errors, for one id', async () => {
+    const { db, select } = buildDb();
+
+    await getImport(db, 7);
+
+    expect(select()?.sql).toBe('select * from "imports" where "id" = $1');
+    expect(select()?.parameters).toEqual([7]);
+  });
+
+  it('returns the first matching row', async () => {
+    const { db } = buildDb();
+
+    expect(await getImport(db, 2)).toEqual(ROWS[0]);
+  });
+
+  it('returns undefined when no import has the id', async () => {
+    const { db } = buildDb([]);
+
+    expect(await getImport(db, 999)).toBeUndefined();
   });
 });
