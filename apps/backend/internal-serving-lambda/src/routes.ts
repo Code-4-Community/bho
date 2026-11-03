@@ -1,6 +1,7 @@
 import type { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { healthHandler } from './routes/health';
 import { createUploadUrlHandler } from './routes/create-upload-url';
+import { listImportsHandler } from './routes/list-imports';
 
 export type RouteHandler = (
   event: APIGatewayProxyEvent,
@@ -9,4 +10,5 @@ export type RouteHandler = (
 export const routes: Record<string, RouteHandler> = {
   'GET /health': healthHandler,
   'POST /imports/{kind}': createUploadUrlHandler,
+  'GET /imports': listImportsHandler,
 };

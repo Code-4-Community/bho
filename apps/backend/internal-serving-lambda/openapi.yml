@@ -24,6 +24,92 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
+  /imports:
+    get:
+      summary: List imports
+      description: >-
+        Returns one page of uploads, newest `uploadedAt` first. Filters combine
+        with AND. Each import omits `errors`; use `GET /imports/{id}` for them.
+      operationId: listImports
+      tags:
+        - Imports
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: kind
+          in: query
+          schema:
+            type: string
+            enum:
+              - daily
+              - historical
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum:
+              - succeeded
+              - failed
+        - name: uploadedFrom
+          in: query
+          description: >-
+            Only imports uploaded at or after this time. ISO 8601 in UTC, e.g.
+            `2026-10-01T00:00:00Z`.
+          schema:
+            type: string
+            format: date-time
+        - name: uploadedTo
+          in: query
+          description: >-
+            Only imports uploaded at or before this time. ISO 8601 in UTC. Must
+            not be before `uploadedFrom`.
+          schema:
+            type: string
+            format: date-time
+        - name: limit
+          in: query
+          description: Page size.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 25
+        - name: offset
+          in: query
+          description: Number of imports to skip.
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+      responses:
+        '200':
+          description: One page of imports.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportList'
+              example:
+                imports:
+                  - id: 2
+                    kind: daily
+                    fileName: July 2026.csv
+                    s3Key: daily/2026-10-26/3f2b6c1e-8a4d-4b7e-9c2f-1d5e6a7b8c9d.csv
+                    fileHash: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
+                    uploadedBy: 1
+                    uploadedAt: '2026-10-26T12:00:00.000Z'
+                    status: failed
+                total: 1
+                limit: 25
+                offset: 0
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
   /imports/{kind}:
     post:
       summary: Request an upload URL
@@ -109,6 +195,64 @@ components:
           type: string
           format: date-time
           description: When `uploadUrl` stops working, 5 minutes after creation.
+    ImportSummary:
+      type: object
+      description: One upload, without its `errors`.
+      required:
+        - id
+        - kind
+        - fileName
+        - s3Key
+        - fileHash
+        - uploadedBy
+        - uploadedAt
+        - status
+      properties:
+        id:
+          type: integer
+        kind:
+          type: string
+          enum:
+            - daily
+            - historical
+        fileName:
+          type: string
+          description: Original file name.
+        s3Key:
+          type: string
+        fileHash:
+          type: string
+          description: SHA-256 of the file.
+        uploadedBy:
+          type: integer
+          description: Id of the user who uploaded the file.
+        uploadedAt:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+            - succeeded
+            - failed
+    ImportList:
+      type: object
+      required:
+        - imports
+        - total
+        - limit
+        - offset
+      properties:
+        imports:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImportSummary'
+        total:
+          type: integer
+          description: Number of imports matching the filters, across all pages.
+        limit:
+          type: integer
+        offset:
+          type: integer
     HealthResponse:
       type: object
       required:
