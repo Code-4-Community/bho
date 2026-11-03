@@ -15,8 +15,8 @@ const buildEvent = (
 ): APIGatewayProxyEvent =>
   ({
     httpMethod: 'POST',
-    resource: '/imports/{kind}',
-    path: `/imports/${kind}`,
+    resource: '/imports/upload-url/{kind}',
+    path: `/imports/upload-url/${kind}`,
     headers: {},
     pathParameters: { kind },
     queryStringParameters: null,
@@ -132,12 +132,21 @@ describe('createUploadUrlHandler', () => {
   });
 });
 
-describe('POST /imports/{kind} through the lambda handler', () => {
+describe('POST /imports/upload-url/{kind} through the lambda handler', () => {
   it('routes to the create upload URL handler', async () => {
     jest.mocked(getCurrentUser).mockResolvedValue(null);
 
     const result = await handler(buildEvent('daily'));
 
     expect(result.statusCode).toBe(401);
+  });
+
+  it('returns 404 for the POST /imports/{kind} path', async () => {
+    const result = await handler({
+      ...buildEvent('daily'),
+      resource: '/imports/{kind}',
+    });
+
+    expect(result.statusCode).toBe(404);
   });
 });

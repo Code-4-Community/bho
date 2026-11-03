@@ -24,7 +24,7 @@ const parseFileName = (body: string | null): string | null => {
   }
 };
 
-// POST /imports/{kind}, body { fileName }
+// POST /imports/upload-url/{kind}, body { fileName }
 export const createUploadUrlHandler: RouteHandler = async (event) => {
   const user = await getCurrentUser(event);
   if (!user) return response(401, { message: 'Unauthorized' });

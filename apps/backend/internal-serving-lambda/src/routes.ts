@@ -9,6 +9,6 @@ export type RouteHandler = (
 
 export const routes: Record<string, RouteHandler> = {
   'GET /health': healthHandler,
-  'POST /imports/{kind}': createUploadUrlHandler,
+  'POST /imports/upload-url/{kind}': createUploadUrlHandler,
   'GET /imports': listImportsHandler,
 };
