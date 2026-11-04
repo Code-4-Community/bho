@@ -1,6 +1,6 @@
 const mockCreateDb = jest.fn(() => ({}));
 
-jest.mock('../../../../db/client', () => ({
+jest.mock('@bho/db-client', () => ({
   createDb: mockCreateDb,
 }));
 
