@@ -26,4 +26,4 @@
 - Returns full raw json
  
 `normalizeWeatherlinkData(raw)`
-- Returns dictionary with `fetchedAt`, `lastRecieved` and all output fields defined above `{measurement:value}`
+- Returns JSON with `fetchedAt`, `lastRecieved` and all output fields defined above `{measurement:value}`
