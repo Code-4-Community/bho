@@ -7,6 +7,7 @@
 | rainRateInHr | in/hr | Rain Rate | in/hr |
 | windMph | mph | Wind Speed | mph |
 | windDir | cardinal | Wind Direction | degrees |
+| gustMph | mph | 10 Min High Wind Speed | mph |
 | solarRadWm2 | W/m^2 | Solar Rad | W/m^2 |
 | tempF | Fahrenheit | Temp | Fahrenheit |
 | tempC | Celsius | Temp | Fahrenheit |
