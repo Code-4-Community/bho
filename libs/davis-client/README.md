@@ -15,8 +15,8 @@
 | dewPointF | Fahrenheit | Dew Point | Fahrenheit |
 | windChillF | Fahrenheit | Wind Chill | Fahrenheit |
 | pressure | in Hg | Barometer | in Hg |
-| observedAt | Unix Epoch | lastRecieved | Unix Epoch |
-| fetchedAt | Unix Epoch |  |  |
+| observedAt | Unix Epoch, milliseconds | lastRecieved | Unix Epoch, milliseconds |
+| fetchedAt | Unix Epoch, milliseconds |  |  |
 
 ## Functions
 
