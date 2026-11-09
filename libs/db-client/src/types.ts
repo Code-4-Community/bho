@@ -118,6 +118,13 @@ export interface DailyRecordsTable {
   importId: number;
 }
 
+export interface DailyDiscussionsTable {
+  stationId: number;
+  date: string;
+  content: string;
+  updatedAt: ColumnType<Date, Date | string | undefined, Date | string>;
+}
+
 // Written only by the audit_row() trigger.
 export interface AuditLogTable {
   id: Generated<number>;
@@ -139,5 +146,6 @@ export interface Database {
   hourly_observations: HourlyObservationsTable;
   scheduled_observations: ScheduledObservationsTable;
   daily_records: DailyRecordsTable;
+  daily_discussions: DailyDiscussionsTable;
   audit_log: AuditLogTable;
 }
