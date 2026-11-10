@@ -121,7 +121,7 @@ export interface DailyRecordsTable {
 export interface DailyDiscussionsTable {
   stationId: number;
   date: string;
-  content: string;
+  content: string | null;
   banner: string | null;
   updatedAt: ColumnType<Date, Date | string | undefined, Date | string>;
 }

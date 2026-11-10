@@ -9,12 +9,16 @@ export async function up(db: Kysely<any>): Promise<void> {
       col.notNull().references('stations.id'),
     )
     .addColumn('date', 'date', (col) => col.notNull())
-    .addColumn('content', 'text', (col) => col.notNull())
+    .addColumn('content', 'text')
     .addColumn('banner', 'text')
     .addColumn('updatedAt', 'timestamptz', (col) =>
       col.notNull().defaultTo(sql`now()`),
     )
     .addPrimaryKeyConstraint('daily_discussions_pkey', ['stationId', 'date'])
+    .addCheckConstraint(
+      'daily_discussions_not_empty',
+      sql`content IS NOT NULL OR banner IS NOT NULL`,
+    )
     .execute();
 
   await sql`

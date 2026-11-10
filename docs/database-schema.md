@@ -186,9 +186,11 @@ Source: the app. Staff paste the day's discussion, the narrative they email to B
 | --------- | ----------- | ---- | -------------------------------------------------- |
 | stationId | int         | N    | FK stations                                        |
 | date      | date        | N    | The day the discussion is about                    |
-| content   | text        | N    | Exactly what staff typed or pasted; never parsed   |
+| content   | text        | Y    | Exactly what staff typed or pasted; never parsed   |
 | banner    | text        | Y    | Optional, from the dialog's Banner tab             |
 | updatedAt | timestamptz | N    | Defaults to now; writers set it again on an update |
+
+`content` is null only on the rare day that has a banner and no discussion. A check constraint requires at least one of the two, so the API should delete the row rather than clear both.
 
 No FK to `daily_observations`: a discussion can be posted before that day's sheet is uploaded. No `importId` either, since no upload writes it; `audit_log.changedBy` records who wrote each version.
 
