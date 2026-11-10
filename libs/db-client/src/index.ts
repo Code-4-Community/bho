@@ -4,8 +4,6 @@ export { writeDailyObservations } from './dailyObservations';
 export type {
   DailyObservation,
   NewDailyObservation,
-  StoredObservations,
-  WriteCounts,
   WriteDailyObservationsInput,
   WritePlan,
 } from './dailyObservations';

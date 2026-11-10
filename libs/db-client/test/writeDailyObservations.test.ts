@@ -1,7 +1,7 @@
 import { sql } from 'kysely';
 import { closeConnection, recordImport, writeDailyObservations } from '../src';
 import { getDb } from '../src/connection';
-import type { StoredObservations, WritePlan } from '../src';
+import type { DbDay, WritePlan } from '../src';
 
 // Runs against a real, migrated and seeded Postgres, and only when DB_TEST_DB
 // names a database ending in "_test": it empties the observation tables. From
@@ -48,16 +48,16 @@ if (enabled) {
       obsTime,
       precipTrace: false,
     });
-    const counts = { inserted: 0, updated: 0, unchanged: 0, deleted: 0 };
+    const done = 'done';
     const plan =
-      (p: Partial<WritePlan>) =>
-      (_stored?: StoredObservations): WritePlan => ({
+      (p: Partial<WritePlan<string>>) =>
+      (_stored?: DbDay[]): WritePlan<string> => ({
         upserts: { daily: [], hourly: [], scheduled: [] },
         deletes: [],
-        counts,
+        result: done,
         ...p,
       });
-    const write = (p: (s: StoredObservations) => WritePlan) =>
+    const write = (p: (s: DbDay[]) => WritePlan<string>) =>
       writeDailyObservations({ stationId, importId, userId, dates: [date] }, p);
     const stored = () =>
       Promise.all([
@@ -111,18 +111,25 @@ if (enabled) {
       expect(hours.map((h) => h.hour)).toEqual([5, 6]);
     });
 
-    it('hands the plan what is stored for the dates', async () => {
+    it('hands the plan the stored days, times as the parser writes them', async () => {
       await write(
-        plan({ upserts: { daily: [day()], hourly: [hour(5)], scheduled: [] } }),
+        plan({
+          upserts: {
+            daily: [{ ...day(), sunrise: '04:11' }],
+            hourly: [hour(5)],
+            scheduled: [reading('07:00')],
+          },
+        }),
       );
       const seen = jest.fn(plan({}));
 
       await write(seen);
 
-      const [snapshot] = seen.mock.calls[0];
-      expect(snapshot.daily).toHaveLength(1);
-      expect(snapshot.hourly.map((h) => h.hour)).toEqual([5]);
-      expect(snapshot.scheduled).toEqual([]);
+      const [stored] = seen.mock.calls[0];
+      expect(stored).toHaveLength(1);
+      expect(stored[0].daily).toMatchObject({ date, sunrise: '04:11' });
+      expect(stored[0].hourly.map((h) => h.hour)).toEqual([5]);
+      expect(stored[0].scheduled.map((r) => r.obsTime)).toEqual(['07:00']);
     });
 
     it('overwrites existing rows and deletes the ones the plan drops', async () => {
@@ -165,12 +172,8 @@ if (enabled) {
       ).toBe(true);
     });
 
-    it('returns the counts the plan reports', async () => {
-      const reported = { inserted: 1, updated: 2, unchanged: 3, deleted: 4 };
-
-      await expect(write(plan({ counts: reported }))).resolves.toEqual(
-        reported,
-      );
+    it('returns the plan result untouched', async () => {
+      await expect(write(plan({ result: 'mine' }))).resolves.toBe('mine');
     });
 
     it('rolls back the whole upload when the plan throws', async () => {
@@ -198,7 +201,7 @@ if (enabled) {
       );
     });
 
-    it('does nothing without dates', async () => {
+    it('writes nothing without dates, asking the plan only for its result', async () => {
       const seen = jest.fn(plan({}));
 
       const result = await writeDailyObservations(
@@ -206,8 +209,11 @@ if (enabled) {
         seen,
       );
 
-      expect(result).toEqual(counts);
-      expect(seen).not.toHaveBeenCalled();
+      expect(result).toBe(done);
+      expect(seen).toHaveBeenCalledWith([]);
+      expect(await db.selectFrom('audit_log').selectAll().execute()).toEqual(
+        [],
+      );
     });
   },
 );

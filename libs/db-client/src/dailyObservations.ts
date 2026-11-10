@@ -4,7 +4,6 @@ import {
   deleteHourlyObservations,
   findHourlyObservations,
   upsertHourlyObservations,
-  type HourlyObservation,
   type NewHourlyObservation,
 } from './hourlyObservations';
 import {
@@ -12,10 +11,9 @@ import {
   findScheduledObservations,
   upsertScheduledObservations,
   type NewScheduledObservation,
-  type ScheduledObservation,
 } from './scheduledObservations';
 import { tx } from './tx';
-import type { DailyObservationsTable, Database } from './types';
+import type { DailyObservationsTable, Database, DbDay } from './types';
 import { chunk, setFromExcluded, updatableColumns } from './upsert';
 
 export type DailyObservation = Selectable<DailyObservationsTable>;
@@ -31,22 +29,9 @@ export interface WriteDailyObservationsInput {
   dates: string[];
 }
 
-// What the database holds for those dates.
-export interface StoredObservations {
-  daily: DailyObservation[];
-  hourly: HourlyObservation[];
-  scheduled: ScheduledObservation[];
-}
-
-export interface WriteCounts {
-  inserted: number;
-  updated: number;
-  unchanged: number;
-  deleted: number;
-}
-
-// What to write, decided by the caller from what is stored.
-export interface WritePlan {
+// What to write, decided by the caller from the days already stored. `result`
+// is handed back to the caller of writeDailyObservations untouched.
+export interface WritePlan<T> {
   upserts: {
     daily: NewDailyObservation[];
     hourly: NewHourlyObservation[];
@@ -54,29 +39,25 @@ export interface WritePlan {
   };
   // Hourly and scheduled rows of a day that are no longer in its sheet.
   deletes: { date: string; hours: number[]; obsTimes: string[] }[];
-  counts: WriteCounts;
+  result: T;
 }
 
 // Saves a daily upload in ONE transaction: the upload is all or nothing. The
-// caller's `plan` is a pure function of the stored rows, so this function owns
+// caller's `plan` is a pure function of the stored days, so this function owns
 // every query and the caller owns the decision. Queries run one after another:
 // a transaction is a single connection, and a day's daily row must exist before
 // the hourly and scheduled rows that reference it.
-export async function writeDailyObservations(
+export async function writeDailyObservations<T>(
   { stationId, importId, userId, dates }: WriteDailyObservationsInput,
-  plan: (stored: StoredObservations) => WritePlan,
-): Promise<WriteCounts> {
-  if (dates.length === 0) {
-    return { inserted: 0, updated: 0, unchanged: 0, deleted: 0 };
-  }
+  plan: (stored: DbDay[]) => WritePlan<T>,
+): Promise<T> {
+  // Nothing to read or write, so no transaction; `plan` is pure.
+  if (dates.length === 0) return plan([]).result;
   return tx(async (trx) => {
     await setAuditContext(trx, { userId, importId });
-    const stored = {
-      daily: await findDailyObservations(trx, stationId, dates),
-      hourly: await findHourlyObservations(trx, stationId, dates),
-      scheduled: await findScheduledObservations(trx, stationId, dates),
-    };
-    const { upserts, deletes, counts } = plan(stored);
+    const { upserts, deletes, result } = plan(
+      await findDays(trx, stationId, dates),
+    );
 
     await upsertDailyObservations(trx, upserts.daily);
     await upsertHourlyObservations(trx, upserts.hourly);
@@ -85,8 +66,34 @@ export async function writeDailyObservations(
       await deleteHourlyObservations(trx, stationId, date, hours);
       await deleteScheduledObservations(trx, stationId, date, obsTimes);
     }
-    return counts;
+    return result;
   });
+}
+
+// pg returns a time as "04:11:00"; the parser emits "04:11".
+const hhmm = (time: string | null) => (time === null ? null : time.slice(0, 5));
+
+// The stored days among `dates`, in the same shape as an upload.
+export async function findDays(
+  trx: Transaction<Database>,
+  stationId: number,
+  dates: string[],
+): Promise<DbDay[]> {
+  const hourly = await findHourlyObservations(trx, stationId, dates);
+  const scheduled = await findScheduledObservations(trx, stationId, dates);
+  return (await findDailyObservations(trx, stationId, dates)).map((daily) => ({
+    daily: {
+      ...daily,
+      sunrise: hhmm(daily.sunrise),
+      sunset: hhmm(daily.sunset),
+      fastestMileTime: hhmm(daily.fastestMileTime),
+      peakGustTime: hhmm(daily.peakGustTime),
+    },
+    hourly: hourly.filter((row) => row.date === daily.date),
+    scheduled: scheduled
+      .filter((row) => row.date === daily.date)
+      .map((row) => ({ ...row, obsTime: row.obsTime.slice(0, 5) })),
+  }));
 }
 
 export function findDailyObservations(
