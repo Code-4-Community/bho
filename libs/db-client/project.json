@@ -11,11 +11,19 @@
         "cwd": "libs/db-client"
       }
     },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/db-client/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/db-client/**/*.ts"]
+        "lintFilePatterns": ["libs/db-client/src/**/*.ts"]
       }
     }
   },
