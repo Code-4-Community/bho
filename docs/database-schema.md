@@ -180,13 +180,14 @@ Source: historical sheet. One sheet row becomes one row. PK `(stationId, month, 
 
 ## daily_discussions
 
-Source: the app. Staff paste the day's discussion, the narrative they email to BHO's mailing list, into the day's Past Entries page. PK `(stationId, date)`: one per station per day, and submitting again replaces it.
+Source: the app. Staff paste the day's discussion, the narrative they email to BHO's mailing list, into the day's Past Entries page. PK `(stationId, date)`: one per station per day. Any staff user can overwrite it, including the one who wrote it.
 
 | Column    | Type        | Null | Note                                               |
 | --------- | ----------- | ---- | -------------------------------------------------- |
 | stationId | int         | N    | FK stations                                        |
 | date      | date        | N    | The day the discussion is about                    |
 | content   | text        | N    | Exactly what staff typed or pasted; never parsed   |
+| banner    | text        | Y    | Optional, from the dialog's Banner tab             |
 | updatedAt | timestamptz | N    | Defaults to now; writers set it again on an update |
 
 No FK to `daily_observations`: a discussion can be posted before that day's sheet is uploaded. No `importId` either, since no upload writes it; `audit_log.changedBy` records who wrote each version.

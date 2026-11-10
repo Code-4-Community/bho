@@ -122,6 +122,7 @@ export interface DailyDiscussionsTable {
   stationId: number;
   date: string;
   content: string;
+  banner: string | null;
   updatedAt: ColumnType<Date, Date | string | undefined, Date | string>;
 }
 
