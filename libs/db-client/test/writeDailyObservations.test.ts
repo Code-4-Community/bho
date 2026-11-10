@@ -22,7 +22,8 @@ if (enabled) {
 (enabled ? describe : describe.skip)(
   'writeDailyObservations (Postgres)',
   () => {
-    const db = getDb();
+    // describe.skip still runs this body, so the connection can't open here.
+    let db: ReturnType<typeof getDb>;
     const date = '2026-07-01';
     let stationId: number;
     let userId: number;
@@ -70,6 +71,7 @@ if (enabled) {
       ]);
 
     beforeAll(async () => {
+      db = getDb();
       stationId = (
         await db.selectFrom('stations').select('id').executeTakeFirstOrThrow()
       ).id;
