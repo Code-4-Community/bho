@@ -1,6 +1,6 @@
 # Local database
 
-A disposable Postgres 16 container and [kysely-ctl](https://github.com/kysely-org/kysely-ctl) for migrations. The schema is shared by all the backend Lambdas.
+A disposable Postgres 16 container and [kysely-ctl](https://github.com/kysely-org/kysely-ctl) for migrations. The schema is shared by all the backend Lambdas. The runtime client and table types are not here; they live in `libs/db-client` and are imported as `@bho/db-client`.
 
 ## Setup
 
