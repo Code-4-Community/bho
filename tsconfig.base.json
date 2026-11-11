@@ -14,6 +14,7 @@
     "skipDefaultLibCheck": true,
     "paths": {
       "@bho/db-client": ["./libs/db-client/src/index.ts"],
+      "@bho/lambda-auth": ["./libs/lambda-auth/src/index.ts"],
       "@bho/weather-parsing": ["./libs/weather-parsing/src/index.ts"]
     }
   },
