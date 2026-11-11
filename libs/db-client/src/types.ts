@@ -1,8 +1,8 @@
-import type { ColumnType, Generated } from 'kysely';
+import type { ColumnType, Generated, Insertable } from 'kysely';
 
 // Table types for Kysely, matching db/migrations. pg returns numeric as a
 // string so no precision is lost, timestamptz as a Date, and date as
-// 'YYYY-MM-DD' when connected through createDb() in libs/db-client/src/client.ts.
+// 'YYYY-MM-DD' when connected through createDb() in libs/db-client/src/connection.ts.
 type Numeric = ColumnType<string, number | string, number | string>;
 type Json = ColumnType<unknown, string, string>;
 
@@ -116,6 +116,14 @@ export interface DailyRecordsTable {
   peakGustYears: number[] | null;
   notes: string | null;
   importId: number;
+}
+
+// One day of an upload, or the same day as stored: the daily row plus the hourly
+// and scheduled rows that belong to it.
+export interface DbDay {
+  daily: Insertable<DailyObservationsTable>;
+  hourly: Insertable<HourlyObservationsTable>[];
+  scheduled: Insertable<ScheduledObservationsTable>[];
 }
 
 // Written only by the audit_row() trigger.
