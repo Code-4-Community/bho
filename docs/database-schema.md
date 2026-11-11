@@ -20,6 +20,7 @@ erDiagram
   imports ||--o{ daily_records : creates
   stations ||--o{ daily_observations : records
   stations ||--o{ daily_records : holds
+  stations ||--o{ daily_discussions : posts
   daily_observations ||--|{ hourly_observations : has
   daily_observations ||--|{ scheduled_observations : has
 ```
@@ -177,9 +178,27 @@ Source: historical sheet. One sheet row becomes one row. PK `(stationId, month, 
 | notes               | text       | Y    | "Notes"; internal to staff                         |
 | importId            | int        | N    | FK imports; the last upload that wrote it          |
 
+## daily_discussions
+
+Source: the app. Staff paste the day's discussion, the narrative they email to BHO's mailing list, into the day's Past Entries page. PK `(stationId, date)`: one per station per day. Any staff user can overwrite it, including the one who wrote it.
+
+| Column    | Type        | Null | Note                                               |
+| --------- | ----------- | ---- | -------------------------------------------------- |
+| stationId | int         | N    | FK stations                                        |
+| date      | date        | N    | The day the discussion is about                    |
+| content   | text        | Y    | Exactly what staff typed or pasted; never parsed   |
+| banner    | text        | Y    | Optional, from the dialog's Banner tab             |
+| updatedAt | timestamptz | N    | Defaults to now; writers set it again on an update |
+
+`content` is null only on the rare day that has a banner and no discussion. A check constraint requires at least one of the two, so the API should delete the row rather than clear both.
+
+No FK to `daily_observations`: a discussion can be posted before that day's sheet is uploaded. No `importId` either, since no upload writes it; `audit_log.changedBy` records who wrote each version.
+
+`content` is `text` because the design is a plain paste box ([#51](https://github.com/Code-4-Community/bho/issues/51)). If an editor with formatting is added later, a new migration can convert it to `jsonb`.
+
 ## audit_log
 
-Source: a Postgres trigger, one row per inserted, updated, or deleted row in `daily_observations`, `hourly_observations`, `scheduled_observations`, and `daily_records`.
+Source: a Postgres trigger, one row per inserted, updated, or deleted row in `daily_observations`, `hourly_observations`, `scheduled_observations`, `daily_records`, and `daily_discussions`.
 
 | Column    | Type        | Null | Note                                           |
 | --------- | ----------- | ---- | ---------------------------------------------- |
@@ -193,4 +212,4 @@ Source: a Postgres trigger, one row per inserted, updated, or deleted row in `da
 | importId  | int         | Y    | FK imports; set when an import made the change |
 | changedAt | timestamptz | N    | Defaults to now                                |
 
-One SQL function is attached to the four data tables, so no code path can skip the log. Writers set `app.user_id` and `app.import_id` with `set_config(..., true)` inside their transaction, and the trigger copies them into `changedBy` and `importId`. Hourly and scheduled rows have no `importId` column, so the row alone can't say which import wrote it.
+One SQL function is attached to all five tables, so no code path can skip the log. Writers set `app.user_id` and `app.import_id` with `set_config(..., true)` inside their transaction, and the trigger copies them into `changedBy` and `importId`. Hourly and scheduled rows have no `importId` column, so the row alone can't say which import wrote it.
