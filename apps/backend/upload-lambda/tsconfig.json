@@ -2,7 +2,7 @@
   "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "../../..",
     "module": "commonjs",
     "target": "es2020",
     "types": ["jest", "node"]

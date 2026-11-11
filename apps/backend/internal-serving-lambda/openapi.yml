@@ -1,0 +1,54 @@
+openapi: 3.0.3
+info:
+  title: Internal Serving API
+  version: 0.0.0
+  description: Internal API routes served by internal-serving-lambda.
+
+paths:
+  /health:
+    get:
+      summary: Health check
+      description: Returns `ok` if the lambda is up and able to handle requests.
+      operationId: getHealth
+      tags:
+        - System
+      responses:
+        '200':
+          description: The service is healthy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+              example:
+                status: ok
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+
+  responses:
+    InternalServerError:
+      description: Unexpected error while handling the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Internal server error
