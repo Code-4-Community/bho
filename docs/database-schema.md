@@ -180,13 +180,13 @@ Source: historical sheet. One sheet row becomes one row. PK `(stationId, month, 
 
 ## daily_discussions
 
-Source: the app. Staff paste the day's discussion, the narrative they email to BHO's mailing list, into the day's Past Entries page. PK `(stationId, date)`: one per station per day. Any staff user can overwrite it, including the one who wrote it.
+Source: the app. Staff write the day's discussion, the narrative they email to BHO's mailing list, in a TipTap rich text editor on the day's Past Entries page. PK `(stationId, date)`: one per station per day. Any staff user can overwrite it, including the one who wrote it.
 
 | Column    | Type        | Null | Note                                               |
 | --------- | ----------- | ---- | -------------------------------------------------- |
 | stationId | int         | N    | FK stations                                        |
 | date      | date        | N    | The day the discussion is about                    |
-| content   | text        | Y    | Exactly what staff typed or pasted; never parsed   |
+| content   | jsonb       | Y    | The editor's document, from `editor.getJSON()`     |
 | banner    | text        | Y    | Optional, from the dialog's Banner tab             |
 | updatedAt | timestamptz | N    | Defaults to now; writers set it again on an update |
 
@@ -194,7 +194,7 @@ Source: the app. Staff paste the day's discussion, the narrative they email to B
 
 No FK to `daily_observations`: a discussion can be posted before that day's sheet is uploaded. No `importId` either, since no upload writes it; `audit_log.changedBy` records who wrote each version.
 
-`content` is `text` because the design is a plain paste box ([#51](https://github.com/Code-4-Community/bho/issues/51)). If an editor with formatting is added later, a new migration can convert it to `jsonb`.
+`content` is TipTap's JSON rather than HTML, so the editor can load it back with `setContent` ([TipTap: JSON and HTML](https://tiptap.dev/docs/guides/output-json-html)). Kysely writes it as a string, `JSON.stringify(editor.getJSON())`, and returns the parsed object.
 
 ## audit_log
 

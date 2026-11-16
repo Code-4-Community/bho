@@ -9,7 +9,7 @@ export async function up(db: Kysely<any>): Promise<void> {
       col.notNull().references('stations.id'),
     )
     .addColumn('date', 'date', (col) => col.notNull())
-    .addColumn('content', 'text')
+    .addColumn('content', 'jsonb')
     .addColumn('banner', 'text')
     .addColumn('updatedAt', 'timestamptz', (col) =>
       col.notNull().defaultTo(sql`now()`),

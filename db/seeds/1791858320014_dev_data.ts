@@ -2,57 +2,48 @@ import { Kysely, sql } from 'kysely';
 
 // Small dev dataset. July 1 2026 comes from the daily sample sheet; July 2-3
 // are made up to cover nulls and a trace of precipitation. The records are
-// from the (synthetic) historical test sheet. The discussion is the narrative
-// part of BHO's emailed Daily Discussion for Aug 24 2026, kept as pasted.
-// Safe to run more than once.
-const discussion = `BLUE HILL METEOROLOGICAL OBSERVATORY
-MILTON, MASSACHUSETTS
-ELEVATION 635 FEET, 10 MILES SSW OF BOSTON, MA
-
-MONDAY, AUGUST 24, 2026
-ALL TIMES ARE IN EASTERN STANDARD TIME (EST)
-SUNRISE: 0501E
-SUNSET:  1831E
-
-EARLY FOG BURNS OFF TO SUNNY SKIES THIS MORNING; CLOUDS REBUILD BY
-EARLY AFTERNOON....
-
-We started the day once again with a lot of low clouds and fog.
-These very quickly burned off however with skies becoming mainly
-clear even before the 7am observation. With plenty of sunshine
-warming the surface and plenty of chilly air aloft associated with
-a large upper level low centered over Ontario and Quebec, clouds
-quickly re-built over the region by early this afternoon with a
-mix of low, mid, and high level clouds. With the atmosphere being
-unstable, some tower cumulus were observed well to the north-
-northwest and north at the 1pm observation. Radar indicated some
-showers that developed over southwest New Hampshire under those
-billowing cloud formations.
-
-Temperatures quickly warmed through the morning reaching the low
-80s by early this afternoon. Now that we're into late August, this
-is actually above normal for the date! As of yesterday, the normal
-high temperatures have slipped below 80F now! Fall is quickly
-approaching! The dew point started the day in the mid 60s, so it
-was rather humid this morning. However, as mixing from aloft take
-place this afternoon, the air has dried out considerably with
-readings dropping into the mid to upper 50s!
-
-Winds were steady through the morning between 5-10mph, but pretty
-suddenly picked up around 11am this morning and became quite gusty.
-A southwesterly wind has averaged around 11mph for the day
-so far. Gusts have been frequently exceeding 25mph during the
-afternoon so far. The peak gust for the day so far is 31mph, which
-occurred just after 11am this morning.
-
-Once the fog burned off, the visibility improved to around 50 miles
-early this morning. However it's been decreasing since as haziness
-increases. The view was down to around 30 miles by the 1pm obs.
-
-The maximum temperature so far today is 82F, which is 3 degrees
-above the normal high of 79F. The minimum temperature since
-midnight is 62F, which is equal to the normal low.
-`;
+// from the (synthetic) historical test sheet. The discussion is a TipTap
+// document with the narrative of BHO's emailed Daily Discussion for Aug 24
+// 2026. Safe to run more than once.
+const paragraph = (text: string) => ({
+  type: 'paragraph',
+  content: [{ type: 'text', text }],
+});
+const discussion = {
+  type: 'doc',
+  content: [
+    {
+      type: 'heading',
+      attrs: { level: 2 },
+      content: [{ type: 'text', text: 'Monday, August 24, 2026' }],
+    },
+    {
+      type: 'paragraph',
+      content: [
+        {
+          type: 'text',
+          marks: [{ type: 'bold' }],
+          text: 'EARLY FOG BURNS OFF TO SUNNY SKIES THIS MORNING; CLOUDS REBUILD BY EARLY AFTERNOON....',
+        },
+      ],
+    },
+    paragraph(
+      'We started the day once again with a lot of low clouds and fog. These very quickly burned off however with skies becoming mainly clear even before the 7am observation. With plenty of sunshine warming the surface and plenty of chilly air aloft associated with a large upper level low centered over Ontario and Quebec, clouds quickly re-built over the region by early this afternoon with a mix of low, mid, and high level clouds. With the atmosphere being unstable, some tower cumulus were observed well to the north-northwest and north at the 1pm observation. Radar indicated some showers that developed over southwest New Hampshire under those billowing cloud formations.',
+    ),
+    paragraph(
+      "Temperatures quickly warmed through the morning reaching the low 80s by early this afternoon. Now that we're into late August, this is actually above normal for the date! As of yesterday, the normal high temperatures have slipped below 80F now! Fall is quickly approaching! The dew point started the day in the mid 60s, so it was rather humid this morning. However, as mixing from aloft take place this afternoon, the air has dried out considerably with readings dropping into the mid to upper 50s!",
+    ),
+    paragraph(
+      'Winds were steady through the morning between 5-10mph, but pretty suddenly picked up around 11am this morning and became quite gusty. A southwesterly wind has averaged around 11mph for the day so far. Gusts have been frequently exceeding 25mph during the afternoon so far. The peak gust for the day so far is 31mph, which occurred just after 11am this morning.',
+    ),
+    paragraph(
+      "Once the fog burned off, the visibility improved to around 50 miles early this morning. However it's been decreasing since as haziness increases. The view was down to around 30 miles by the 1pm obs.",
+    ),
+    paragraph(
+      'The maximum temperature so far today is 82F, which is 3 degrees above the normal high of 79F. The minimum temperature since midnight is 62F, which is equal to the normal low.',
+    ),
+  ],
+};
 
 export async function seed(db: Kysely<any>): Promise<void> {
   await db.transaction().execute(async (trx) => {
@@ -344,7 +335,11 @@ export async function seed(db: Kysely<any>): Promise<void> {
     await actAs(null);
     await trx
       .insertInto('daily_discussions')
-      .values({ stationId, date: '2026-08-24', content: discussion })
+      .values({
+        stationId,
+        date: '2026-08-24',
+        content: JSON.stringify(discussion),
+      })
       .onConflict((oc) => oc.columns(['stationId', 'date']).doNothing())
       .execute();
   });
