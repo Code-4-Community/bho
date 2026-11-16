@@ -5,6 +5,7 @@ import apiClient from '@api/apiClient';
 import Root from '@containers/root';
 import NotFound from '@containers/404';
 import Test from '@containers/test';
+import Design from '@containers/design';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     path: '/test',
     element: <Test />,
   },
+  ...(import.meta.env.DEV ? [{ path: '/design', element: <Design /> }] : []),
 ]);
 
 export const App: React.FC = () => {
