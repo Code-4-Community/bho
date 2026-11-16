@@ -1,5 +1,4 @@
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { createDb } from '../../../../db/client';
+import { createDb } from '@bho/db-client';
 
 type Db = ReturnType<typeof createDb>;
 

@@ -1,0 +1,28 @@
+{
+  "name": "infra",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "infrastructure",
+  "projectType": "application",
+  "targets": {
+    "install": {
+      "executor": "nx:run-commands",
+      "options": { "command": "yarn install --frozen-lockfile", "cwd": "infrastructure" }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "infrastructure/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "synth": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "yarn synth",
+        "cwd": "infrastructure"
+      }
+    }
+  },
+  "tags": []
+}

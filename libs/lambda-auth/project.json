@@ -12,13 +12,14 @@
       }
     },
     "test": {
-      "executor": "nx:run-commands",
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "command": "jest --passWithNoTests",
-        "cwd": "libs/lambda-auth"
+        "jestConfig": "libs/lambda-auth/jest.config.js",
+        "passWithNoTests": true
       }
     },
-    "_lint_TODO_reenable_once_real_ts_files_exist": {
+    "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
