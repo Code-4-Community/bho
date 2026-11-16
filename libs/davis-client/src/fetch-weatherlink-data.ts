@@ -8,7 +8,7 @@ const WEATHERLINK_URL =
 export async function fetchWeatherlinkData(
   url: string = WEATHERLINK_URL,
 ): Promise<Record<string, unknown>> {
-  const res = await fetch(url);
+  const res = await fetch(url, { signal: AbortSignal.timeout(5000) }); // five second timeout
   if (!res.ok) {
     throw new Error(
       `WeatherLink request failed: ${res.status} ${res.statusText}`,
