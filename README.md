@@ -43,6 +43,24 @@ To run just the frontend (port 4200):
 nx serve frontend
 ```
 
+### Frontend styles
+
+Colors, type, spacing and radii from the Figma design system are CSS variables in `apps/frontend/src/styles/tokens.css`, loaded globally through `src/styles.css`. Use the semantic tokens in components, not the raw palette or hex values:
+
+```css
+.card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+.tile-value {
+  font: var(--text-tile-number);
+}
+```
+
+Named type styles (`--text-page-title`, `--text-section-title`, `--text-body`, `--text-caption`, `--text-tile-number`) are `font` shorthands. While `nx serve frontend` is running, http://localhost:4200/design shows every token for comparing against Figma.
+
 ```bash
 nx test internal-serving-lambda
 # or run all four at once:

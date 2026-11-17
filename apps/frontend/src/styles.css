@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg-page);
+  color: var(--color-text);
+  font: var(--text-body);
+}
+
+h1 {
+  font: var(--text-page-title);
+}
+
+h2 {
+  font: var(--text-heading-2);
+}
+
+h3 {
+  font: var(--text-section-title);
+}
