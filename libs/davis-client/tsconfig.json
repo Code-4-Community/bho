@@ -6,6 +6,8 @@
     "module": "commonjs",
     "target": "es2020",
     "declaration": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "types": ["jest", "node"]
   },
   "include": ["src/**/*.ts"]
