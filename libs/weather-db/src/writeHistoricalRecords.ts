@@ -1,28 +1,35 @@
 import { Insertable, Kysely, sql } from 'kysely';
-import type { DailyRecordsTable, Database } from '../../../db/types';
+import type { DailyRecordsTable, Database } from '@bho/db-client';
 
-// A HistoricalRecord including the stationId and importId
-export type NewDailyRecord = Insertable<DailyRecordsTable>;
+// A HistoricalRecord (from @bho/weather-parsing) plus the stationId and importId
+// that come from the upload. A row of the daily_records table.
+export type NewHistoricalRecord = Insertable<DailyRecordsTable>;
 
-export interface WriteDailyRecordsOptions {
+export interface WriteHistoricalRecordsOptions {
   batchSize?: number; // Default: 500, must be a positive integer
   userId?: number;
 }
 
-export interface WriteDailyRecordsResult {
+export interface WriteHistoricalRecordsResult {
   inserted: number;
   skipped: number;
 }
 
 const DEFAULT_BATCH_SIZE = 500;
 
-// Inserts records in batches inside ONE transaction. A row whose (stationId, month, day)
-// already exists is skipped. Rows within one file are assumed unique (from parser validation).
-export async function writeDailyRecords(
+// Writes historical records (daily_records table). Inserts in batches inside ONE
+// transaction, so a failed batch rolls back the whole file. A row whose
+// (stationId, month, day) already exists is skipped. Rows within one file are assumed
+// unique (from parser validation).
+// Returns { inserted, skipped }.
+export async function writeHistoricalRecords(
   db: Kysely<Database>,
-  records: NewDailyRecord[],
-  { batchSize = DEFAULT_BATCH_SIZE, userId }: WriteDailyRecordsOptions = {},
-): Promise<WriteDailyRecordsResult> {
+  records: NewHistoricalRecord[],
+  {
+    batchSize = DEFAULT_BATCH_SIZE,
+    userId,
+  }: WriteHistoricalRecordsOptions = {},
+): Promise<WriteHistoricalRecordsResult> {
   if (!Number.isInteger(batchSize) || batchSize < 1) {
     throw new RangeError(
       `batchSize must be a positive integer, got ${batchSize}`,

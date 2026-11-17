@@ -8,8 +8,11 @@ import {
   PostgresQueryCompiler,
   QueryResult,
 } from 'kysely';
-import type { Database } from '../../../db/types';
-import { NewDailyRecord, writeDailyRecords } from './writeDailyRecords';
+import type { Database } from '@bho/db-client';
+import {
+  NewHistoricalRecord,
+  writeHistoricalRecords,
+} from './writeHistoricalRecords';
 
 interface FakeDb {
   db: Kysely<Database>;
@@ -77,7 +80,7 @@ function createFakeDb(
   return { db, log, inserts, others };
 }
 
-function makeRecords(count: number): NewDailyRecord[] {
+function makeRecords(count: number): NewHistoricalRecord[] {
   return Array.from({ length: count }, (_, i) => ({
     stationId: 1,
     month: (i % 12) + 1,
@@ -99,11 +102,11 @@ function makeRecords(count: number): NewDailyRecord[] {
   }));
 }
 
-describe('writeDailyRecords', () => {
+describe('writeHistoricalRecords', () => {
   it('splits records into batches inside a single transaction', async () => {
     const { db, log, inserts } = createFakeDb();
 
-    const result = await writeDailyRecords(db, makeRecords(1200), {
+    const result = await writeHistoricalRecords(db, makeRecords(1200), {
       batchSize: 500,
     });
 
@@ -124,7 +127,7 @@ describe('writeDailyRecords', () => {
   it('uses a single batch when records fit in one', async () => {
     const { db, inserts } = createFakeDb();
 
-    await writeDailyRecords(db, makeRecords(3));
+    await writeHistoricalRecords(db, makeRecords(3));
 
     expect(inserts).toHaveLength(1);
   });
@@ -132,7 +135,7 @@ describe('writeDailyRecords', () => {
   it('does nothing for empty input, not even opening a transaction', async () => {
     const { db, log } = createFakeDb();
 
-    const result = await writeDailyRecords(db, []);
+    const result = await writeHistoricalRecords(db, []);
 
     expect(result).toEqual({ inserted: 0, skipped: 0 });
     expect(log).toEqual([]);
@@ -141,7 +144,7 @@ describe('writeDailyRecords', () => {
   it('skips rows on the natural key instead of failing or updating', async () => {
     const { db, inserts } = createFakeDb();
 
-    await writeDailyRecords(db, makeRecords(2));
+    await writeHistoricalRecords(db, makeRecords(2));
 
     expect(inserts[0].sql).toContain(
       'on conflict ("stationId", "month", "day") do nothing',
@@ -154,7 +157,7 @@ describe('writeDailyRecords', () => {
       index === 0 ? sent - 2 : sent,
     );
 
-    const result = await writeDailyRecords(db, makeRecords(8), {
+    const result = await writeHistoricalRecords(db, makeRecords(8), {
       batchSize: 5,
     });
 
@@ -164,7 +167,7 @@ describe('writeDailyRecords', () => {
   it('reports everything as skipped when the file was already uploaded', async () => {
     const { db } = createFakeDb(() => 0);
 
-    const result = await writeDailyRecords(db, makeRecords(4));
+    const result = await writeHistoricalRecords(db, makeRecords(4));
 
     expect(result).toEqual({ inserted: 0, skipped: 4 });
   });
@@ -177,7 +180,7 @@ describe('writeDailyRecords', () => {
     });
 
     await expect(
-      writeDailyRecords(db, makeRecords(15), { batchSize: 5 }),
+      writeHistoricalRecords(db, makeRecords(15), { batchSize: 5 }),
     ).rejects.toBe(boom);
 
     // Batch 1 was sent but is never committed; batch 3 is never attempted.
@@ -187,7 +190,7 @@ describe('writeDailyRecords', () => {
   it('sets the audit user and import for the trigger inside the transaction', async () => {
     const { db, log, others } = createFakeDb();
 
-    await writeDailyRecords(db, makeRecords(1), { userId: 42 });
+    await writeHistoricalRecords(db, makeRecords(1), { userId: 42 });
 
     expect(others).toHaveLength(1);
     expect(others[0].sql).toContain('set_config');
@@ -200,7 +203,7 @@ describe('writeDailyRecords', () => {
     const { db, log } = createFakeDb();
 
     await expect(
-      writeDailyRecords(db, makeRecords(1), { batchSize: 0 }),
+      writeHistoricalRecords(db, makeRecords(1), { batchSize: 0 }),
     ).rejects.toThrow(RangeError);
     expect(log).toEqual([]);
   });
