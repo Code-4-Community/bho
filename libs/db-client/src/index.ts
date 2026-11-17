@@ -1,5 +1,7 @@
 export { createDb } from './client';
 export { closeConnection } from './connection';
+export { getEntry, listEntries, listEntryVersions } from './entries';
+export type { EntryFilters } from './entries';
 export { recordImport } from './imports';
 export type {
   HourlyObservation,
