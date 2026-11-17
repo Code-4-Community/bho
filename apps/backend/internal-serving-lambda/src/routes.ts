@@ -1,7 +1,9 @@
 import type { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { createUploadUrlHandler } from './routes/create-upload-url';
+import { getAuditLogEntryHandler } from './routes/get-audit-log-entry';
 import { getImportHandler } from './routes/get-import';
 import { healthHandler } from './routes/health';
+import { listAuditLogHandler } from './routes/list-audit-log';
 import { listImportsHandler } from './routes/list-imports';
 
 export type RouteHandler = (
@@ -13,4 +15,6 @@ export const routes: Record<string, RouteHandler> = {
   'POST /imports/upload-url/{kind}': createUploadUrlHandler,
   'GET /imports': listImportsHandler,
   'GET /imports/{id}': getImportHandler,
+  'GET /audit-log': listAuditLogHandler,
+  'GET /audit-log/{id}': getAuditLogEntryHandler,
 };

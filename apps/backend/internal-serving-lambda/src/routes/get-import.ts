@@ -5,7 +5,7 @@ import { getDb } from '../db';
 import { getImport } from '../imports';
 
 // imports.id is a Postgres integer, so larger ids would fail the query
-const MAX_ID = 2_147_483_647;
+export const MAX_ID = 2_147_483_647;
 
 // GET /imports/{id}
 export const getImportHandler: RouteHandler = async (event) => {
