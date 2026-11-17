@@ -7,8 +7,11 @@ import {
   type DatabaseConnection,
   type Driver,
 } from 'kysely';
+import { getDb } from '../src/connection';
 import { getEntry, listEntries, listEntryVersions } from '../src/entries';
 import type { Database } from '../src/types';
+
+jest.mock('../src/connection');
 
 // Records each query instead of running it; `answer` picks the rows to return
 const buildDb = (answer: (sql: string) => unknown[] = () => []) => {
@@ -39,14 +42,15 @@ const buildDb = (answer: (sql: string) => unknown[] = () => []) => {
       createQueryCompiler: () => new PostgresQueryCompiler(),
     },
   });
-  return { db, queries };
+  jest.mocked(getDb).mockReturnValue(db);
+  return { queries };
 };
 
 describe('listEntries', () => {
   it('filters to the date range, newest first', async () => {
-    const { db, queries } = buildDb();
+    const { queries } = buildDb();
 
-    await listEntries(db, { from: '2026-07-01', to: '2026-07-10' });
+    await listEntries({ from: '2026-07-01', to: '2026-07-10' });
 
     const [query] = queries;
     expect(query.sql).toContain('"daily_observations"."date" >= $1');
@@ -57,9 +61,9 @@ describe('listEntries', () => {
   });
 
   it('filters by the uploader of the current import', async () => {
-    const { db, queries } = buildDb();
+    const { queries } = buildDb();
 
-    await listEntries(db, {
+    await listEntries({
       from: '2026-07-01',
       to: '2026-07-10',
       uploadedBy: 3,
@@ -72,15 +76,15 @@ describe('listEntries', () => {
 
 describe('getEntry', () => {
   it('returns undefined, without further queries, if the day has no row', async () => {
-    const { db, queries } = buildDb();
+    const { queries } = buildDb();
 
-    expect(await getEntry(db, '2026-07-09')).toBeUndefined();
+    expect(await getEntry('2026-07-09')).toBeUndefined();
     expect(queries).toHaveLength(1);
   });
 
   it('returns the day with its hourly, scheduled and current import', async () => {
     const summary = { date: '2026-07-09', importId: 5 };
-    const { db, queries } = buildDb((sql) =>
+    const { queries } = buildDb((sql) =>
       sql.includes('from "daily_observations"')
         ? [summary]
         : sql.includes('from "imports"')
@@ -88,7 +92,7 @@ describe('getEntry', () => {
         : [{ row: sql }],
     );
 
-    const entry = await getEntry(db, '2026-07-09');
+    const entry = await getEntry('2026-07-09');
 
     expect(entry?.summary).toEqual(summary);
     expect(entry?.currentImport).toEqual({ importId: 5 });
@@ -106,13 +110,13 @@ describe('getEntry', () => {
 
 describe('listEntryVersions', () => {
   it('lists imports found in the audit log for the date, newest first', async () => {
-    const { db, queries } = buildDb((sql) =>
+    const { queries } = buildDb((sql) =>
       sql.includes('from "daily_observations"')
         ? [{ importId: 7 }]
         : [{ importId: 7 }, { importId: 3 }],
     );
 
-    const result = await listEntryVersions(db, '2026-07-09');
+    const result = await listEntryVersions('2026-07-09');
 
     expect(result.currentImportId).toBe(7);
     expect(result.versions).toHaveLength(2);
@@ -127,9 +131,9 @@ describe('listEntryVersions', () => {
   });
 
   it('has a null currentImportId if the day has no row', async () => {
-    const { db } = buildDb();
+    buildDb();
 
-    expect(await listEntryVersions(db, '2026-07-09')).toEqual({
+    expect(await listEntryVersions('2026-07-09')).toEqual({
       currentImportId: null,
       versions: [],
     });

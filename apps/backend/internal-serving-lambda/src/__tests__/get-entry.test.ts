@@ -1,14 +1,10 @@
 import type { APIGatewayProxyEvent } from 'aws-lambda';
 import { getEntry } from '@bho/db-client';
 import { getCurrentUser } from '../auth';
-import { getDb } from '../db';
 import { getEntryHandler } from '../routes/get-entry';
 
 jest.mock('../auth');
-jest.mock('../db');
 jest.mock('@bho/db-client', () => ({ getEntry: jest.fn() }));
-
-const db = { fake: 'db' };
 
 const ENTRY = {
   summary: { stationId: 1, date: '2026-07-09', maxTempF: 80, importId: 5 },
@@ -42,10 +38,9 @@ const call = async (date: string) => {
 describe('getEntryHandler', () => {
   beforeEach(() => {
     jest.mocked(getCurrentUser).mockResolvedValue({ id: 'user-123' });
-    jest.mocked(getDb).mockReturnValue(db as never);
     jest
       .mocked(getEntry)
-      .mockImplementation(async (_db, date) =>
+      .mockImplementation(async (date) =>
         date === '2026-07-09' ? (ENTRY as never) : undefined,
       );
   });
@@ -58,7 +53,7 @@ describe('getEntryHandler', () => {
     const { statusCode, body } = await call('2026-07-09');
 
     expect(statusCode).toBe(200);
-    expect(getEntry).toHaveBeenCalledWith(db, '2026-07-09');
+    expect(getEntry).toHaveBeenCalledWith('2026-07-09');
     expect(body).toEqual({
       date: '2026-07-09',
       summary: ENTRY.summary,

@@ -1,5 +1,5 @@
-import { sql, type Kysely } from 'kysely';
-import type { Database } from './types';
+import { sql } from 'kysely';
+import { getDb } from './connection';
 
 // Read side of the daily observations: an entry is one day. The data has a
 // single station, so dates alone identify an entry.
@@ -23,11 +23,8 @@ const IMPORT_COLUMNS = [
 ] as const;
 
 // One row per day that has data, oldest-to-newest order is left to the caller
-export const listEntries = (
-  db: Kysely<Database>,
-  { from, to, uploadedBy }: EntryFilters,
-) => {
-  let query = db
+export const listEntries = ({ from, to, uploadedBy }: EntryFilters) => {
+  let query = getDb()
     .selectFrom('daily_observations')
     .innerJoin('imports', 'imports.id', 'daily_observations.importId')
     .innerJoin('users', 'users.id', 'imports.uploadedBy')
@@ -41,7 +38,8 @@ export const listEntries = (
 
 // The day's summary, hourly and scheduled rows and current import.
 // undefined if the day has no daily_observations row.
-export const getEntry = async (db: Kysely<Database>, date: string) => {
+export const getEntry = async (date: string) => {
+  const db = getDb();
   const summary = await db
     .selectFrom('daily_observations')
     .selectAll()
@@ -76,7 +74,8 @@ export const getEntry = async (db: Kysely<Database>, date: string) => {
 // Every import that wrote the day, newest first, per audit_log. Re-uploads that
 // changed nothing write no audit rows, so they are not listed. currentImportId
 // is null if the day has no daily_observations row.
-export const listEntryVersions = async (db: Kysely<Database>, date: string) => {
+export const listEntryVersions = async (date: string) => {
+  const db = getDb();
   const [current, versions] = await Promise.all([
     db
       .selectFrom('daily_observations')

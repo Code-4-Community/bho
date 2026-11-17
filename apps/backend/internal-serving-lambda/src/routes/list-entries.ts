@@ -3,7 +3,6 @@ import { listEntries } from '@bho/db-client';
 import type { RouteHandler } from '../routes';
 import { response } from '../response';
 import { getCurrentUser } from '../auth';
-import { getDb } from '../db';
 import { addDays, daysBetween, parseDate } from '../dates';
 
 export const DEFAULT_LIMIT = 25;
@@ -69,7 +68,7 @@ export const listEntriesHandler: RouteHandler = async (event) => {
   if (typeof parsed === 'string') return response(400, { message: parsed });
   const { from, to, uploadedBy, cursor, limit } = parsed;
 
-  const rows = await listEntries(getDb(), { from, to, uploadedBy });
+  const rows = await listEntries({ from, to, uploadedBy });
   const byDate = new Map(rows.map((row) => [row.date, row]));
 
   // One item per day, newest first. Filtering by uploader keeps only the days

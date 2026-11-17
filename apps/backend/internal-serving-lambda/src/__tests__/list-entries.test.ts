@@ -1,14 +1,10 @@
 import type { APIGatewayProxyEvent } from 'aws-lambda';
 import { listEntries } from '@bho/db-client';
 import { getCurrentUser } from '../auth';
-import { getDb } from '../db';
 import { encodeCursor, listEntriesHandler } from '../routes/list-entries';
 
 jest.mock('../auth');
-jest.mock('../db');
 jest.mock('@bho/db-client', () => ({ listEntries: jest.fn() }));
-
-const db = { fake: 'db' };
 
 const row = (date: string, importId: number, uploadedById = 1) => ({
   date,
@@ -41,7 +37,6 @@ describe('listEntriesHandler', () => {
   beforeEach(() => {
     jest.useFakeTimers().setSystemTime(new Date('2026-07-10T15:00:00Z'));
     jest.mocked(getCurrentUser).mockResolvedValue({ id: 'user-123' });
-    jest.mocked(getDb).mockReturnValue(db as never);
     jest.mocked(listEntries).mockResolvedValue([]);
   });
 
@@ -53,7 +48,7 @@ describe('listEntriesHandler', () => {
   it('defaults to the last 31 days ending today', async () => {
     await call();
 
-    expect(listEntries).toHaveBeenCalledWith(db, {
+    expect(listEntries).toHaveBeenCalledWith({
       from: '2026-06-10',
       to: '2026-07-10',
       uploadedBy: undefined,
@@ -100,7 +95,7 @@ describe('listEntriesHandler', () => {
 
     expect(statusCode).toBe(200);
     expect(body).toEqual({ items: [], nextCursor: null, total: 0 });
-    expect(listEntries).toHaveBeenCalledWith(db, {
+    expect(listEntries).toHaveBeenCalledWith({
       from: '2026-06-10',
       to: '2026-07-10',
       uploadedBy: 9,

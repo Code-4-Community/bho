@@ -1,14 +1,10 @@
 import type { APIGatewayProxyEvent } from 'aws-lambda';
 import { listEntryVersions } from '@bho/db-client';
 import { getCurrentUser } from '../auth';
-import { getDb } from '../db';
 import { listEntryVersionsHandler } from '../routes/list-entry-versions';
 
 jest.mock('../auth');
-jest.mock('../db');
 jest.mock('@bho/db-client', () => ({ listEntryVersions: jest.fn() }));
-
-const db = { fake: 'db' };
 
 const version = (importId: number, uploadedAt: string) => ({
   importId,
@@ -37,7 +33,6 @@ const call = async (date: string) => {
 describe('listEntryVersionsHandler', () => {
   beforeEach(() => {
     jest.mocked(getCurrentUser).mockResolvedValue({ id: 'user-123' });
-    jest.mocked(getDb).mockReturnValue(db as never);
     jest.mocked(listEntryVersions).mockResolvedValue({
       currentImportId: 7,
       versions: [
@@ -55,7 +50,7 @@ describe('listEntryVersionsHandler', () => {
     const { statusCode, body } = await call('2026-07-09');
 
     expect(statusCode).toBe(200);
-    expect(listEntryVersions).toHaveBeenCalledWith(db, '2026-07-09');
+    expect(listEntryVersions).toHaveBeenCalledWith('2026-07-09');
     expect(body.date).toBe('2026-07-09');
     expect(
       body.versions.map((v: { id: number; isCurrent: boolean }) => [
