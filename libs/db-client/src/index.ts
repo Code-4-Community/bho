@@ -1,4 +1,4 @@
-export { closeConnection } from './connection';
+export { closeConnection, createDb } from './connection';
 export { recordImport } from './imports';
 export type {
   HourlyObservation,
