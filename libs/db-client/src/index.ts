@@ -1,4 +1,5 @@
-export { closeConnection, createDb } from './connection';
+export { createDb } from './client';
+export { closeConnection } from './connection';
 export { recordImport } from './imports';
 export type {
   HourlyObservation,
