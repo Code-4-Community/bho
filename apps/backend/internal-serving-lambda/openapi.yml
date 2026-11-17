@@ -23,6 +23,39 @@ paths:
                 status: ok
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /pipeline-status:
+    get:
+      summary: Weather data pipeline status
+      description: >-
+        Checks each live weather source and reports whether it is healthy. Each
+        check gives up after 3 seconds. See the README for what each state
+        means.
+      operationId: getPipelineStatus
+      tags:
+        - System
+      responses:
+        '200':
+          description: >-
+            The status of every source. Returned even when a source is down.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineStatus'
+              example:
+                active: WeatherLink
+                checkedAt: '2026-11-16T12:00:00.000Z'
+                providers:
+                  - name: WeatherLink
+                    state: healthy
+                    lastUpdatedAt: '2026-11-16T11:58:00.000Z'
+                  - name: APRSWxNet
+                    state: not_integrated
+                    lastUpdatedAt: null
+                  - name: Weather Underground
+                    state: not_integrated
+                    lastUpdatedAt: null
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /imports:
     get:
       summary: List imports
@@ -326,6 +359,54 @@ components:
           type: integer
         offset:
           type: integer
+    PipelineStatus:
+      type: object
+      required:
+        - active
+        - checkedAt
+        - providers
+      properties:
+        active:
+          type: string
+          nullable: true
+          description: >-
+            The first source in priority order that is healthy or degraded.
+            Null if none is.
+        checkedAt:
+          type: string
+          format: date-time
+        providers:
+          type: array
+          description: Every source, in priority order.
+          items:
+            $ref: '#/components/schemas/ProviderStatus'
+    ProviderStatus:
+      type: object
+      required:
+        - name
+        - state
+        - lastUpdatedAt
+      properties:
+        name:
+          type: string
+          enum:
+            - WeatherLink
+            - APRSWxNet
+            - Weather Underground
+        state:
+          type: string
+          enum:
+            - healthy
+            - degraded
+            - down
+            - not_integrated
+        lastUpdatedAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: >-
+            When the station last sent a reading. Null if the check failed or
+            the response had no reading time.
     HealthResponse:
       type: object
       required:
