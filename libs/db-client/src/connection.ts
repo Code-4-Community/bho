@@ -14,6 +14,10 @@ const REQUIRED_ENV_VARS = [
   'DB_NAME',
 ] as const;
 
+/**
+ * @deprecated Services should not build their own db; use this package's repository
+ * functions instead. To be removed in a future ticket.
+ */
 export function createDb(config: PoolConfig): Kysely<Database> {
   return new Kysely<Database>({
     dialect: new PostgresDialect({ pool: new Pool(config) }),
