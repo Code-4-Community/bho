@@ -1,6 +1,6 @@
 import { Select, createListCollection } from '@chakra-ui/react';
 import { useMemo } from 'react';
-import { FilterChevronIcon } from '../icons/ButtonIcons';
+import { ChevronDown } from 'lucide-react';
 
 export interface FilterOption {
   value: string;
@@ -136,7 +136,7 @@ export function Filter({
             textAlign="start"
             whiteSpace="nowrap"
           />
-          <FilterChevronIcon />
+          <ChevronDown size={20} strokeWidth={2} />
         </Select.Trigger>
       </Select.Control>
       <Select.Positioner>

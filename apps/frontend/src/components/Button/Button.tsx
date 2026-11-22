@@ -60,9 +60,9 @@ const Icon = ({ children }: { children: ReactNode }) => (
  * Other Chakra props (`onClick`, `disabled`, `aria-*`, ...) pass through.
  *
  * @example
- * <Button leftIcon={<UploadIcon />} onClick={upload}>Upload</Button>
+ * <Button leftIcon={<Upload size={20} />} onClick={upload}>Upload</Button>
  * <Button variant="secondary" onClick={close}>Cancel</Button>
- * <Button variant="ghost" aria-label="Open entry" leftIcon={<ChevronRightIcon />} />
+ * <Button variant="ghost" aria-label="Open entry" leftIcon={<ChevronRight size={26} />} />
  */
 export function Button({
   variant = 'primary',

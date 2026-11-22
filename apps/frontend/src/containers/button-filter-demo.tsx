@@ -6,13 +6,13 @@ import {
 } from '@components/Button';
 import { Filter } from '@components/Filter';
 import {
-  AddTextIcon,
-  CalendarIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-  RefreshIcon,
-  UploadIcon,
-} from '@components/icons/ButtonIcons';
+  Calendar,
+  ChevronDown,
+  ChevronRight,
+  FileType,
+  RefreshCw,
+  Upload,
+} from 'lucide-react';
 import {
   DATE_PRESETS,
   DEFAULT_DATE,
@@ -22,22 +22,13 @@ import {
   filterEntries,
 } from './mockFilters';
 
-// Temporary dev-only page (#94) for checking Button and Filter against Figma
-// frames 156:1559, 528:7117 and 528:7052.
+// Demos for the dev-only /design page (#94): Button and Filter next to the
+// Figma frames 156:1559, 528:7117 and 528:7052.
 
 const row = {
   display: 'flex',
   flexWrap: 'wrap',
   alignItems: 'center',
-  gap: 'var(--space-4)',
-} as const;
-
-const section = {
-  background: 'var(--color-bg-card)',
-  border: '1px solid var(--color-border)',
-  borderRadius: 'var(--radius-md)',
-  padding: 'var(--space-6)',
-  display: 'grid',
   gap: 'var(--space-4)',
 } as const;
 
@@ -55,15 +46,35 @@ const FIGMA_BUTTONS: {
   left?: React.ReactNode;
   right?: React.ReactNode;
 }[] = [
-  { label: 'Upload', variant: 'primary', left: <UploadIcon /> },
-  { label: 'Re-Upload', variant: 'primary', left: <UploadIcon /> },
-  { label: 'Refresh', variant: 'primary', left: <RefreshIcon /> },
-  { label: 'Source: All', variant: 'primary', right: <ChevronDownIcon /> },
+  {
+    label: 'Upload',
+    variant: 'primary',
+    left: <Upload size={20} strokeWidth={1.5} />,
+  },
+  {
+    label: 'Re-Upload',
+    variant: 'primary',
+    left: <Upload size={20} strokeWidth={1.5} />,
+  },
+  {
+    label: 'Refresh',
+    variant: 'primary',
+    left: <RefreshCw size={14} strokeWidth={1.5} />,
+  },
+  {
+    label: 'Source: All',
+    variant: 'primary',
+    right: <ChevronDown size={16} strokeWidth={1.5} />,
+  },
   { label: 'Download', variant: 'primary' },
   { label: 'Cancel', variant: 'secondary' },
   { label: 'Close', variant: 'secondary' },
   { label: 'Submit', variant: 'primary' },
-  { label: 'Add Text', variant: 'primary', left: <AddTextIcon /> },
+  {
+    label: 'Add Text',
+    variant: 'primary',
+    left: <FileType size={18} strokeWidth={1.5} />,
+  },
   { label: 'Clear Filters', variant: 'dark' },
   { label: 'Today’s Entry', variant: 'link' },
 ];
@@ -72,9 +83,8 @@ const SIZES: ButtonSize[] = ['md', 'sm'];
 
 /** Every Button variant x size in default, disabled and loading states, using
  * the Figma labels and icons, plus the link variant as a real anchor. */
-const ButtonsSection: React.FC = () => (
-  <section style={section}>
-    <h3>Buttons</h3>
+export const ButtonsDemo: React.FC = () => (
+  <>
     {SIZES.map((size) => (
       <div key={size} style={{ display: 'grid', gap: 'var(--space-4)' }}>
         <span style={caption}>size {size}: default</span>
@@ -94,7 +104,7 @@ const ButtonsSection: React.FC = () => (
             variant="ghost"
             size={size}
             aria-label="Open entry"
-            leftIcon={<ChevronRightIcon width={13} height={16} />}
+            leftIcon={<ChevronRight size={26} strokeWidth={2.5} />}
           />
         </div>
         <span style={caption}>size {size}: disabled</span>
@@ -116,7 +126,7 @@ const ButtonsSection: React.FC = () => (
             size={size}
             disabled
             aria-label="Open entry (disabled)"
-            leftIcon={<ChevronRightIcon width={13} height={16} />}
+            leftIcon={<ChevronRight size={26} strokeWidth={2.5} />}
           />
         </div>
         <span style={caption}>size {size}: loading</span>
@@ -145,65 +155,62 @@ const ButtonsSection: React.FC = () => (
         Today’s Entry
       </Button>
     </div>
-  </section>
+  </>
 );
 
 /** Both Filter types (date and uploader) with mock options, the selected
  * value printed below each, plus the disabled and `sm` states. */
-const FiltersSection: React.FC = () => {
+export const FiltersDemo: React.FC = () => {
   const [date, setDate] = useState(DEFAULT_DATE);
   const [uploader, setUploader] = useState(DEFAULT_UPLOADER);
   return (
-    <section style={section}>
-      <h3>Filters</h3>
-      <div style={{ ...row, alignItems: 'flex-start' }}>
-        <div style={{ display: 'grid', gap: 'var(--space-2)' }}>
-          <Filter
-            options={dateOptions}
-            value={date}
-            onChange={setDate}
-            icon={<CalendarIcon />}
-            width="442px"
-          />
-          <span style={caption}>selected: {date}</span>
-        </div>
-        <div style={{ display: 'grid', gap: 'var(--space-2)' }}>
-          <Filter
-            options={UPLOADER_OPTIONS}
-            value={uploader}
-            onChange={setUploader}
-            width="346px"
-          />
-          <span style={caption}>selected: {uploader}</span>
-        </div>
-        <div style={{ display: 'grid', gap: 'var(--space-2)' }}>
-          <Filter
-            options={UPLOADER_OPTIONS}
-            value={uploader}
-            onChange={setUploader}
-            width="346px"
-            disabled
-          />
-          <span style={caption}>disabled</span>
-        </div>
-        <div style={{ display: 'grid', gap: 'var(--space-2)' }}>
-          <Filter
-            options={UPLOADER_OPTIONS}
-            value={uploader}
-            onChange={setUploader}
-            size="sm"
-            width="200px"
-          />
-          <span style={caption}>size sm</span>
-        </div>
+    <div style={{ ...row, alignItems: 'flex-start' }}>
+      <div style={{ display: 'grid', gap: 'var(--space-2)' }}>
+        <Filter
+          options={dateOptions}
+          value={date}
+          onChange={setDate}
+          icon={<Calendar size={16} strokeWidth={1.6} />}
+          width="442px"
+        />
+        <span style={caption}>selected: {date}</span>
       </div>
-    </section>
+      <div style={{ display: 'grid', gap: 'var(--space-2)' }}>
+        <Filter
+          options={UPLOADER_OPTIONS}
+          value={uploader}
+          onChange={setUploader}
+          width="346px"
+        />
+        <span style={caption}>selected: {uploader}</span>
+      </div>
+      <div style={{ display: 'grid', gap: 'var(--space-2)' }}>
+        <Filter
+          options={UPLOADER_OPTIONS}
+          value={uploader}
+          onChange={setUploader}
+          width="346px"
+          disabled
+        />
+        <span style={caption}>disabled</span>
+      </div>
+      <div style={{ display: 'grid', gap: 'var(--space-2)' }}>
+        <Filter
+          options={UPLOADER_OPTIONS}
+          value={uploader}
+          onChange={setUploader}
+          size="sm"
+          width="200px"
+        />
+        <span style={caption}>size sm</span>
+      </div>
+    </div>
   );
 };
 
 /** Filters composed like Figma 528:7052 / 531:16311: labels, an entry count
  * driven by the mock data, and Clear Filters when nothing matches. */
-const FilterBarSection: React.FC = () => {
+export const FilterBarDemo: React.FC = () => {
   const [date, setDate] = useState(DEFAULT_DATE);
   const [uploader, setUploader] = useState(DEFAULT_UPLOADER);
   const count = filterEntries(MOCK_ENTRIES, date, uploader).length;
@@ -212,15 +219,14 @@ const FilterBarSection: React.FC = () => {
     setUploader(DEFAULT_UPLOADER);
   };
   return (
-    <section style={section}>
-      <h3>Filter bar</h3>
+    <>
       <div style={{ ...row, alignItems: 'flex-end' }}>
         <Filter
           label="Date range"
           options={dateOptions}
           value={date}
           onChange={setDate}
-          icon={<CalendarIcon />}
+          icon={<Calendar size={16} strokeWidth={1.6} />}
           width="442px"
         />
         <Filter
@@ -248,24 +254,6 @@ const FilterBarSection: React.FC = () => {
       <span style={caption}>
         Tip: pick “Sep 1 - Sep 30, 2026” to see 0 entries and Clear Filters.
       </span>
-    </section>
+    </>
   );
 };
-
-/** Dev-only page at `/dev/buttons`, not in production navigation. */
-const ButtonsFiltersPreview: React.FC = () => (
-  <main
-    style={{
-      padding: 'var(--space-8)',
-      display: 'grid',
-      gap: 'var(--space-8)',
-    }}
-  >
-    <h1>Button and Filter</h1>
-    <ButtonsSection />
-    <FiltersSection />
-    <FilterBarSection />
-  </main>
-);
-
-export default ButtonsFiltersPreview;
