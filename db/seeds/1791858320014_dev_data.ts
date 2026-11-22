@@ -53,14 +53,23 @@ export async function seed(db: Kysely<any>): Promise<void> {
       .where('code', '=', '19737-02')
       .executeTakeFirstOrThrow();
 
+    // Admin first, so it is users.id 1 (DEV_USER_ID in example.env)
     await trx
       .insertInto('users')
-      .values({
-        email: 'dev@example.com',
-        firstName: 'Dev',
-        lastName: 'User',
-        status: 'ADMIN',
-      })
+      .values([
+        {
+          email: 'dev@example.com',
+          firstName: 'Dev',
+          lastName: 'User',
+          status: 'ADMIN',
+        },
+        {
+          email: 'staff@example.com',
+          firstName: 'Staff',
+          lastName: 'User',
+          status: 'STANDARD',
+        },
+      ])
       .onConflict((oc) => oc.column('email').doNothing())
       .execute();
     const user = await trx

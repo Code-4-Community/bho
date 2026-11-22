@@ -164,6 +164,24 @@ describe('getCurrentUser', () => {
   });
 });
 
+describe('getCurrentUser with DEV_USER_ID', () => {
+  beforeEach(() => {
+    process.env.DEV_USER_ID = '7';
+  });
+
+  it('looks up that user without a token', async () => {
+    expect(await getCurrentUser(buildEvent())).toEqual(USER);
+    expect(query.where).toHaveBeenCalledWith('id', '=', 7);
+    expect(verifyToken).not.toHaveBeenCalled();
+  });
+
+  it('is ignored inside Lambda', async () => {
+    process.env.AWS_LAMBDA_FUNCTION_NAME = 'internal-serving-lambda';
+
+    expect(await getCurrentUser(buildEvent())).toBeNull();
+  });
+});
+
 describe('requireUser', () => {
   it('returns the signed-in user', async () => {
     expect(await requireUser(SIGNED_IN)).toEqual(USER);

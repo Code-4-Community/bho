@@ -68,6 +68,23 @@ describe('createUploadUrlHandler', () => {
     },
   );
 
+  it('ignores the client file name when building the key', async () => {
+    const { body } = await call(
+      buildEvent('daily', { fileName: '../../historical/evil.csv' }),
+    );
+
+    expect(body.s3Key).toMatch(new RegExp(`^daily/2026-10-26/${UUID_CSV}$`));
+  });
+
+  it('accepts an uppercase .CSV extension', async () => {
+    const { statusCode, body } = await call(
+      buildEvent('daily', { fileName: 'OBS.CSV' }),
+    );
+
+    expect(statusCode).toBe(200);
+    expect(body.s3Key).toMatch(/\.csv$/);
+  });
+
   it('expires in 5 minutes', async () => {
     const { body } = await call(buildEvent('daily'));
 
