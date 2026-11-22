@@ -73,6 +73,10 @@
   --color-bg-table-header: var(--deep-blue-400);
 
   --color-border: var(--deep-blue-100);
+  /* Figma "border/default"; the idle upload dropzone border. Plain hex in Figma. */
+  --color-border-default: #e4e4e7;
+  /* Primary button hover / pressed ("Clicked=Yes") and disabled. */
+  --color-primary-hover: var(--sea-green-400);
 
   /* Status pairs, from the tags. The tag backgrounds are plain hex in Figma,
      not variables; the danger tag uses #FFEBEB rather than Error/100. */
@@ -131,6 +135,8 @@
   --space-10: 40px;
 
   /* Tiles and table header corners are 8px, cards 10px, tags fully round. */
+  --radius-xxs: 4px; /* buttons (Figma radii/l2) */
+  --radius-xs: 6px; /* upload dropzone (Figma radii/l3) */
   --radius-sm: 8px;
   --radius-md: 10px;
   --radius-pill: 999px;
