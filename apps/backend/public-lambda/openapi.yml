@@ -1,0 +1,157 @@
+openapi: 3.0.3
+info:
+  title: Public API
+  version: 0.0.0
+  description: Public API routes served by public-lambda.
+
+paths:
+  /live-conditions:
+    get:
+      summary: Get live conditions
+      description: >-
+        Fetches the latest readings from the Davis WeatherLink station and
+        returns them normalized. A field is `null` when its sensor is missing
+        or has no valid reading.
+      operationId: getLiveConditions
+      tags:
+        - Weather
+      responses:
+        '200':
+          description: The latest station readings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LiveConditions'
+              example:
+                rainRateInHr: 0
+                windMph: 4
+                windDir: NNE
+                gustMph: 9
+                solarRadWm2: 312
+                tempF: 68.2
+                tempC: 20.1
+                humidityPct: 55
+                dewPointF: 51.3
+                windChillF: 68.2
+                pressure: 30.01
+                observedAt: 1763215200000
+                fetchedAt: 1763215212000
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  schemas:
+    LiveConditions:
+      type: object
+      required:
+        - rainRateInHr
+        - windMph
+        - windDir
+        - gustMph
+        - solarRadWm2
+        - tempF
+        - tempC
+        - humidityPct
+        - dewPointF
+        - windChillF
+        - pressure
+        - observedAt
+        - fetchedAt
+      properties:
+        rainRateInHr:
+          type: number
+          nullable: true
+          description: Rain rate, in/hr.
+        windMph:
+          type: number
+          nullable: true
+          description: Wind speed, mph.
+        windDir:
+          type: string
+          nullable: true
+          enum:
+            - N
+            - NNE
+            - NE
+            - ENE
+            - E
+            - ESE
+            - SE
+            - SSE
+            - S
+            - SSW
+            - SW
+            - WSW
+            - W
+            - WNW
+            - NW
+            - NNW
+            - null
+          description: Wind direction as a 16-point compass direction.
+        gustMph:
+          type: number
+          nullable: true
+          description: Highest wind speed over the last 10 minutes, mph.
+        solarRadWm2:
+          type: number
+          nullable: true
+          description: Solar radiation, W/m².
+        tempF:
+          type: number
+          nullable: true
+          description: Temperature, °F.
+        tempC:
+          type: number
+          nullable: true
+          description: Temperature, °C, rounded to one decimal place.
+        humidityPct:
+          type: number
+          nullable: true
+          description: Relative humidity, percent.
+        dewPointF:
+          type: number
+          nullable: true
+          description: Dew point, °F.
+        windChillF:
+          type: number
+          nullable: true
+          description: Wind chill, °F.
+        pressure:
+          type: number
+          nullable: true
+          description: Barometric pressure, inHg.
+        observedAt:
+          type: number
+          nullable: true
+          description: When the station last reported, Unix epoch milliseconds.
+        fetchedAt:
+          type: number
+          nullable: true
+          description: When this lambda fetched the data, Unix epoch milliseconds.
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+
+  responses:
+    BadGateway:
+      description: The WeatherLink request failed, timed out, or returned unexpected data.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Unable to fetch live conditions
+    InternalServerError:
+      description: Unexpected error while handling the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Internal server error
