@@ -1,5 +1,5 @@
 # parsing
 
-Everything that turns an uploaded file into parsed JSON: CSV reading, the
-historical and daily parsers, and the S3 read + file hash (`parse-upload.ts`).
-Nothing here touches the database. Output types live in `@bho/weather-parsing`.
+Everything that turns an uploaded daily file into parsed JSON: CSV reading and
+the daily parser. Nothing here touches the database. Output types live in
+`@bho/weather-parsing`. The historical parser stays in `upload-lambda`.
