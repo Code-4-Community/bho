@@ -1,4 +1,4 @@
-import type { ColumnType, Generated } from 'kysely';
+import type { ColumnType, Generated, Insertable } from 'kysely';
 
 // Table types for Kysely, matching db/migrations. pg returns numeric as a
 // string so no precision is lost, timestamptz as a Date, and date as
@@ -12,6 +12,8 @@ export interface UsersTable {
   firstName: string;
   lastName: string;
   status: string;
+  // Cognito `sub` claim; null until the user first signs in.
+  cognitoSub: string | null;
 }
 
 export interface StationsTable {
@@ -124,6 +126,14 @@ export interface DailyDiscussionsTable {
   content: Json | null;
   banner: string | null;
   updatedAt: ColumnType<Date, Date | string | undefined, Date | string>;
+}
+
+// One day of an upload, or the same day as stored: the daily row plus the hourly
+// and scheduled rows that belong to it.
+export interface DbDay {
+  daily: Insertable<DailyObservationsTable>;
+  hourly: Insertable<HourlyObservationsTable>[];
+  scheduled: Insertable<ScheduledObservationsTable>[];
 }
 
 // Written only by the audit_row() trigger.

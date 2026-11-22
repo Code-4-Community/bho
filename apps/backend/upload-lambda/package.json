@@ -11,6 +11,7 @@
     "@bho/weather-parsing": "file:../../../libs/weather-parsing",
     "@bho/file-store": "file:../../../libs/file-store",
     "kysely": "^0.27.0",
+    "microdiff": "^1.6.0",
     "pg": "^8.11.0"
   },
   "devDependencies": {

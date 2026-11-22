@@ -3,7 +3,10 @@ import { mkdtemp, readdir, readFile, rm } from 'fs/promises';
 import type { AddressInfo } from 'net';
 import { tmpdir } from 'os';
 import { join } from 'path';
+import { getCurrentUser } from '../auth';
 import { devServer } from '../dev-server';
+
+jest.mock('../auth');
 
 let base: string;
 let dir: string;
@@ -22,8 +25,12 @@ afterAll(
 
 beforeEach(async () => {
   dir = await mkdtemp(join(tmpdir(), 'local-uploads-'));
-  process.env = { ...env, LOCAL_UPLOAD_DIR: dir, DEV_USER_ID: '1' };
-  delete process.env.AWS_LAMBDA_FUNCTION_NAME;
+  process.env = { ...env, LOCAL_UPLOAD_DIR: dir };
+  jest.mocked(getCurrentUser).mockResolvedValue({
+    id: 1,
+    email: 'dev@example.com',
+    role: 'ADMIN',
+  });
 });
 
 afterEach(async () => {

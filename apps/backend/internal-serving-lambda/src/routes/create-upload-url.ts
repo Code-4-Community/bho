@@ -49,7 +49,7 @@ export const createUploadUrlHandler: RouteHandler = async (event) => {
     expiresInSeconds: UPLOAD_URL_EXPIRES_IN_SECONDS,
     // S3 metadata values must be ASCII, so the file name is URI-encoded
     metadata: {
-      'uploaded-by': user.id,
+      'uploaded-by': String(user.id),
       'file-name': encodeURIComponent(fileName),
     },
   });

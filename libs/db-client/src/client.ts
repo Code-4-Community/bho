@@ -6,6 +6,10 @@ import type { Database } from './types';
 // laptop in Eastern time and 00:00Z in Lambda. Keep dates as 'YYYY-MM-DD'.
 types.setTypeParser(types.builtins.DATE, (value) => value);
 
+/**
+ * @deprecated Services should not build their own db; use this package's repository
+ * functions instead. To be removed in a future ticket.
+ */
 export function createDb(config: PoolConfig): Kysely<Database> {
   return new Kysely<Database>({
     dialect: new PostgresDialect({ pool: new Pool(config) }),
