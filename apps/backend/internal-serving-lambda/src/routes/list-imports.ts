@@ -17,16 +17,16 @@ export const MAX_LIMIT = 100;
 // ISO 8601 in UTC, e.g. 2026-10-26T12:00:00Z or 2026-10-26T12:00:00.000Z
 const ISO_UTC = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,3})?Z$/;
 
-const parseInteger = (value: string | undefined, fallback: number) =>
+export const parseInteger = (value: string | undefined, fallback: number) =>
   value === undefined ? fallback : /^\d+$/.test(value) ? Number(value) : NaN;
 
-const parseTimestamp = (value: string | undefined) => {
+export const parseTimestamp = (value: string | undefined) => {
   if (value === undefined) return undefined;
   const date = new Date(value);
   return ISO_UTC.test(value) && !isNaN(date.getTime()) ? date : null;
 };
 
-const oneOf = <T extends string>(values: readonly T[], value: unknown) =>
+export const oneOf = <T extends string>(values: readonly T[], value: unknown) =>
   values.includes(value as T);
 
 // Returns the parsed query, or a message describing the first invalid param

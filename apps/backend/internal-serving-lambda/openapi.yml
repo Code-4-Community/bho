@@ -405,6 +405,170 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
+  /audit-log:
+    get:
+      summary: List audit log entries
+      description: >-
+        Returns one page of changes to the data tables, newest `changedAt`
+        first. Filters combine with AND.
+      operationId: listAuditLog
+      tags:
+        - Audit log
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: changedFrom
+          in: query
+          description: >-
+            Only changes at or after this time. ISO 8601 in UTC, e.g.
+            `2026-10-01T00:00:00Z`.
+          schema:
+            type: string
+            format: date-time
+        - name: changedTo
+          in: query
+          description: >-
+            Only changes at or before this time. ISO 8601 in UTC. Must not be
+            before `changedFrom`.
+          schema:
+            type: string
+            format: date-time
+        - name: tableName
+          in: query
+          schema:
+            type: string
+            enum:
+              - daily_observations
+              - hourly_observations
+              - scheduled_observations
+              - daily_records
+        - name: importId
+          in: query
+          description: Only changes made by this import.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 2147483647
+        - name: rowKey
+          in: query
+          description: >-
+            Only changes to the row with this primary key, as URL-encoded JSON,
+            e.g. `{"stationId":1,"date":"2026-10-26"}`. Must match the stored
+            key exactly, including value types. Key order doesn't matter.
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Page size.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 25
+        - name: offset
+          in: query
+          description: Number of entries to skip.
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+      responses:
+        '200':
+          description: One page of audit log entries.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuditLogList'
+              example:
+                items:
+                  - id: 2
+                    tableName: daily_observations
+                    rowKey:
+                      stationId: 1
+                      date: '2026-10-26'
+                    action: update
+                    oldData:
+                      stationId: 1
+                      date: '2026-10-26'
+                      maxTempF: 61
+                    newData:
+                      stationId: 1
+                      date: '2026-10-26'
+                      maxTempF: 62
+                    changedBy: 1
+                    importId: 7
+                    changedAt: '2026-10-26T12:00:00.000Z'
+                total: 1
+                limit: 25
+                offset: 0
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /audit-log/{id}:
+    get:
+      summary: Get an audit log entry
+      description: Returns one change, with the row before and after.
+      operationId: getAuditLogEntry
+      tags:
+        - Audit log
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 2147483647
+      responses:
+        '200':
+          description: The audit log entry.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuditLogEntry'
+              example:
+                id: 2
+                tableName: daily_observations
+                rowKey:
+                  stationId: 1
+                  date: '2026-10-26'
+                action: update
+                oldData:
+                  stationId: 1
+                  date: '2026-10-26'
+                  maxTempF: 61
+                newData:
+                  stationId: 1
+                  date: '2026-10-26'
+                  maxTempF: 62
+                changedBy: 1
+                importId: 7
+                changedAt: '2026-10-26T12:00:00.000Z'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          description: No audit log entry has this id.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: Audit log entry not found
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
 components:
   securitySchemes:
     bearerAuth:
@@ -682,6 +846,81 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserSummary'
+    AuditLogEntry:
+      type: object
+      description: >-
+        One inserted, updated, or deleted row in a data table, recorded by a
+        database trigger. See `docs/database-schema.md`.
+      required:
+        - id
+        - tableName
+        - rowKey
+        - action
+        - oldData
+        - newData
+        - changedBy
+        - importId
+        - changedAt
+      properties:
+        id:
+          type: integer
+        tableName:
+          type: string
+          enum:
+            - daily_observations
+            - hourly_observations
+            - scheduled_observations
+            - daily_records
+        rowKey:
+          type: object
+          description: Primary key of the changed row.
+          additionalProperties: true
+        action:
+          type: string
+          enum:
+            - insert
+            - update
+            - delete
+        oldData:
+          type: object
+          nullable: true
+          description: The whole row before the change. Null on insert.
+          additionalProperties: true
+        newData:
+          type: object
+          nullable: true
+          description: The whole row after the change. Null on delete.
+          additionalProperties: true
+        changedBy:
+          type: integer
+          nullable: true
+          description: Id of the user who made the change. Null for system writes.
+        importId:
+          type: integer
+          nullable: true
+          description: Id of the import that made the change, if any.
+        changedAt:
+          type: string
+          format: date-time
+    AuditLogList:
+      type: object
+      required:
+        - items
+        - total
+        - limit
+        - offset
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditLogEntry'
+        total:
+          type: integer
+          description: Number of entries matching the filters, across all pages.
+        limit:
+          type: integer
+        offset:
+          type: integer
     HealthResponse:
       type: object
       required:
