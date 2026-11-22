@@ -1,10 +1,14 @@
 import type { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { createUploadUrlHandler } from './routes/create-upload-url';
 import { getAuditLogEntryHandler } from './routes/get-audit-log-entry';
+import { getEntryHandler } from './routes/get-entry';
 import { getImportHandler } from './routes/get-import';
 import { healthHandler } from './routes/health';
 import { listAuditLogHandler } from './routes/list-audit-log';
+import { listEntriesHandler } from './routes/list-entries';
+import { listEntryVersionsHandler } from './routes/list-entry-versions';
 import { listImportsHandler } from './routes/list-imports';
+import { meHandler, usersHandler } from './routes/user-endpoints';
 
 export type RouteHandler = (
   event: APIGatewayProxyEvent,
@@ -17,4 +21,9 @@ export const routes: Record<string, RouteHandler> = {
   'GET /imports/{id}': getImportHandler,
   'GET /audit-log': listAuditLogHandler,
   'GET /audit-log/{id}': getAuditLogEntryHandler,
+  'GET /entries': listEntriesHandler,
+  'GET /entries/{date}': getEntryHandler,
+  'GET /entries/{date}/versions': listEntryVersionsHandler,
+  'GET /me': meHandler,
+  'GET /users': usersHandler,
 };

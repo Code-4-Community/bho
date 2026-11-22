@@ -9,8 +9,10 @@
     "types": ["vite/client", "vitest"],
     "paths": {
       "@api/*": ["./src/api/*"],
+      "@components": ["./src/components/index.ts"],
       "@components/*": ["./src/components/*"],
       "@containers/*": ["./src/containers/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@public/*": ["./public/*"],
       "@shared/*": ["../../shared/*"],
       "@utils/*": ["./src/utils/*"]

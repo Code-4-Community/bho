@@ -1,6 +1,6 @@
 import type { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { routes } from './routes';
-import { response } from './response';
+import { HttpError, response } from './response';
 
 export const handler = async (
   event: APIGatewayProxyEvent,
@@ -11,6 +11,9 @@ export const handler = async (
   try {
     return await route(event);
   } catch (err) {
+    if (err instanceof HttpError) {
+      return response(err.statusCode, { message: err.message });
+    }
     console.error(err);
     return response(500, { message: 'Internal server error' });
   }

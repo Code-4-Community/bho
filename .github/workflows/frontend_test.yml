@@ -1,0 +1,29 @@
+name: Frontend checks
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use NodeJS 24.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+          cache: 'yarn'
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Type check
+        run: npx nx run frontend:typecheck
+
+      - name: Tests
+        run: npx nx run frontend:test

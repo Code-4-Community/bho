@@ -6,10 +6,10 @@ import { getDb } from '../db';
 import {
   IMPORT_STATUSES,
   listImports,
+  UPLOAD_TYPES,
   type ImportFilters,
   type Page,
 } from '../imports';
-import { UPLOAD_TYPES } from '../presigned-upload-url';
 
 export const DEFAULT_LIMIT = 25;
 export const MAX_LIMIT = 100;

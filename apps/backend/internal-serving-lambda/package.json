@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "ts-node src/dev-server.ts",
+    "parse:daily": "npx ts-node --transpile-only scripts/parse-daily.ts",
     "build": "tsc",
     "test": "jest"
   },
@@ -11,7 +11,9 @@
     "@bho/weather-parsing": "file:../../../libs/weather-parsing",
     "@bho/lambda-http": "file:../../../libs/lambda-http",
     "@bho/lambda-auth": "file:../../../libs/lambda-auth",
+    "@bho/file-store": "file:../../../libs/file-store",
     "kysely": "^0.27.0",
+    "microdiff": "^1.6.0",
     "pg": "^8.11.0"
   },
   "devDependencies": {

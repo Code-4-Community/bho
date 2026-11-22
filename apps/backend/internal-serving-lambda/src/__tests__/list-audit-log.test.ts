@@ -59,7 +59,11 @@ const call = async (query: Record<string, string> | null = null) => {
 
 describe('listAuditLogHandler', () => {
   beforeEach(() => {
-    jest.mocked(getCurrentUser).mockResolvedValue({ id: 'user-123' });
+    jest.mocked(getCurrentUser).mockResolvedValue({
+      id: 7,
+      email: 'dev@example.com',
+      role: 'STANDARD',
+    });
     jest.mocked(getDb).mockReturnValue(db as never);
     jest
       .mocked(listAuditLog)
@@ -231,7 +235,11 @@ describe('GET /audit-log through the lambda handler', () => {
   });
 
   it('routes to the list audit log handler', async () => {
-    jest.mocked(getCurrentUser).mockResolvedValue({ id: 'user-123' });
+    jest.mocked(getCurrentUser).mockResolvedValue({
+      id: 7,
+      email: 'dev@example.com',
+      role: 'STANDARD',
+    });
     jest.mocked(listAuditLog).mockResolvedValue({ items: [], total: 0 });
 
     const result = await handler(buildEvent());
@@ -247,7 +255,11 @@ describe('GET /audit-log through the lambda handler', () => {
 
   it('returns 500 when the query fails', async () => {
     jest.spyOn(console, 'error').mockImplementation(() => undefined);
-    jest.mocked(getCurrentUser).mockResolvedValue({ id: 'user-123' });
+    jest.mocked(getCurrentUser).mockResolvedValue({
+      id: 7,
+      email: 'dev@example.com',
+      role: 'STANDARD',
+    });
     jest
       .mocked(listAuditLog)
       .mockRejectedValue(new Error('connection refused'));

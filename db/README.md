@@ -54,7 +54,7 @@ Never edit a migration that has been merged; add a new one. For example, to add 
 
 ## Seed data
 
-`yarn db:seed` runs every file in `db/seeds/` through kysely-ctl. `1791858320014_dev_data.ts` loads a small sample: one user, two imports, July 1-3 2026 of observations (July 1 has hourly and scheduled readings, taken from the daily sheet), and three daily records. It uses `onConflict(...).doNothing()`, so running it twice changes nothing. For a fresh seeded database: `yarn db:reset && yarn db:seed`. Dev only; never run it against RDS.
+`yarn db:seed` runs every file in `db/seeds/` through kysely-ctl. `1791858320014_dev_data.ts` loads a small sample: an admin and a standard user, two imports, July 1-3 2026 of observations (July 1 has hourly and scheduled readings, taken from the daily sheet), and three daily records. It uses `onConflict(...).doNothing()`, so running it twice changes nothing. For a fresh seeded database: `yarn db:reset && yarn db:seed`. Dev only; never run it against RDS.
 
 ## Differs from RDS
 
@@ -64,6 +64,5 @@ Disposable: no backups - `yarn db:reset` deletes everything. This is bound to `1
 
 - **Cannot connect to the Docker daemon:** start Docker Desktop.
 - **Port 5432 already in use:** another Postgres is running. Find it with `sudo lsof -nP -iTCP:5432 -sTCP:LISTEN` and stop it.
-- **`ECONNREFUSED` right after `db:up`:** Postgres is still starting. Wait a few seconds and rerun.
 - **`corrupted migrations … is missing`:** a migration file that was already applied is gone (for example after switching branches). Run `yarn db:reset`.
 - **`engine "node" is incompatible`:** run `nvm use`.
