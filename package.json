@@ -72,6 +72,7 @@
     "@nx/react": "23.2.0",
     "@nx/vite": "22.7.5",
     "@nx/webpack": "23.0.0",
+    "@testing-library/jest-dom": "^8.0.0",
     "@testing-library/react": "^15.0.7",
     "@testing-library/user-event": "^14.6.13",
     "@types/aws-lambda": "^8.10.164",

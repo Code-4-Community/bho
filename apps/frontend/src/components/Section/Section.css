@@ -1,0 +1,182 @@
+.section {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-card);
+  color: var(--color-text);
+}
+
+.section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 62px;
+  padding: 0 var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-card-header);
+}
+
+.section__title {
+  margin: 0;
+  font: var(--text-section-title);
+}
+
+.section__action {
+  font: var(--text-caption);
+}
+
+.section__action a,
+.section__action button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: var(--font-weight-bold);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.section__body {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.section__body[data-scroll='true'] {
+  overflow-y: auto;
+}
+
+.section__empty {
+  margin: 0;
+  padding: var(--space-8) var(--space-5);
+  color: var(--color-text-muted);
+  font: var(--text-body);
+  text-align: center;
+}
+
+.section__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.section__skeleton {
+  height: 120px;
+  border-bottom: 1px solid var(--color-border);
+  background: linear-gradient(
+    var(--deep-blue-50),
+    var(--deep-blue-50)
+  )
+    var(--space-5) 50% / 40% 24px no-repeat;
+}
+
+.section-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 120px;
+  padding: 0 var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section-row:last-child {
+  border-bottom: 0;
+}
+
+.section-row[data-highlighted='true'] {
+  background: var(--blue-50);
+}
+
+.section-row[data-interactive='true']:not([data-highlighted='true']):hover {
+  background: var(--deep-blue-50);
+}
+
+.section-row__leading {
+  display: flex;
+  flex: none;
+}
+
+.section-row__text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.section-row__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+}
+
+.section-row__main--stretch {
+  cursor: pointer;
+}
+
+/* Makes the whole row the click target. */
+.section-row__main--stretch::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.section-row__main--stretch:focus-visible {
+  outline: none;
+}
+
+.section-row__main--stretch:focus-visible::after {
+  outline: 2px solid var(--color-info);
+  outline-offset: -2px;
+}
+
+.section-row__heading {
+  font: var(--text-body);
+}
+
+.section-row__heading strong {
+  font-weight: var(--font-weight-bold);
+}
+
+.section-row__label {
+  font: var(--font-weight-bold) var(--font-size-body-sm) / var(--line-height)
+    var(--font-body);
+}
+
+.section-row__subtitle {
+  color: var(--color-text-muted);
+  font: var(--text-caption);
+}
+
+.section-row__subtitle-link {
+  /* Above the stretched overlay so it stays independently clickable. */
+  position: relative;
+  color: var(--color-text-muted);
+  font: italic var(--font-weight-regular) var(--font-size-body-sm) /
+    var(--line-height) var(--font-body);
+  text-decoration: underline;
+}
+
+.section-row__tag {
+  flex: none;
+}
+
+.section-row__chevron {
+  flex: none;
+  color: var(--color-success);
+}

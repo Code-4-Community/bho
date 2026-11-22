@@ -1,0 +1,62 @@
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 159px;
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-card);
+  color: var(--color-text);
+}
+
+.tile__label {
+  /* Leave room for the icon in the top-right corner. */
+  padding-right: var(--space-6);
+  font: var(--text-body);
+}
+
+.tile__icon {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+}
+
+.tile[data-tone='warning'] .tile__icon {
+  color: var(--color-warning);
+}
+
+.tile[data-tone='info'] .tile__icon {
+  color: var(--color-info);
+}
+
+.tile[data-tone='success'] .tile__icon {
+  color: var(--color-success);
+}
+
+.tile__value {
+  font: var(--text-tile-number);
+  /* The shared token pairs 48px type with a 24px line height, which lets the
+     glyphs spill below the line box into the caption. */
+  line-height: 1.1;
+}
+
+.tile__caption {
+  margin-top: var(--space-1);
+  font: italic var(--font-weight-regular) var(--font-size-body-sm) /
+    var(--line-height) var(--font-body);
+}
+
+.tile__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Spans two grid columns, e.g. the Last Upload Time tile (340px in Figma). */
+.tile--wide {
+  grid-column: span 2;
+}

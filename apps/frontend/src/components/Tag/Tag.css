@@ -1,0 +1,38 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--tag-color);
+  border-radius: var(--radius-pill);
+  background: var(--tag-bg);
+  color: var(--tag-color);
+  font: var(--font-weight-bold) 0.875rem / 1 var(--font-body);
+  white-space: nowrap;
+}
+
+.tag[data-tone='success'] {
+  --tag-color: var(--color-success);
+  --tag-bg: var(--color-success-bg);
+}
+
+.tag[data-tone='warning'] {
+  --tag-color: var(--color-warning);
+  --tag-bg: var(--color-warning-bg);
+}
+
+.tag[data-tone='danger'] {
+  --tag-color: var(--color-danger);
+  --tag-bg: var(--color-danger-bg);
+}
+
+.tag[data-tone='info'] {
+  --tag-color: var(--color-info);
+  --tag-bg: var(--color-info-bg);
+}
+
+/* No Figma design yet; placeholder. */
+.tag[data-tone='neutral'] {
+  --tag-color: var(--color-text-muted);
+  --tag-bg: var(--color-bg-card-header);
+}
