@@ -18,7 +18,7 @@ The backend is **Lambda-only**. Four independent Lambda functions live under `ap
 
 - `internal-serving-lambda` — the authenticated API the frontend calls (staff/admin)
 - `upload-lambda` — S3-upload-triggered, parses and imports spreadsheet/CSV data
-- `ingestion-lambda` — EventBridge-scheduled, pulls live conditions from the Davis weather station
+- `ingestion-lambda` — EventBridge-scheduled, pulls live conditions from the Davis weather station **(No longer needed - to be deleted)**
 - `public-lambda` — serve the public dashboard
 
 ### Database
@@ -35,7 +35,9 @@ nx run db:reset     # wipe the local database and re-apply everything
 
 See [db/README.md](db/README.md) for details, writing migrations, and troubleshooting.
 
-## Running tasks
+## Frontend development
+
+### Run it
 
 To run just the frontend (port 4200):
 
@@ -43,7 +45,61 @@ To run just the frontend (port 4200):
 nx serve frontend
 ```
 
-### Running the backend locally
+### Project layout
+
+| Path                    | What                                                                                 |
+| ----------------------- | ------------------------------------------------------------------------------------ |
+| `src/containers/`       | Pages                                                                                |
+| `src/components/`       | Shared components                                                                    |
+| `src/api/`              | `apiClient`, the axios client. It attaches the Cognito access token when auth is on. |
+| `src/hooks/`            | Data hooks used by pages (import as `@hooks/...`)                                    |
+| `src/auth/`             | Amplify and Cognito configuration                                                    |
+| `src/styles/tokens.css` | Design tokens from Figma                                                             |
+| `src/utils/`            | Helpers                                                                              |
+| `src/providers.tsx`     | App-wide providers (Chakra)                                                          |
+
+To add a page, add a new file in `/src/containers/` then a route in `src/app.tsx`.
+
+### Tests
+
+The frontend uses [vitest](https://vitest.dev) and [Testing Library](https://testing-library.com/docs/react-testing-library/intro/). Put tests next to the code as `*.spec.tsx`. Tests for Chakra components should render with `renderWithProviders` from `src/test/render.tsx`, which wraps them in `Providers`.
+
+```bash
+# run all frontend tests
+nx run frontend:test
+# To run one file (example app.spec.tsx)
+npx vitest run src/app.spec.tsx
+```
+
+### Lint and format checking
+
+```bash
+# lint on frontend only
+nx lint frontend
+nx run frontend:typecheck
+```
+
+### Frontend styles
+
+Colors, type, spacing and radii from the Figma design system are CSS variables in `apps/frontend/src/styles/tokens.css`, loaded globally through `src/styles.css`. Use the semantic tokens in components, not the raw palette or hex values:
+
+```css
+.card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+.tile-value {
+  font: var(--text-tile-number);
+}
+```
+
+Named type styles (`--text-page-title`, `--text-section-title`, `--text-body`, `--text-caption`, `--text-tile-number`) are `font` shorthands. While `nx serve frontend` is running, http://localhost:4200/design shows every token for comparing against Figma.
+
+## Backend
+
+### Run it locally
 
 Starts Postgres, the internal API and file uploads on http://localhost:3000. Needs Docker.
 
@@ -66,31 +122,22 @@ curl -X PUT -H 'Content-Type: text/csv' --data-binary @obs.csv '<uploadUrl from 
 curl localhost:3000/imports
 ```
 
-### Frontend styles
-
-Colors, type, spacing and radii from the Figma design system are CSS variables in `apps/frontend/src/styles/tokens.css`, loaded globally through `src/styles.css`. Use the semantic tokens in components, not the raw palette or hex values:
-
-```css
-.card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-4);
-}
-.tile-value {
-  font: var(--text-tile-number);
-}
-```
-
-Named type styles (`--text-page-title`, `--text-section-title`, `--text-body`, `--text-caption`, `--text-tile-number`) are `font` shorthands. While `nx serve frontend` is running, http://localhost:4200/design shows every token for comparing against Figma.
+### Tests
 
 ```bash
 nx test internal-serving-lambda
 # or run all four at once:
-nx run-many -t test -p internal-serving-lambda upload-lambda ingestion-lambda public-lambda
+nx run-many -t test -p internal-serving-lambda upload-lambda public-lambda
 ```
 
-## Other commands
+## Helpful commands
+
+```bash
+# check formatting and lint on the whole repo
+yarn run prepush
+# fix formatting and lint on the whole repo
+yarn run prepush:fix
+```
 
 Run `git submodule update --remote` to pull the latest changes from the component library
 
