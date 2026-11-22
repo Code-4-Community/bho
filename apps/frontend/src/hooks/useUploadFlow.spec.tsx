@@ -8,7 +8,7 @@ import {
 } from '@api/imports';
 import { mockInvalidPreview, mockPreview } from '@api/mocks/preview';
 import { createQueryClient } from '@api/queryClient';
-import type { ImportPreview } from '@api/types';
+import type { ImportPreview, UploadKind } from '@api/types';
 import { useUploadFlow } from './useUploadFlow';
 
 vi.mock('@api/imports');
@@ -16,9 +16,9 @@ vi.mock('@api/imports');
 const s3Key = 'daily/2026-11-22/abc.csv';
 const file = new File(['date,temp'], 'November 2026.csv');
 
-const renderUploadFlow = () => {
+const renderUploadFlow = (kind: UploadKind = 'daily') => {
   const client = createQueryClient();
-  return renderHook(() => useUploadFlow(), {
+  return renderHook(() => useUploadFlow(kind), {
     wrapper: ({ children }: { children: ReactNode }) => (
       <QueryClientProvider client={client}>{children}</QueryClientProvider>
     ),
@@ -76,12 +76,16 @@ describe('useUploadFlow', () => {
 
   it('ends as invalid when the preview has row errors', async () => {
     vi.mocked(previewImport).mockResolvedValue(mockInvalidPreview);
-    const { result } = renderUploadFlow();
+    const { result } = renderUploadFlow('historical');
 
     act(() => result.current.upload(file));
 
     await waitFor(() => expect(result.current.status).toBe('invalid'));
     expect(result.current.preview).toEqual(mockInvalidPreview);
+    expect(requestUploadUrl).toHaveBeenCalledWith(
+      'historical',
+      'November 2026.csv',
+    );
   });
 
   it('ends as error when a step fails, and a new upload recovers', async () => {

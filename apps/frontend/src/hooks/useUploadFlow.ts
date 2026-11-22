@@ -5,6 +5,7 @@ import {
   requestUploadUrl,
   uploadToPresignedUrl,
 } from '@api/imports';
+import type { UploadKind } from '@api/types';
 
 export type UploadStatus =
   | 'idle'
@@ -14,7 +15,7 @@ export type UploadStatus =
   | 'invalid'
   | 'error';
 
-export function useUploadFlow() {
+export function useUploadFlow(kind: UploadKind) {
   const [step, setStep] = useState<'uploading' | 'previewing'>('uploading');
   const [progress, setProgress] = useState(0);
   const controller = useRef<AbortController>();
@@ -27,7 +28,7 @@ export function useUploadFlow() {
       file: File;
       signal: AbortSignal;
     }) => {
-      const { uploadUrl, s3Key } = await requestUploadUrl('daily', file.name);
+      const { uploadUrl, s3Key } = await requestUploadUrl(kind, file.name);
       await uploadToPresignedUrl(uploadUrl, file, {
         onProgress: setProgress,
         signal,
