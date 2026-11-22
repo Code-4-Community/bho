@@ -1,5 +1,4 @@
-// Temporary page (#68) for checking the tokens and components against Figma.
-// Only routed in dev.
+// Temporary page (#68) for checking the tokens against Figma. Only routed in dev.
 
 import { useState } from 'react';
 import { mockEntries } from '@api/mocks/entries';

@@ -19,7 +19,6 @@ export const formatDay = (date: string) =>
     day: 'numeric',
   }).format(parseDate(date));
 
-// Full ISO timestamps show on the observatory's clock, 24-hour.
 export const formatMonthDayET = (timestamp: string) =>
   new Intl.DateTimeFormat('en-US', {
     timeZone: 'America/New_York',

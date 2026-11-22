@@ -13,13 +13,11 @@ const SOURCES: [ErrorLogSource, string][] = [
   ['Weather Underground', 'Weather Underground'],
 ];
 
-// Figma only shows these two.
 const RANGES: [ErrorLogRange, string][] = [
   ['24h', 'Last 24hr'],
   ['month', 'Last month'],
 ];
 
-// Outcome icons are from the Figma error log.
 const TRIANGLE =
   'M1.20819 20.2799C1.12659 19.4173 1.67139 18.3666 2.76339 16.2666L8.58459 5.06393L8.58731 5.05871C9.6763 2.96486 10.222 1.91564 10.933 1.56393C11.2403 1.41193 11.5728 1.33337 11.9092 1.33337C12.2455 1.33337 12.5781 1.41193 12.8854 1.56393C13.5981 1.91587 14.144 2.96624 15.2344 5.06417L15.235 5.06527L21.055 16.2653C22.147 18.3666 22.6918 19.4173 22.6102 20.2786C22.575 20.6503 22.4698 21.0097 22.3015 21.3333C22.1332 21.6569 21.9056 21.9377 21.6334 22.1573C21.0034 22.6666 19.9126 22.6666 17.7322 22.6666H6.08859C3.90579 22.6666 2.81499 22.6666 2.18379 22.1573C1.91193 21.9377 1.68461 21.6571 1.51655 21.3337C1.34849 21.0103 1.24344 20.6513 1.20819 20.2799Z';
 
@@ -89,7 +87,6 @@ const columns: Column<ErrorLogEntry>[] = [
   },
 ];
 
-// Stand-in until the shared Filter from #94 lands.
 function FilterMenu<V extends string>({
   prefix = '',
   value,

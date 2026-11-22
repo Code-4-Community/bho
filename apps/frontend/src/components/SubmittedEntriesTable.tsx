@@ -10,7 +10,6 @@ const TONES: Record<EntryListItem['status'], string> = {
   Missing: 'danger',
 };
 
-// Stand-in until the shared Tag from #67 lands.
 function StatusTag({ status, correctedCount }: EntryListItem) {
   const tone = TONES[status];
   return (

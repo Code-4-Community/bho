@@ -17,13 +17,11 @@ export interface Column<T> {
 
 interface DataTableProps<T> {
   title: string;
-  // Shown to the right of the title, e.g. filters.
   actions?: ReactNode;
   columns: Column<T>[];
   rows: T[];
   rowKey: (row: T) => string | number;
   loading?: boolean;
-  // Makes each row clickable (mouse and Enter) and adds a trailing chevron.
   onRowClick?: (row: T) => void;
   onClearFilters: () => void;
 }
@@ -43,7 +41,6 @@ const tableCss = {
     fontWeight: 'bold',
     textTransform: 'uppercase',
   },
-  // Figma's table cells are Arial 20px, which has no named text style.
   '& td': {
     py: 'var(--space-4)',
     color: 'var(--color-text)',
