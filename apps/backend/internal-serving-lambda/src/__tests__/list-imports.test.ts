@@ -57,7 +57,11 @@ const call = async (query: Record<string, string> | null = null) => {
 
 describe('listImportsHandler', () => {
   beforeEach(() => {
-    jest.mocked(getCurrentUser).mockResolvedValue({ id: 'user-123' });
+    jest.mocked(getCurrentUser).mockResolvedValue({
+      id: 7,
+      email: 'dev@example.com',
+      role: 'ADMIN',
+    });
     jest.mocked(getDb).mockReturnValue(db as never);
     jest
       .mocked(listImports)
@@ -203,7 +207,11 @@ describe('GET /imports through the lambda handler', () => {
   });
 
   it('routes to the list imports handler', async () => {
-    jest.mocked(getCurrentUser).mockResolvedValue({ id: 'user-123' });
+    jest.mocked(getCurrentUser).mockResolvedValue({
+      id: 7,
+      email: 'dev@example.com',
+      role: 'ADMIN',
+    });
     jest.mocked(listImports).mockResolvedValue({ imports: [], total: 0 });
 
     const result = await handler(buildEvent());
@@ -219,7 +227,11 @@ describe('GET /imports through the lambda handler', () => {
 
   it('returns 500 when the query fails', async () => {
     jest.spyOn(console, 'error').mockImplementation(() => undefined);
-    jest.mocked(getCurrentUser).mockResolvedValue({ id: 'user-123' });
+    jest.mocked(getCurrentUser).mockResolvedValue({
+      id: 7,
+      email: 'dev@example.com',
+      role: 'ADMIN',
+    });
     jest.mocked(listImports).mockRejectedValue(new Error('connection refused'));
 
     const result = await handler(buildEvent());

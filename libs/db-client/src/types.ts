@@ -12,6 +12,8 @@ export interface UsersTable {
   firstName: string;
   lastName: string;
   status: string;
+  // Cognito `sub` claim; null until the user first signs in.
+  cognitoSub: string | null;
 }
 
 export interface StationsTable {

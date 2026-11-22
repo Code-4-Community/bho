@@ -3,6 +3,7 @@ import { createUploadUrlHandler } from './routes/create-upload-url';
 import { getImportHandler } from './routes/get-import';
 import { healthHandler } from './routes/health';
 import { listImportsHandler } from './routes/list-imports';
+import { meHandler, usersHandler } from './routes/user-endpoints';
 
 export type RouteHandler = (
   event: APIGatewayProxyEvent,
@@ -13,4 +14,6 @@ export const routes: Record<string, RouteHandler> = {
   'POST /imports/upload-url/{kind}': createUploadUrlHandler,
   'GET /imports': listImportsHandler,
   'GET /imports/{id}': getImportHandler,
+  'GET /me': meHandler,
+  'GET /users': usersHandler,
 };
