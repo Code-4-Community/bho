@@ -1,4 +1,10 @@
-import { formatDate, parseDate, todayET } from './date';
+import {
+  formatDate,
+  formatMonthDayET,
+  formatTimeET,
+  parseDate,
+  todayET,
+} from './date';
 
 describe('parseDate', () => {
   it('parses as UTC midnight', () => {
@@ -16,6 +22,22 @@ describe('formatDate', () => {
   it('handles the first and last day of a year', () => {
     expect(formatDate('2026-01-01')).toBe('Jan 1, 2026');
     expect(formatDate('2026-12-31')).toBe('Dec 31, 2026');
+  });
+});
+
+describe('formatMonthDayET and formatTimeET', () => {
+  it('converts to daylight time', () => {
+    expect(formatMonthDayET('2026-10-31T18:12:00Z')).toBe('Oct 31');
+    expect(formatTimeET('2026-10-31T18:12:00Z')).toBe('14:12');
+  });
+
+  it('converts to standard time, back a day before 05:00 UTC', () => {
+    expect(formatMonthDayET('2026-11-22T04:30:05Z')).toBe('Nov 21');
+    expect(formatTimeET('2026-11-22T04:30:05Z', true)).toBe('23:30:05');
+  });
+
+  it('shows midnight as 00, not 24', () => {
+    expect(formatTimeET('2026-11-22T05:00:00Z')).toBe('00:00');
   });
 });
 
