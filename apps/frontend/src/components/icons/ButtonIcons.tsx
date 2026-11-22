@@ -22,6 +22,7 @@ const stroke = {
   strokeLinejoin: 'round',
 } as const;
 
+/** Upload arrow (20px), from the Upload and Re-Upload buttons. */
 export const UploadIcon: React.FC<IconProps> = (props) => (
   <svg width="20" height="20" viewBox="0 0 20 20" {...common} {...props}>
     <path
@@ -32,6 +33,7 @@ export const UploadIcon: React.FC<IconProps> = (props) => (
   </svg>
 );
 
+/** Circular refresh arrows (about 15.6px), from the Refresh button. */
 export const RefreshIcon: React.FC<IconProps> = (props) => (
   <svg
     width="15.5556"
@@ -49,6 +51,7 @@ export const RefreshIcon: React.FC<IconProps> = (props) => (
   </svg>
 );
 
+/** Document with a "T" (about 15.8 x 19.4px), from the Add Text button. */
 export const AddTextIcon: React.FC<IconProps> = (props) => (
   <svg
     width="15.75"
@@ -116,6 +119,7 @@ export const ChevronRightIcon: React.FC<IconProps> = (props) => (
   </svg>
 );
 
+/** Calendar (17.6px), the leading icon of the date filter. */
 export const CalendarIcon: React.FC<IconProps> = (props) => (
   <svg
     width="17.6"

@@ -70,6 +70,8 @@ const FIGMA_BUTTONS: {
 
 const SIZES: ButtonSize[] = ['md', 'sm'];
 
+/** Every Button variant x size in default, disabled and loading states, using
+ * the Figma labels and icons, plus the link variant as a real anchor. */
 const ButtonsSection: React.FC = () => (
   <section style={section}>
     <h3>Buttons</h3>
@@ -146,6 +148,8 @@ const ButtonsSection: React.FC = () => (
   </section>
 );
 
+/** Both Filter types (date and uploader) with mock options, the selected
+ * value printed below each, plus the disabled and `sm` states. */
 const FiltersSection: React.FC = () => {
   const [date, setDate] = useState(DEFAULT_DATE);
   const [uploader, setUploader] = useState(DEFAULT_UPLOADER);
@@ -197,7 +201,8 @@ const FiltersSection: React.FC = () => {
   );
 };
 
-// Composed like Figma 528:7052 / 531:16311.
+/** Filters composed like Figma 528:7052 / 531:16311: labels, an entry count
+ * driven by the mock data, and Clear Filters when nothing matches. */
 const FilterBarSection: React.FC = () => {
   const [date, setDate] = useState(DEFAULT_DATE);
   const [uploader, setUploader] = useState(DEFAULT_UPLOADER);
@@ -247,6 +252,7 @@ const FilterBarSection: React.FC = () => {
   );
 };
 
+/** Dev-only page at `/dev/buttons`, not in production navigation. */
 const ButtonsFiltersPreview: React.FC = () => (
   <main
     style={{

@@ -1,6 +1,9 @@
 import type { ButtonProps as ChakraButtonProps } from '@chakra-ui/react';
 
+/** The look of a button: filled green, outlined, dark, underlined text, or
+ * icon-only. Labels and icons come from the caller. */
 export type ButtonVariant = 'primary' | 'secondary' | 'dark' | 'link' | 'ghost';
+/** `md` is Figma's 40px; `sm` is a compact option that is not in Figma. */
 export type ButtonSize = 'sm' | 'md';
 
 // Values with no token in #68's tokens.css yet. They are named here and listed

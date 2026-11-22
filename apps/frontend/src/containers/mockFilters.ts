@@ -6,18 +6,18 @@ import type { FilterOption } from '@components/Filter';
 export interface MockEntry {
   id: number;
   date: string; // ISO yyyy-mm-dd
-  uploader: 'intern' | 'admin';
+  uploader: 'staff' | 'admin';
 }
 
 export const MOCK_ENTRIES: MockEntry[] = [
-  { id: 1, date: '2026-10-02', uploader: 'intern' },
+  { id: 1, date: '2026-10-02', uploader: 'staff' },
   { id: 2, date: '2026-10-05', uploader: 'admin' },
-  { id: 3, date: '2026-10-12', uploader: 'intern' },
-  { id: 4, date: '2026-10-19', uploader: 'intern' },
+  { id: 3, date: '2026-10-12', uploader: 'staff' },
+  { id: 4, date: '2026-10-19', uploader: 'staff' },
   { id: 5, date: '2026-10-23', uploader: 'admin' },
-  { id: 6, date: '2026-10-27', uploader: 'intern' },
+  { id: 6, date: '2026-10-27', uploader: 'staff' },
   { id: 7, date: '2026-10-30', uploader: 'admin' },
-  { id: 8, date: '2026-11-01', uploader: 'intern' },
+  { id: 8, date: '2026-11-01', uploader: 'staff' },
 ];
 
 /** Preset date ranges. A real range picker can replace this later: keep the
@@ -47,7 +47,7 @@ export const DATE_PRESETS: (FilterOption & { range: [string, string] })[] = [
 
 export const UPLOADER_OPTIONS: FilterOption[] = [
   { value: 'all', label: 'All uploaders' },
-  { value: 'intern', label: 'Intern' },
+  { value: 'staff', label: 'Staff' },
   { value: 'admin', label: 'Admin' },
 ];
 

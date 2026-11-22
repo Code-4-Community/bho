@@ -30,9 +30,27 @@ export interface FilterProps {
 const HEIGHT = { md: '54px', sm: '40px' } as const;
 
 /**
- * Dropdown filter from the Figma "Filter" frame (528:7117), built on Chakra's
- * accessible `Select`. Controlled: it shows the current value and reports the
- * picked one. Keyboard support (Enter/Space/Arrows, Escape) comes from Chakra.
+ * Dropdown filter from the Figma "Filter" frame (528:7117). Built on Chakra's
+ * accessible `Select`, so the trigger exposes `aria-expanded`, options expose
+ * `aria-selected`, and Enter / Space / Arrows open, arrows move, Enter selects
+ * and Escape closes.
+ *
+ * Controlled: it shows the label of `value` (or `placeholder` when no option
+ * matches) and calls `onChange` with the picked option's `value`. `label`
+ * renders above the trigger and is wired to it. `icon` is a decorative leading
+ * icon (the calendar on the date filter).
+ *
+ * The date filter is this same component fed preset ranges. A real date-range
+ * picker can replace the options later without changing this API.
+ *
+ * @example
+ * <Filter
+ *   label="Uploaded by"
+ *   options={[{ value: 'all', label: 'All uploaders' }]}
+ *   value={uploader}
+ *   onChange={setUploader}
+ *   width="346px"
+ * />
  */
 export function Filter({
   label,

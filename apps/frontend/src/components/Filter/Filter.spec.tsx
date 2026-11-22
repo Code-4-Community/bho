@@ -7,7 +7,7 @@ import { Filter, type FilterOption } from './Filter';
 
 const OPTIONS: FilterOption[] = [
   { value: 'all', label: 'All uploaders' },
-  { value: 'intern', label: 'Intern' },
+  { value: 'staff', label: 'Staff' },
   { value: 'admin', label: 'Admin' },
 ];
 
@@ -41,9 +41,9 @@ function Controlled({
 
 describe('Filter', () => {
   it('shows the label and the label of the current value', () => {
-    renderWithProviders(<Controlled initial="intern" />);
+    renderWithProviders(<Controlled initial="staff" />);
     expect(screen.getByText('Uploaded by')).toBeTruthy();
-    expect(trigger().textContent).toContain('Intern');
+    expect(trigger().textContent).toContain('Staff');
   });
 
   it('wires the label to the trigger', () => {
@@ -67,10 +67,10 @@ describe('Filter', () => {
 
   it('marks the current option as selected', async () => {
     const user = userEvent.setup();
-    renderWithProviders(<Controlled initial="intern" />);
+    renderWithProviders(<Controlled initial="staff" />);
     await user.click(trigger());
-    const intern = await screen.findByRole('option', { name: 'Intern' });
-    expect(intern.getAttribute('aria-selected')).toBe('true');
+    const staff = await screen.findByRole('option', { name: 'Staff' });
+    expect(staff.getAttribute('aria-selected')).toBe('true');
     expect(
       screen
         .getByRole('option', { name: 'Admin' })

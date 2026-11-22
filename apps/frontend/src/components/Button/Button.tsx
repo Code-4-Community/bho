@@ -43,10 +43,26 @@ const Icon = ({ children }: { children: ReactNode }) => (
 );
 
 /**
- * Chakra's Button dressed with the Figma "Buttons" frame (156:1559), using the
- * tokens from `styles/tokens.css`. Chakra props such as `onClick`, `disabled`,
- * `asChild` and `aria-*` pass through. `type` defaults to "button" so a button
- * in a form never submits by accident.
+ * Shared button. Built on Chakra's `Button` and styled with the tokens in
+ * `styles/tokens.css` to match the Figma "Buttons" frame (156:1559).
+ *
+ * - `variant` is the look (`primary`, `secondary`, `dark`, `link`, `ghost`).
+ *   The caller passes the label and icons, so there is no variant per label.
+ * - `size` is `md` (Figma's 40px) or `sm` (compact, not in Figma).
+ * - `loading` shows a spinner, disables the button and sets `aria-busy`;
+ *   `loadingText` replaces the label while loading.
+ * - `href` renders a real `<a>`. `asChild` wraps your own element (e.g. a
+ *   router Link) and leaves its content and `type` alone.
+ * - `type` defaults to `"button"` so a button in a form never submits by
+ *   accident. Pass `type="submit"` for Submit.
+ * - With no children it is icon-only and `aria-label` is required.
+ *
+ * Other Chakra props (`onClick`, `disabled`, `aria-*`, ...) pass through.
+ *
+ * @example
+ * <Button leftIcon={<UploadIcon />} onClick={upload}>Upload</Button>
+ * <Button variant="secondary" onClick={close}>Cancel</Button>
+ * <Button variant="ghost" aria-label="Open entry" leftIcon={<ChevronRightIcon />} />
  */
 export function Button({
   variant = 'primary',
