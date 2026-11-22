@@ -53,27 +53,23 @@ export const Tile: React.FC<TileProps> = ({
     className={['tile', className].filter(Boolean).join(' ')}
     data-tone={tone}
   >
-    <div className="tile__header">
-      <div className="tile__label">{label}</div>
-      {caption && <div className="tile__caption">{caption}</div>}
-    </div>
+    <div className="tile__label">{label}</div>
     {tone !== 'neutral' && (
       <>
         <ToneIcon tone={tone} />
         <span className="tile__sr">Status: {TONE_TEXT[tone]}</span>
       </>
     )}
-    <div className="tile__body">
-      <div className="tile__value">
-        {value === null || value === undefined ? (
-          <span role="img" aria-label="No data">
-            —
-          </span>
-        ) : (
-          value
-        )}
-      </div>
+    <div className="tile__value">
+      {value === null || value === undefined ? (
+        <span role="img" aria-label="No data">
+          —
+        </span>
+      ) : (
+        value
+      )}
     </div>
+    {caption && <div className="tile__caption">{caption}</div>}
   </div>
 );
 

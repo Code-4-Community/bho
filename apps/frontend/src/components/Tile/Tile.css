@@ -2,6 +2,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  /* Label, value and caption are direct children, so with a caption the value
+     sits midway between them; without one it sits bottom-left. */
   justify-content: space-between;
   min-height: 159px;
   padding: var(--space-3);
@@ -42,7 +44,6 @@
 }
 
 .tile__caption {
-  margin-top: var(--space-1);
   font: italic var(--font-weight-regular) var(--font-size-body-sm) /
     var(--line-height) var(--font-body);
 }
