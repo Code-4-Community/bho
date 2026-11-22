@@ -23,11 +23,13 @@ import type { FileRejection, UploadFileType } from './types';
 import { validateFile } from './validateFile';
 
 export interface UploadFileProps {
+  /** `upload` has a close × and Cancel and a taller dropzone; `reupload` has neither. Default `upload`. */
   type?: UploadFileType;
   /** Defaults from `type`: "Upload File" / "Re-Upload File". */
   title?: string;
-  /** Extensions (".csv") or MIME types. */
+  /** Extensions (".csv") or MIME types. Default `['.csv']`. */
   accept?: string[];
+  /** Largest file allowed, in bytes. Default 1 GB. */
   maxSizeBytes?: number;
   /** 0-100, controlled by the parent. Its presence means "uploading". */
   progress?: number;
@@ -35,6 +37,7 @@ export interface UploadFileProps {
   isSubmitting?: boolean;
   /** Initial selection (uncontrolled), e.g. for the re-upload preview. */
   defaultFile?: File | null;
+  /** Called with the selected file when Submit is pressed. */
   onSubmit: (file: File) => void;
   /** `upload` type only. Also called when the file row's × is used mid-upload. */
   onCancel?: () => void;
@@ -42,6 +45,7 @@ export interface UploadFileProps {
   onClose?: () => void;
   /** Called instead of selecting when a file fails validation. */
   onReject?: (rejections: FileRejection[]) => void;
+  /** Called with the new file when one is selected, and with `null` when it is removed. */
   onFileChange?: (file: File | null) => void;
 }
 
@@ -60,6 +64,40 @@ const BLUE_STATE = {
   '& .upload-file-icon': { color: 'var(--blue-500)' },
 };
 
+/**
+ * UploadFile
+ *
+ * The panel for choosing a file to upload: a header, a drag-and-drop zone with
+ * a "Choose file" button, helper text, the selected file, and the footer
+ * buttons. It selects, validates and displays a file and shows the progress the
+ * parent passes in. It does not send anything anywhere; the parent does that in
+ * `onSubmit`.
+ *
+ * Behavior:
+ * - One file at a time. Choosing or dropping a new file replaces the current
+ *   one. If several are dropped, only the first is used.
+ * - A file is checked against `accept` (extension, case-insensitive) and
+ *   `maxSizeBytes`. A bad file is not selected; `onReject` gets the reason and
+ *   the parent decides whether to show a `FileRejected`.
+ * - The dropzone is also usable by keyboard through the "Choose file" button,
+ *   which opens a hidden file input.
+ * - While `progress` or `isSubmitting` is set, Submit and the dropzone are
+ *   disabled, and the file row's × acts as cancel (it calls `onCancel`).
+ * - `data-dragging="true"` is set on the dropzone while a file is dragged over
+ *   it, and `data-uploading="true"` while uploading (both use the blue style).
+ *
+ * This is the panel only. Put it in a modal yourself if you need one.
+ *
+ * @example
+ * <UploadFile
+ *   type="upload"
+ *   progress={progress}
+ *   onSubmit={(file) => startUpload(file)}
+ *   onCancel={cancelUpload}
+ *   onClose={closeModal}
+ *   onReject={setRejections}
+ * />
+ */
 export const UploadFile: React.FC<UploadFileProps> = ({
   type = 'upload',
   title,

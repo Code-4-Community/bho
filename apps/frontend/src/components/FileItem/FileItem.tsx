@@ -16,7 +16,23 @@ export interface FileItemProps {
 const clampPercent = (value: number) =>
   Number.isFinite(value) ? Math.min(100, Math.max(0, Math.round(value))) : 0;
 
-/** The selected-file row (Figma Subsection "Uploading"). */
+/**
+ * FileItem
+ *
+ * The selected-file row, built on `Subsection` (Figma Subsection "Uploading"):
+ * a CSV icon on a white tile, the file name, the human-readable size ("3 MB"),
+ * an optional × button, and an optional progress bar with a percent.
+ *
+ * - The × is a real button labelled "Remove <file name>", and shows only when
+ *   `onRemove` is passed.
+ * - The progress bar shows only when `progress` is passed (so `0` shows an
+ *   empty bar). It is a Chakra `Progress` with `aria-label`, `aria-valuenow`
+ *   and a 0-100 range. Values are clamped to 0-100 and rounded.
+ * - A `File` can be passed directly as `file`.
+ *
+ * @example
+ * <FileItem file={file} progress={49} onRemove={() => setFile(null)} />
+ */
 export const FileItem: React.FC<FileItemProps> = ({
   file,
   progress,

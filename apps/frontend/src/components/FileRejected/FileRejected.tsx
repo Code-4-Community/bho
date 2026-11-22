@@ -4,15 +4,36 @@ import { BODY_MD, H3, closeButtonProps } from '../styles';
 import type { FileRejection } from '../UploadFile/types';
 
 export interface FileRejectedProps {
+  /** Heading text. Default "File Rejected". */
   title?: string;
+  /** One row per entry. An empty list renders nothing. */
   rejections: FileRejection[];
   /** Shows the × when provided. */
   onClose?: () => void;
 }
 
 /**
- * Lists what was rejected and why. Generic on purpose: it shows client-side
- * file checks and also parse/validation errors from the backend.
+ * FileRejected
+ *
+ * A card listing what was rejected and why, one row per `{ item, reason }`
+ * (the item on the left with a warning icon, the reason in italics on the
+ * right).
+ *
+ * Generic on purpose: it shows the client-side checks from `UploadFile`
+ * ("FileName.pdf" / "Incorrect file format") and can also show parse or
+ * validation errors from the backend ("Date []" / "Missing required field").
+ *
+ * - The card has `role="alert"`, so screen readers announce it when it appears.
+ * - The warning icons are decorative (`aria-hidden`).
+ * - Renders nothing for an empty `rejections` list, so the parent can always
+ *   render it and just pass `[]` to hide it.
+ * - The × shows only when `onClose` is passed.
+ *
+ * @example
+ * <FileRejected
+ *   rejections={[{ item: 'FileName.pdf', reason: 'Incorrect file format' }]}
+ *   onClose={() => setRejections([])}
+ * />
  */
 export const FileRejected: React.FC<FileRejectedProps> = ({
   title = 'File Rejected',
