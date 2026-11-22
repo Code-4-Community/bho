@@ -36,14 +36,14 @@ describe('Tile', () => {
     'shows a tone icon for %s',
     (tone) => {
       const { container } = render(<Tile label="L" value={1} tone={tone} />);
-      expect(container.querySelector('img')).toBeInTheDocument();
+      expect(container.querySelector('svg')).toBeInTheDocument();
       expect(screen.getByText(/^Status:/)).toBeInTheDocument();
     },
   );
 
   it('shows no icon for neutral', () => {
     const { container } = render(<Tile label="L" value={1} />);
-    expect(container.querySelector('img')).not.toBeInTheDocument();
+    expect(container.querySelector('svg')).not.toBeInTheDocument();
     expect(screen.queryByText(/^Status:/)).not.toBeInTheDocument();
   });
 });

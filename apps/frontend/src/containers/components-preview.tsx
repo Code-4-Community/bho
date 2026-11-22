@@ -1,5 +1,6 @@
 // Temporary dev page (#67) for checking the small components. Only routed in dev.
-import { Box, Flex, Heading, Image, SimpleGrid, Stack } from '@chakra-ui/react';
+import { Box, Flex, Heading, SimpleGrid, Stack } from '@chakra-ui/react';
+import { CircleAlert, CircleMinus } from 'lucide-react';
 import {
   DateTimeHeading,
   LastUploadTile,
@@ -10,8 +11,6 @@ import {
   Tile,
   TagVariant,
 } from '@components';
-import warningIcon from '../assets/icons/circle-alert-warning.svg';
-import scheduledIcon from '../assets/icons/circle-alert-null.svg';
 import {
   EditLogEntry,
   editLogA,
@@ -82,10 +81,11 @@ const ComponentsPreview: React.FC = () => (
             label={item.field}
             subtitle={item.reason}
             leadingIcon={
-              <Image
-                src={item.kind === 'flagged' ? warningIcon : scheduledIcon}
-                alt=""
-              />
+              item.kind === 'flagged' ? (
+                <CircleAlert size={18} color="var(--color-warning)" />
+              ) : (
+                <CircleMinus size={18} color="var(--color-info)" />
+              )
             }
             trailing="chevron"
             onClick={() => console.log('open', item.field)}

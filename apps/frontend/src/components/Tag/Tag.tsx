@@ -54,6 +54,25 @@ export interface TagProps {
   className?: string;
 }
 
+/**
+ * Tag
+ *
+ * Small pill that labels a status, such as "Submitted" or "Flagged".
+ *
+ * Pass a `variant` for one of the statuses in `TAG_VARIANTS`; it supplies the
+ * label and tone. For a free-form label such as "Today's Entry 11/1", pass a
+ * `tone` and `children` instead. `tone` overrides a variant's tone, `children`
+ * override its label, and `count` appends "(n)" to the label (0 renders "(0)").
+ *
+ * Colors come from the status tokens in styles/tokens.css. The label text
+ * always carries the meaning, so color is never the only signal. `data-tone`
+ * and `data-variant` are stable hooks for tests.
+ *
+ * @example
+ * <Tag variant="submitted" />
+ * <Tag variant="corrected" count={3} />
+ * <Tag tone="warning">Past Entry 10/31</Tag>
+ */
 export const Tag: React.FC<TagProps> = ({
   variant,
   tone,

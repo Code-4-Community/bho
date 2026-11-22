@@ -1,13 +1,12 @@
 import {
   Box,
   Flex,
-  Image,
   Link,
   LinkBox,
   LinkOverlay,
   chakra,
 } from '@chakra-ui/react';
-import chevronIcon from '../../assets/icons/chevron.svg';
+import { ChevronRight } from 'lucide-react';
 import { bodyMedium } from '../typography';
 
 export interface SectionRowProps {
@@ -45,6 +44,36 @@ const textColumn = {
   textAlign: 'left',
 } as const;
 
+/**
+ * SectionRow
+ *
+ * One row inside a `Section`. The left column stacks up to three lines: a
+ * `heading` (see `DateTimeHeading`), a bold `label`, and a `subtitle`. The
+ * right side can hold a `tag` and a chevron, and a `leadingIcon` can sit before
+ * the text. `highlighted` gives the row the light blue background used for the
+ * current version in an Edit Log.
+ *
+ * Interactivity: `href` makes the whole row a link and `onClick` makes it a
+ * button; with neither it is plain content. A `<button>` or `<a>` cannot
+ * contain another link, so only the text is wrapped by the row's own element and
+ * `LinkOverlay`'s `::before` stretches it over the whole row. With
+ * `subtitleHref`, the subtitle is a separate link that `LinkBox` lifts above
+ * that overlay, so it stays clickable and never triggers the row's action.
+ *
+ * Renders an `<li>`, so use it inside `Section` (or any list). Rows render in
+ * the order given; ordering is the caller's decision. `data-highlighted` and
+ * `data-interactive` are stable hooks for tests.
+ *
+ * @example
+ * <SectionRow
+ *   heading={<DateTimeHeading date="Nov 1, 2026" time="13:00" />}
+ *   label="John Doe"
+ *   subtitle="FileName.csv"
+ *   subtitleHref="/files/1"
+ *   tag={<Tag variant="current" />}
+ *   highlighted
+ * />
+ */
 export const SectionRow: React.FC<SectionRowProps> = ({
   heading,
   label,
@@ -161,7 +190,12 @@ export const SectionRow: React.FC<SectionRowProps> = ({
       {tag && <Box flex="none">{tag}</Box>}
       {trailing === 'chevron' && (
         <Flex flex="none" h="32px" align="center" pl="6px" pr="4px">
-          <Image src={chevronIcon} alt="" aria-hidden="true" />
+          <ChevronRight
+            size={24}
+            strokeWidth={2.5}
+            color="var(--color-success)"
+            aria-hidden="true"
+          />
         </Flex>
       )}
     </LinkBox>

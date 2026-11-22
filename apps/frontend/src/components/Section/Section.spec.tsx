@@ -163,7 +163,7 @@ describe('SectionRow', () => {
     expect(screen.getByText('Peak Gust')).toBeInTheDocument();
     expect(screen.getByText('Out of Range: 112 mph')).toBeInTheDocument();
     expect(screen.getByText('Tagged')).toBeInTheDocument();
-    expect(container.querySelector('img')).toBeInTheDocument();
+    expect(container.querySelector('svg')).toBeInTheDocument();
   });
 });
 

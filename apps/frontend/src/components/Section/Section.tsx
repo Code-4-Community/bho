@@ -27,6 +27,29 @@ export interface SectionProps {
 
 const SKELETON_ROWS = 3;
 
+/**
+ * Section
+ *
+ * Bordered card with a titled header and a list of `SectionRow`s. Open Items,
+ * Recent Activity and Edit Log are all this component with different rows; none
+ * of them is a component of its own.
+ *
+ * Header: `title` renders as a real heading (`headingLevel` 2–4, default 2) and
+ * the section is labelled by it. `headerAction` sits on the right and can be
+ * plain text ("2 uploads") or a link/button the caller passes in ("View all");
+ * links and buttons in it get the bold underlined style.
+ *
+ * Body states: while `isLoading`, three skeleton rows render with
+ * `aria-busy="true"` and neither the children nor the empty message show. When
+ * not loading and there are no rows, `emptyMessage` (default "Nothing to show
+ * yet.") is centered instead. Otherwise the children render in the order
+ * given. `maxHeight` makes the body scroll.
+ *
+ * @example
+ * <Section title="Recent Activity" headerAction={<a href="/all">View all</a>}>
+ *   <SectionRow heading={<DateTimeHeading date="Nov 1, 2026" time="13:00" />} />
+ * </Section>
+ */
 export const Section: React.FC<SectionProps> = ({
   title,
   headingLevel = 2,

@@ -1,7 +1,5 @@
-import { Box, Flex, Image, Text, VisuallyHidden } from '@chakra-ui/react';
-import warningIcon from '../../assets/icons/circle-alert-warning.svg';
-import infoIcon from '../../assets/icons/circle-alert-null.svg';
-import successIcon from '../../assets/icons/circle-alert-ok.svg';
+import { Box, Flex, Text, VisuallyHidden } from '@chakra-ui/react';
+import { CircleAlert, CircleCheck, CircleMinus } from 'lucide-react';
 import { bodyMedium, bodySmall } from '../typography';
 
 export type TileTone = 'neutral' | 'warning' | 'info' | 'success';
@@ -19,17 +17,41 @@ export interface TileProps {
   className?: string;
 }
 
-// Assumption: info and success icons are the "Null" and "Ok" variants of the
-// circle-alert set in Figma. Confirm with designer.
+// Assumption: info and success use a minus and a check circle to match the
+// warning circle in Figma. Confirm with designer.
 const TONE_ICONS: Record<
   Exclude<TileTone, 'neutral'>,
-  { src: string; text: string }
+  { Icon: typeof CircleAlert; color: string; text: string }
 > = {
-  warning: { src: warningIcon, text: 'warning' },
-  info: { src: infoIcon, text: 'info' },
-  success: { src: successIcon, text: 'ok' },
+  warning: {
+    Icon: CircleAlert,
+    color: 'var(--color-warning)',
+    text: 'warning',
+  },
+  info: { Icon: CircleMinus, color: 'var(--color-info)', text: 'info' },
+  success: { Icon: CircleCheck, color: 'var(--color-success)', text: 'ok' },
 };
 
+/**
+ * Tile
+ *
+ * White summary card for a single dashboard figure: a label at the top, a
+ * large value, and an optional caption.
+ *
+ * A non-neutral `tone` adds a status icon in the top-right corner, plus
+ * visually hidden "Status: …" text so the meaning is not conveyed by the icon
+ * alone. A `null` or `undefined` value renders an em dash with an accessible
+ * "No data" label; `0` is a real value and renders "0".
+ *
+ * Label, value and caption are direct children of a column flex container. With
+ * a caption the value sits midway between label and caption; without one it
+ * sits bottom-left. Use `wide` to span two columns of a grid. For the last
+ * upload figure, use `LastUploadTile` instead of composing this by hand.
+ *
+ * @example
+ * <Tile label="Rejected Values" value={6} tone="warning" />
+ * <Tile label="Station Pressure" value={null} />
+ */
 export const Tile: React.FC<TileProps> = ({
   label,
   value,
@@ -39,7 +61,7 @@ export const Tile: React.FC<TileProps> = ({
   valueColor = 'var(--color-text)',
   className,
 }) => {
-  const icon = tone === 'neutral' ? undefined : TONE_ICONS[tone];
+  const toneIcon = tone === 'neutral' ? undefined : TONE_ICONS[tone];
 
   return (
     <Flex
@@ -63,18 +85,16 @@ export const Tile: React.FC<TileProps> = ({
       <Text {...bodyMedium} pr="24px">
         {label}
       </Text>
-      {icon && (
+      {toneIcon && (
         <>
-          <Image
-            src={icon.src}
-            alt=""
-            aria-hidden="true"
-            position="absolute"
-            top="9px"
-            right="9px"
-            boxSize="18px"
-          />
-          <VisuallyHidden>Status: {icon.text}</VisuallyHidden>
+          <Box position="absolute" top="9px" right="9px" display="flex">
+            <toneIcon.Icon
+              size={18}
+              color={toneIcon.color}
+              aria-hidden="true"
+            />
+          </Box>
+          <VisuallyHidden>Status: {toneIcon.text}</VisuallyHidden>
         </>
       )}
       <Box
