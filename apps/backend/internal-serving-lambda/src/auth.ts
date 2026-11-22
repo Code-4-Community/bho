@@ -1,6 +1,7 @@
 import type { APIGatewayProxyEvent } from 'aws-lambda';
 import { AuthError, createVerifier } from '@bho/lambda-auth';
 import { getDb } from './db';
+import { HttpError } from './response';
 
 export type UserRole = 'ADMIN' | 'STANDARD';
 
@@ -68,6 +69,25 @@ export const getCurrentUser = async (
 
   // users.status holds the role (ADMIN or STANDARD); see docs/database-schema.md.
   return { id: user.id, email: user.email, role: user.status as UserRole };
+};
+
+// The signed-in user, or a 401 (through handler.ts) when there isn't one.
+export const requireUser = async (
+  event: APIGatewayProxyEvent,
+): Promise<CurrentUser> => {
+  const user = await getCurrentUser(event);
+  if (!user) throw new HttpError(401, 'Unauthorized');
+  return user;
+};
+
+// The signed-in user if they have `role`: 401 when signed out, 403 otherwise.
+export const requireRole = async (
+  event: APIGatewayProxyEvent,
+  role: UserRole,
+): Promise<CurrentUser> => {
+  const user = await requireUser(event);
+  if (user.role !== role) throw new HttpError(403, 'Forbidden');
+  return user;
 };
 
 // Test-only
