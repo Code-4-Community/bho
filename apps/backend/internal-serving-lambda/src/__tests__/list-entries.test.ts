@@ -36,7 +36,11 @@ const call = async (query: Record<string, string> | null = null) => {
 describe('listEntriesHandler', () => {
   beforeEach(() => {
     jest.useFakeTimers().setSystemTime(new Date('2026-07-10T15:00:00Z'));
-    jest.mocked(getCurrentUser).mockResolvedValue({ id: 'user-123' });
+    jest.mocked(getCurrentUser).mockResolvedValue({
+      id: 7,
+      email: 'dev@example.com',
+      role: 'STANDARD',
+    });
     jest.mocked(listEntries).mockResolvedValue([]);
   });
 

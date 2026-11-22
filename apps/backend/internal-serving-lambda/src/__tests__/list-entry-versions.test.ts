@@ -32,7 +32,11 @@ const call = async (date: string) => {
 
 describe('listEntryVersionsHandler', () => {
   beforeEach(() => {
-    jest.mocked(getCurrentUser).mockResolvedValue({ id: 'user-123' });
+    jest.mocked(getCurrentUser).mockResolvedValue({
+      id: 7,
+      email: 'dev@example.com',
+      role: 'STANDARD',
+    });
     jest.mocked(listEntryVersions).mockResolvedValue({
       currentImportId: 7,
       versions: [
