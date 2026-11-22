@@ -1,4 +1,4 @@
-import './Tag.css';
+import { Badge } from '@chakra-ui/react';
 
 export type TagTone = 'success' | 'warning' | 'danger' | 'info' | 'neutral';
 
@@ -30,6 +30,18 @@ export const TAG_VARIANTS: Record<
   corrected: { label: 'Corrected', tone: 'info' },
 };
 
+const TONE_STYLES: Record<TagTone, { color: string; bg: string }> = {
+  success: { color: 'var(--color-success)', bg: 'var(--color-success-bg)' },
+  warning: { color: 'var(--color-warning)', bg: 'var(--color-warning-bg)' },
+  danger: { color: 'var(--color-danger)', bg: 'var(--color-danger-bg)' },
+  info: { color: 'var(--color-info)', bg: 'var(--color-info-bg)' },
+  // No Figma design yet; placeholder.
+  neutral: {
+    color: 'var(--color-text-muted)',
+    bg: 'var(--color-bg-card-header)',
+  },
+};
+
 export interface TagProps {
   /** Preset label + tone. */
   variant?: TagVariant;
@@ -52,16 +64,30 @@ export const Tag: React.FC<TagProps> = ({
   const preset = variant ? TAG_VARIANTS[variant] : undefined;
   const label = children ?? preset?.label;
   const resolvedTone = tone ?? preset?.tone ?? 'neutral';
+  const { color, bg } = TONE_STYLES[resolvedTone];
 
   return (
-    <span
-      className={['tag', className].filter(Boolean).join(' ')}
+    <Badge
+      className={className}
       data-tone={resolvedTone}
       data-variant={variant}
+      minH="16px"
+      px="10px"
+      py="2px"
+      border="1px solid"
+      borderColor={color}
+      borderRadius="var(--radius-pill)"
+      bg={bg}
+      color={color}
+      fontFamily="var(--font-body)"
+      fontSize="14px"
+      fontWeight="var(--font-weight-bold)"
+      lineHeight="var(--line-height)"
+      whiteSpace="nowrap"
     >
       {label}
       {count !== undefined && ` (${count})`}
-    </span>
+    </Badge>
   );
 };
 

@@ -1,3 +1,5 @@
+import { chakra } from '@chakra-ui/react';
+
 export interface DateTimeHeadingProps {
   /** Pre-formatted, e.g. "Nov 1, 2026". Formatting belongs to the data layer. */
   date: string;
@@ -10,8 +12,12 @@ export const DateTimeHeading: React.FC<DateTimeHeadingProps> = ({
   time,
 }) => (
   <>
-    <strong>{time ? `${date} | ` : date}</strong>
-    {time}
+    <chakra.span fontWeight="var(--font-weight-bold)">
+      {time ? `${date} | ` : date}
+    </chakra.span>
+    {time && (
+      <chakra.span fontWeight="var(--font-weight-regular)">{time}</chakra.span>
+    )}
   </>
 );
 

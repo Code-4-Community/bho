@@ -1,26 +1,34 @@
+/* Same order Chakra declares. Stating it first keeps our base rules below
+   Chakra's reset instead of letting layer order be decided by load order. */
+@layer reset, base, tokens, recipes;
+
 @import './styles/tokens.css';
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/* Unlayered CSS beats layered CSS regardless of specificity, so these rules
+   live in the base layer or they would override Chakra's recipes. */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-body {
-  margin: 0;
-  background: var(--color-bg-page);
-  color: var(--color-text);
-  font: var(--text-body);
-}
+  body {
+    margin: 0;
+    background: var(--color-bg-page);
+    color: var(--color-text);
+    font: var(--text-body);
+  }
 
-h1 {
-  font: var(--text-page-title);
-}
+  h1 {
+    font: var(--text-page-title);
+  }
 
-h2 {
-  font: var(--text-heading-2);
-}
+  h2 {
+    font: var(--text-heading-2);
+  }
 
-h3 {
-  font: var(--text-section-title);
+  h3 {
+    font: var(--text-section-title);
+  }
 }

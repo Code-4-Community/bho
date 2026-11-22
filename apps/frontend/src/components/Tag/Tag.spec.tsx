@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import { renderWithProviders as render } from '../../test/render';
 import { Tag, TAG_VARIANTS, TagVariant } from './Tag';
 
 const variants = Object.entries(TAG_VARIANTS) as [

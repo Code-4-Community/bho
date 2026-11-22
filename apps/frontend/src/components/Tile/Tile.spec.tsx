@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import { renderWithProviders as render } from '../../test/render';
 import { Tile } from './Tile';
 
 describe('Tile', () => {
@@ -23,26 +24,26 @@ describe('Tile', () => {
       <Tile
         label="Last Upload Time"
         value="13:59:59"
-        caption="uploaded by: John Doe"
+        caption="Uploaded by: John Doe"
       />,
     );
     expect(screen.getByText('Last Upload Time')).toBeInTheDocument();
     expect(screen.getByText('13:59:59')).toBeInTheDocument();
-    expect(screen.getByText('uploaded by: John Doe')).toBeInTheDocument();
+    expect(screen.getByText('Uploaded by: John Doe')).toBeInTheDocument();
   });
 
   it.each(['warning', 'info', 'success'] as const)(
     'shows a tone icon for %s',
     (tone) => {
       const { container } = render(<Tile label="L" value={1} tone={tone} />);
-      expect(container.querySelector('svg')).toBeInTheDocument();
+      expect(container.querySelector('img')).toBeInTheDocument();
       expect(screen.getByText(/^Status:/)).toBeInTheDocument();
     },
   );
 
   it('shows no icon for neutral', () => {
     const { container } = render(<Tile label="L" value={1} />);
-    expect(container.querySelector('svg')).not.toBeInTheDocument();
+    expect(container.querySelector('img')).not.toBeInTheDocument();
     expect(screen.queryByText(/^Status:/)).not.toBeInTheDocument();
   });
 });

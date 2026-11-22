@@ -1,4 +1,8 @@
-import './Tile.css';
+import { Box, Flex, Image, Text, VisuallyHidden } from '@chakra-ui/react';
+import warningIcon from '../../assets/icons/circle-alert-warning.svg';
+import infoIcon from '../../assets/icons/circle-alert-null.svg';
+import successIcon from '../../assets/icons/circle-alert-ok.svg';
+import { bodyMedium, bodySmall } from '../typography';
 
 export type TileTone = 'neutral' | 'warning' | 'info' | 'success';
 
@@ -8,69 +12,95 @@ export interface TileProps {
   value: React.ReactNode | null;
   caption?: React.ReactNode;
   tone?: TileTone;
+  /** Spans two grid columns, e.g. the Last Upload Time tile. */
+  wide?: boolean;
+  /** Overrides the value color (default `--color-text`). */
+  valueColor?: string;
   className?: string;
 }
 
-const TONE_TEXT: Record<Exclude<TileTone, 'neutral'>, string> = {
-  warning: 'warning',
-  info: 'info',
-  success: 'ok',
+// Assumption: info and success icons are the "Null" and "Ok" variants of the
+// circle-alert set in Figma. Confirm with designer.
+const TONE_ICONS: Record<
+  Exclude<TileTone, 'neutral'>,
+  { src: string; text: string }
+> = {
+  warning: { src: warningIcon, text: 'warning' },
+  info: { src: infoIcon, text: 'info' },
+  success: { src: successIcon, text: 'ok' },
 };
-
-// Assumption: info and success icons are taken from the circle-alert set in
-// Figma (Null / Ok). Confirm with designer.
-const ToneIcon: React.FC<{ tone: Exclude<TileTone, 'neutral'> }> = ({
-  tone,
-}) => (
-  <svg
-    className="tile__icon"
-    width="18"
-    height="18"
-    viewBox="0 0 18 18"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-    focusable="false"
-  >
-    <circle cx="9" cy="9" r="8" />
-    {tone === 'warning' && <path d="M9 5v5M9 12.5v.01" />}
-    {tone === 'info' && <path d="M5.5 9h7" />}
-    {tone === 'success' && <path d="M5.5 9.5l2.5 2.5 4.5-5" />}
-  </svg>
-);
 
 export const Tile: React.FC<TileProps> = ({
   label,
   value,
   caption,
   tone = 'neutral',
+  wide = false,
+  valueColor = 'var(--color-text)',
   className,
-}) => (
-  <div
-    className={['tile', className].filter(Boolean).join(' ')}
-    data-tone={tone}
-  >
-    <div className="tile__label">{label}</div>
-    {tone !== 'neutral' && (
-      <>
-        <ToneIcon tone={tone} />
-        <span className="tile__sr">Status: {TONE_TEXT[tone]}</span>
-      </>
-    )}
-    <div className="tile__value">
-      {value === null || value === undefined ? (
-        <span role="img" aria-label="No data">
-          —
-        </span>
-      ) : (
-        value
+}) => {
+  const icon = tone === 'neutral' ? undefined : TONE_ICONS[tone];
+
+  return (
+    <Flex
+      className={className}
+      data-tone={tone}
+      direction="column"
+      // Label, value and caption are direct children, so with a caption the
+      // value sits midway between them; without one it sits bottom-left.
+      justify="space-between"
+      position="relative"
+      minH="159px"
+      gridColumn={wide ? 'span 2' : undefined}
+      pt="6px"
+      pr="12px"
+      pb="10px"
+      pl="10px"
+      borderRadius="var(--radius-sm)"
+      bg="var(--color-bg-card)"
+      color="var(--color-text)"
+    >
+      <Text {...bodyMedium} pr="24px">
+        {label}
+      </Text>
+      {icon && (
+        <>
+          <Image
+            src={icon.src}
+            alt=""
+            aria-hidden="true"
+            position="absolute"
+            top="9px"
+            right="9px"
+            boxSize="18px"
+          />
+          <VisuallyHidden>Status: {icon.text}</VisuallyHidden>
+        </>
       )}
-    </div>
-    {caption && <div className="tile__caption">{caption}</div>}
-  </div>
-);
+      <Box
+        fontFamily="var(--font-heading)"
+        fontSize="var(--font-size-tile-number)"
+        fontWeight="var(--font-weight-bold)"
+        // The shared token pairs 48px type with a 24px line height, which
+        // lets the glyphs spill below the line box into the caption.
+        lineHeight="1.1"
+        color={valueColor}
+      >
+        {value === null || value === undefined ? (
+          <span role="img" aria-label="No data">
+            —
+          </span>
+        ) : (
+          value
+        )}
+      </Box>
+      {caption && (
+        <Text {...bodySmall} fontStyle="italic">
+          {caption}
+        </Text>
+      )}
+    </Flex>
+  );
+};
 
 export default Tile;

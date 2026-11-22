@@ -1,5 +1,14 @@
 import { Children, useId } from 'react';
-import './Section.css';
+import {
+  Box,
+  Flex,
+  Heading,
+  Skeleton,
+  Text,
+  VisuallyHidden,
+  chakra,
+} from '@chakra-ui/react';
+import { bodyMedium, bodySmall } from '../typography';
 
 export interface SectionProps {
   title: string;
@@ -29,50 +38,111 @@ export const Section: React.FC<SectionProps> = ({
   className,
 }) => {
   const titleId = useId();
-  const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
+  const headingTag = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
   const isEmpty = Children.toArray(children).length === 0;
+  const scrolls = maxHeight !== undefined;
 
   return (
-    <section
-      className={['section', className].filter(Boolean).join(' ')}
+    <Box
+      as="section"
+      className={className}
       aria-labelledby={titleId}
+      overflow="hidden"
+      border="1px solid"
+      borderColor="var(--color-border)"
+      borderRadius="var(--radius-md)"
+      bg="var(--color-bg-card)"
+      color="var(--color-text)"
     >
-      <header className="section__header">
-        <Heading id={titleId} className="section__title">
+      <Flex
+        as="header"
+        align="center"
+        justify="space-between"
+        gap="16px"
+        pt="20px"
+        pr="16px"
+        pb="16px"
+        pl="16px"
+        bg="var(--color-bg-card-header)"
+        borderBottom="1.5px solid"
+        borderColor="var(--color-border)"
+      >
+        <Heading
+          as={headingTag}
+          id={titleId}
+          m="0"
+          fontFamily="var(--font-heading)"
+          fontSize="var(--font-size-h3)"
+          fontWeight="var(--font-weight-bold)"
+          lineHeight="var(--line-height)"
+        >
           {title}
         </Heading>
-        {headerAction && <div className="section__action">{headerAction}</div>}
-      </header>
+        {headerAction && (
+          <Box
+            {...bodySmall}
+            // TODO(#94): use shared Button/Link for action links and buttons.
+            css={{
+              '& a, & button': {
+                padding: 0,
+                border: 0,
+                background: 'none',
+                color: 'inherit',
+                font: 'inherit',
+                fontWeight: 'var(--font-weight-bold)',
+                textDecoration: 'underline',
+                cursor: 'pointer',
+              },
+            }}
+          >
+            {headerAction}
+          </Box>
+        )}
+      </Flex>
       {!isLoading && isEmpty ? (
-        <p className="section__empty">{emptyMessage}</p>
+        <Text
+          {...bodyMedium}
+          py="32px"
+          px="20px"
+          textAlign="center"
+          color="var(--color-text-muted)"
+        >
+          {emptyMessage}
+        </Text>
       ) : (
-        // Explicit role: Safari drops list semantics when list-style is none.
-        // eslint-disable-next-line jsx-a11y/no-redundant-roles
-        <ul
-          className="section__body"
+        <chakra.ul
           role="list"
           aria-busy={isLoading}
-          style={maxHeight !== undefined ? { maxHeight } : undefined}
-          data-scroll={maxHeight !== undefined}
+          m="0"
+          p="0"
+          listStyle="none"
+          maxHeight={
+            typeof maxHeight === 'number' ? `${maxHeight}px` : maxHeight
+          }
+          overflowY={scrolls ? 'auto' : undefined}
         >
           {isLoading ? (
             <>
-              <li className="section__sr">Loading…</li>
+              <VisuallyHidden as="li">Loading…</VisuallyHidden>
               {Array.from({ length: SKELETON_ROWS }, (_, i) => (
-                <li
+                <chakra.li
                   key={i}
-                  className="section__skeleton"
-                  data-testid="section-skeleton"
                   aria-hidden="true"
-                />
+                  data-testid="section-skeleton"
+                  p="16px"
+                  borderBottom="1px solid"
+                  borderColor="var(--color-border)"
+                >
+                  <Skeleton h="88px" />
+                </chakra.li>
               ))}
             </>
           ) : (
             children
           )}
-        </ul>
+        </chakra.ul>
       )}
-    </section>
+    </Box>
   );
 };
 

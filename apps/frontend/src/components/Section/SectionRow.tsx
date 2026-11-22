@@ -1,4 +1,14 @@
-import './Section.css';
+import {
+  Box,
+  Flex,
+  Image,
+  Link,
+  LinkBox,
+  LinkOverlay,
+  chakra,
+} from '@chakra-ui/react';
+import chevronIcon from '../../assets/icons/chevron.svg';
+import { bodyMedium } from '../typography';
 
 export interface SectionRowProps {
   /** See DateTimeHeading. */
@@ -17,23 +27,23 @@ export interface SectionRowProps {
   highlighted?: boolean;
 }
 
-const Chevron: React.FC = () => (
-  <svg
-    className="section-row__chevron"
-    width="12"
-    height="20"
-    viewBox="0 0 12 20"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-    focusable="false"
-  >
-    <path d="M2 2l8 8-8 8" />
-  </svg>
-);
+// The overlay's ::before stretches over the whole row, so it carries the
+// focus ring too.
+const overlayFocus = {
+  outline: 'none',
+  '&::before': {
+    outline: '2px solid var(--color-info)',
+    outlineOffset: '-2px',
+  },
+} as const;
+
+const textColumn = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  gap: '8px',
+  textAlign: 'left',
+} as const;
 
 export const SectionRow: React.FC<SectionRowProps> = ({
   heading,
@@ -52,61 +62,109 @@ export const SectionRow: React.FC<SectionRowProps> = ({
 
   const main = (
     <>
-      <div className="section-row__heading">{heading}</div>
-      {label && <div className="section-row__label">{label}</div>}
+      <Box {...bodyMedium} fontWeight="var(--font-weight-bold)" fontSize="20px">
+        {heading}
+      </Box>
+      {label && (
+        <Box {...bodyMedium} fontWeight="var(--font-weight-bold)">
+          {label}
+        </Box>
+      )}
       {subtitle && !subtitleIsLink && (
-        <div className="section-row__subtitle">{subtitle}</div>
+        <Box {...bodyMedium} color="var(--color-text-muted)">
+          {subtitle}
+        </Box>
       )}
     </>
   );
 
   // A <button> or <a> cannot contain another link, so the row's own element
-  // wraps only the text, and its ::after stretches over the whole row. The
-  // subtitle link sits outside it, above the overlay, so it stays clickable
-  // and never triggers the row's action.
+  // wraps only the text, and LinkOverlay's ::before stretches it over the whole
+  // row. LinkBox lifts the subtitle link above that overlay, so it stays
+  // clickable and never triggers the row's action.
   let mainElement: React.ReactNode;
   if (href) {
     mainElement = (
-      <a className="section-row__main section-row__main--stretch" href={href}>
+      <LinkOverlay
+        href={href}
+        {...textColumn}
+        color="inherit"
+        textDecoration="none"
+        _focusVisible={overlayFocus}
+      >
         {main}
-      </a>
+      </LinkOverlay>
     );
   } else if (onClick) {
     mainElement = (
-      <button
-        type="button"
-        className="section-row__main section-row__main--stretch"
-        onClick={onClick}
-      >
-        {main}
-      </button>
+      <LinkOverlay asChild>
+        <chakra.button
+          type="button"
+          onClick={onClick}
+          {...textColumn}
+          p="0"
+          border="0"
+          bg="none"
+          color="inherit"
+          cursor="pointer"
+          _focusVisible={overlayFocus}
+        >
+          {main}
+        </chakra.button>
+      </LinkOverlay>
     );
   } else {
-    mainElement = <div className="section-row__main">{main}</div>;
+    mainElement = <Box {...textColumn}>{main}</Box>;
   }
 
   return (
-    <li
-      className="section-row"
+    <LinkBox
+      as="li"
+      display="flex"
+      alignItems="center"
+      gap="12px"
+      py="16px"
+      pr="16px"
+      pl={leadingIcon ? '8px' : '16px'}
+      borderBottom="1px solid"
+      borderColor="var(--color-border)"
+      bg={highlighted ? 'var(--blue-50)' : 'var(--color-bg-card)'}
+      _last={{ borderBottom: '0' }}
+      _hover={
+        interactive && !highlighted ? { bg: 'var(--deep-blue-50)' } : undefined
+      }
       data-interactive={interactive}
       data-highlighted={highlighted}
     >
-      {leadingIcon && (
-        <span className="section-row__leading" aria-hidden="true">
-          {leadingIcon}
-        </span>
-      )}
-      <div className="section-row__text">
-        {mainElement}
-        {subtitleIsLink && (
-          <a className="section-row__subtitle-link" href={subtitleHref}>
-            {subtitle}
-          </a>
+      <Flex flex="1" minW="0" align="center" gap="8px">
+        {leadingIcon && (
+          <Box flex="none" display="flex" aria-hidden="true">
+            {leadingIcon}
+          </Box>
         )}
-      </div>
-      {tag && <div className="section-row__tag">{tag}</div>}
-      {trailing === 'chevron' && <Chevron />}
-    </li>
+        <Flex direction="column" align="flex-start" gap="8px" minW="0">
+          {mainElement}
+          {subtitleIsLink && (
+            // TODO(#94): use shared link/button styles once they land.
+            <Link
+              href={subtitleHref}
+              {...bodyMedium}
+              fontStyle="italic"
+              textDecoration="underline"
+              color="var(--color-text-muted)"
+            >
+              {subtitle}
+            </Link>
+          )}
+        </Flex>
+      </Flex>
+      {tag && <Box flex="none">{tag}</Box>}
+      {trailing === 'chevron' && (
+        <Flex flex="none" h="32px" align="center" pl="6px" pr="4px">
+          <Image src={chevronIcon} alt="" aria-hidden="true" />
+        </Flex>
+      )}
+    </LinkBox>
   );
 };
 

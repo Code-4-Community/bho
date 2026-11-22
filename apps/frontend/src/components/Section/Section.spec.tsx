@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import { renderWithProviders as render } from '../../test/render';
 import userEvent from '@testing-library/user-event';
 import { Section } from './Section';
 import { SectionRow } from './SectionRow';
@@ -162,7 +163,7 @@ describe('SectionRow', () => {
     expect(screen.getByText('Peak Gust')).toBeInTheDocument();
     expect(screen.getByText('Out of Range: 112 mph')).toBeInTheDocument();
     expect(screen.getByText('Tagged')).toBeInTheDocument();
-    expect(container.querySelector('svg')).toBeInTheDocument();
+    expect(container.querySelector('img')).toBeInTheDocument();
   });
 });
 
