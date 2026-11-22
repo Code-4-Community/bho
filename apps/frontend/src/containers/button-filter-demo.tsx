@@ -208,7 +208,7 @@ export const FiltersDemo: React.FC = () => {
   );
 };
 
-/** Filters composed like Figma 528:7052 / 531:16311: labels, an entry count
+/** Filters composed into a bar: labels, an entry count
  * driven by the mock data, and Clear Filters when nothing matches. */
 export const FilterBarDemo: React.FC = () => {
   const [date, setDate] = useState(DEFAULT_DATE);

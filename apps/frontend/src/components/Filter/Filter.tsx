@@ -11,17 +11,15 @@ export interface FilterProps {
   /** Visible label above the trigger ("Date range", "Uploaded by"). */
   label?: string;
   options: FilterOption[];
-  /** Controlled value. */
   value: string;
   onChange: (value: string) => void;
-  /** Shown when `value` matches no option. */
+  // Shown when `value` matches no option.
   placeholder?: string;
-  /** Leading icon, e.g. the calendar on the date filter. Decorative. */
+  // Icon in trigger's top right corner
   icon?: React.ReactNode;
-  /** `md` is Figma's 54px. `sm` is a compact option (not in Figma). */
   size?: 'sm' | 'md';
   disabled?: boolean;
-  /** Figma widths differ per filter (date ~442px, uploader ~346px). */
+  // Widths differ per filter (date ~442px, uploader ~346px).
   width?: string | number;
 }
 

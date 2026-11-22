@@ -55,14 +55,12 @@ export const BUTTON_VARIANTS: Record<ButtonVariant, StyleProps> = {
     borderColor: 'var(--color-primary)',
     color: 'var(--color-text-inverse)',
     _hover: { bg: PRIMARY_HOVER, borderColor: PRIMARY_HOVER },
-    // Pressed state is an assumption (--sea-green-600 is in the variables
-    // but not in the frames).
     _active: {
       bg: 'var(--sea-green-600)',
       borderColor: 'var(--sea-green-600)',
     },
   },
-  // Cancel, Close. Figma's border is 1.5px.
+  // Cancel, Close.
   secondary: {
     ...base,
     bg: 'var(--color-bg-card)',
@@ -87,7 +85,7 @@ export const BUTTON_VARIANTS: Record<ButtonVariant, StyleProps> = {
       borderColor: 'var(--deep-blue-500)',
     },
   },
-  // Today's Entry: Arial bold 14/24 underlined text, green when "Clicked".
+  // Today's Entry: green when "Clicked"
   link: {
     ...base,
     h: 'auto',
@@ -103,7 +101,7 @@ export const BUTTON_VARIANTS: Record<ButtonVariant, StyleProps> = {
     _hover: { color: 'var(--sea-green-600)', bg: 'transparent' },
     _active: { color: 'var(--sea-green-600)', bg: 'transparent' },
   },
-  // Open: green chevron only, no background.
+  // Open: green chevron with no background
   ghost: {
     ...base,
     h: '32px',
