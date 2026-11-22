@@ -11,19 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Use NodeJS 24.x
-      uses: actions/setup-node@v4
-      with:
-        node-version: 24.x
-        cache: 'yarn'
+      - name: Use NodeJS 24.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+          cache: 'yarn'
 
-    - name: Install Dependencies
-      run: yarn install --frozen-lockfile
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
 
-    - name: Type check
-      run: npx nx run frontend:typecheck
+      - name: Type check
+        run: npx nx run frontend:typecheck
 
-    - name: Tests
-      run: npx nx run frontend:test
+      - name: Tests
+        run: npx nx run frontend:test
