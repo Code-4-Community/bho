@@ -39,7 +39,7 @@ export const createUploadUrlHandler: RouteHandler = async (event) => {
     return response(400, { message: 'Only .csv files can be uploaded' });
   }
 
-  // <uploadType>/<UTC date>/<uuid>.csv. See docs/upload-keys.md.
+  // See docs/upload-keys.md
   const date = new Date().toISOString().slice(0, 10);
   const key = `${kind}/${date}/${randomUUID()}.csv`;
 

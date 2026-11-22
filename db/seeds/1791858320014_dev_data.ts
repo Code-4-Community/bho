@@ -53,8 +53,7 @@ export async function seed(db: Kysely<any>): Promise<void> {
       .where('code', '=', '19737-02')
       .executeTakeFirstOrThrow();
 
-    // On a fresh database the admin is users.id 1 (DEV_USER_ID in example.env)
-    // and the standard user is 2.
+    // Admin first, so it is users.id 1 (DEV_USER_ID in example.env)
     await trx
       .insertInto('users')
       .values([

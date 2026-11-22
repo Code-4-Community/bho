@@ -1,7 +1,6 @@
 import type { Kysely } from 'kysely';
 import type { Database } from '@bho/db-client';
 
-// imports.kind, and the first part of every upload key (docs/upload-keys.md)
 export const UPLOAD_TYPES = ['daily', 'historical'] as const;
 export type UploadType = (typeof UPLOAD_TYPES)[number];
 

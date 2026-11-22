@@ -11,28 +11,22 @@ import { UPLOAD_TYPES } from './imports';
 import { response } from './response';
 import { routes } from './routes';
 
-// Local stand-in for API Gateway and the upload bucket, started by
-// `nx run internal-serving-lambda:serve`. Never deployed.
-
 const PORT = 3000;
 const UPLOADS_PATH = '/local-uploads/';
 
-// In AWS, API Gateway and the bucket answer CORS. The frontend runs on :4200.
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
   'Access-Control-Allow-Headers': 'Authorization, Content-Type',
 };
 
-// 'GET /imports/{id}' matches /imports/42 with { id: '42' }
 const ROUTES = Object.keys(routes).map((routeKey) => {
   const [method, resource] = routeKey.split(' ');
   const pattern = resource.replace(/\{(\w+)\}/g, '(?<$1>[^/]+)');
   return { method, resource, pattern: new RegExp(`^${pattern}$`) };
 });
 
-// The REST API proxy event API Gateway would send. A path with no route keeps
-// resource = path, so the handler returns its own 404.
+// With no matching route, resource stays the path and the handler 404s.
 const toEvent = (
   req: IncomingMessage,
   url: URL,
@@ -81,16 +75,13 @@ const toEvent = (
   };
 };
 
-// Accepts what a URL from POST /imports/upload-url/{kind} would in S3: a key
-// under an upload type, sent as text/csv.
 const putLocalUpload = async (
   req: IncomingMessage,
   url: URL,
   body: Buffer,
 ): Promise<APIGatewayProxyResult> => {
   const key = decodeURIComponent(url.pathname.slice(UPLOADS_PATH.length));
-  // URL parsing resolves "..", but not an encoded one like "..%2F", which
-  // would write outside LOCAL_UPLOAD_DIR.
+  // An encoded traversal like "..%2F" survives URL parsing.
   if (
     !UPLOAD_TYPES.some((type) => key.startsWith(`${type}/`)) ||
     key.split('/').includes('..')
@@ -101,7 +92,7 @@ const putLocalUpload = async (
       ).join(', ')}`,
     });
   }
-  // S3 rejects these too, because the URL signs Content-Type
+  // Matches S3, where the presigned URL signs Content-Type
   if (req.headers['content-type'] !== 'text/csv') {
     return response(403, { message: 'Content-Type must be text/csv' });
   }

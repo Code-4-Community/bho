@@ -29,7 +29,7 @@
     "serve": {
       "executor": "nx:run-commands",
       "metadata": {
-        "description": "Local API and uploads on http://localhost:3000 (src/dev-server.ts). ts-node reads tsconfig.base.json because tsconfig-paths resolves inherited paths against the extending tsconfig's folder."
+        "description": "Local API on :3000. Uses tsconfig.base.json because tsconfig-paths resolves inherited paths from the app folder."
       },
       "options": {
         "command": "node --watch -r ts-node/register -r tsconfig-paths/register apps/backend/internal-serving-lambda/src/dev-server.ts",
