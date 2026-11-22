@@ -3,7 +3,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { closeConnection, recordImport } from '@bho/db-client';
 import { Client } from 'pg';
-import { parseDaily } from '../parsers/daily';
+import { parseDaily } from '../parsing/daily';
 import { writeDaily } from './writeDaily';
 
 // Creates its own empty database, migrates it, uploads daily.csv (nothing is
@@ -11,7 +11,7 @@ import { writeDaily } from './writeDaily';
 // checks the diff between them. It writes that diff to tmp/daily-diff.json and
 // drops the database afterwards. Skipped unless DB_INTEGRATION=1, and needs a
 // running Postgres (see db/README.md). From the repo root:
-//   DB_INTEGRATION=1 npx jest -c apps/backend/upload-lambda/jest.config.js writeDaily
+//   DB_INTEGRATION=1 npx jest -c apps/backend/internal-serving-lambda/jest.config.js writeDaily
 // It connects with DB_HOST/DB_PORT/DB_USER/DB_PASSWORD, defaulting to the
 // docker-compose values (127.0.0.1:5432, postgres/password).
 const enabled = process.env.DB_INTEGRATION === '1';
@@ -25,7 +25,7 @@ const database = `bho_it_${Date.now()}`;
 
 const fixture = (name: string) => {
   const parsed = parseDaily(
-    readFileSync(join(__dirname, '../parsers/__fixtures__', name), 'utf8'),
+    readFileSync(join(__dirname, '../parsing/__fixtures__', name), 'utf8'),
   );
   if (parsed.ok === false) throw new Error(`${name} should parse`);
   return parsed.rows;

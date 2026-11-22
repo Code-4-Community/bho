@@ -17,7 +17,7 @@ You can optionally install `nx` globally with `npm install -g nx` - if you don't
 The backend is **Lambda-only**. Four independent Lambda functions live under `apps/backend/`:
 
 - `internal-serving-lambda` — the authenticated API the frontend calls (staff/admin)
-- `upload-lambda` — S3-upload-triggered, parses and imports spreadsheet/CSV data
+- `upload-lambda` — S3-upload trigger (parsing and import logic now lives in `internal-serving-lambda`)
 - `ingestion-lambda` — EventBridge-scheduled, pulls live conditions from the Davis weather station **(No longer needed - to be deleted)**
 - `public-lambda` — serve the public dashboard
 

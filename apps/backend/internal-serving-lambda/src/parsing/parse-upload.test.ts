@@ -4,13 +4,13 @@ import { createHash } from 'crypto';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { parseUpload } from './parse-upload';
-import { parseDaily } from './parsers/daily';
-import { parseHistorical } from './parsers/historical';
+import { parseDaily } from './daily';
+import { parseHistorical } from './historical';
 
 const s3 = mockClient(S3Client);
 const location = { bucket: 'bho-uploads', key: 'historical/records.csv' };
 const fixture = (name: string) =>
-  readFileSync(join(__dirname, 'parsers/__fixtures__', name), 'utf8');
+  readFileSync(join(__dirname, '__fixtures__', name), 'utf8');
 
 // Only the part of the SDK's stream type that the helper reads.
 const body = (text: string) =>

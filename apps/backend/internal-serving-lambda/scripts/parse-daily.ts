@@ -2,7 +2,7 @@
 //
 //   yarn parse:daily [csv] [outDir]
 //
-// csv     defaults to src/parsers/__fixtures__/daily.csv
+// csv     defaults to src/parsing/__fixtures__/daily.csv
 // outDir  defaults to output/daily (git-ignored); its *.json files are cleared first
 import {
   mkdirSync,
@@ -12,11 +12,11 @@ import {
   writeFileSync,
 } from 'fs';
 import { join, resolve } from 'path';
-import { parseDaily } from '../src/parsers/daily';
+import { parseDaily } from '../src/parsing/daily';
 
 const root = join(__dirname, '..');
 const csvPath = resolve(
-  process.argv[2] ?? join(root, 'src/parsers/__fixtures__/daily.csv'),
+  process.argv[2] ?? join(root, 'src/parsing/__fixtures__/daily.csv'),
 );
 const outDir = resolve(process.argv[3] ?? join(root, 'output/daily'));
 

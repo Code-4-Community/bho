@@ -1,7 +1,7 @@
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import type { ParseResult } from '@bho/weather-parsing';
 import { createHash } from 'crypto';
-import type { S3ObjectLocation } from './handler';
+import type { S3ObjectLocation } from './types';
 
 const s3 = new S3Client({});
 
