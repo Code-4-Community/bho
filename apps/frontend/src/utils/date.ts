@@ -4,7 +4,7 @@
 export const parseDate = (date: string) => new Date(`${date}T00:00:00Z`);
 
 export const formatDate = (date: string) =>
-  new Intl.DateTimeFormat('en-US', {
+  new Intl.DateTimeFormat('en-CA', {
     timeZone: 'UTC',
     month: 'short',
     day: 'numeric',
