@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import apiClient from '@api/apiClient';
 import Root from '@containers/root';
 import NotFound from '@containers/404';
 import Test from '@containers/test';
+import Design from '@containers/design';
+import { Providers } from './providers';
 
 const router = createBrowserRouter([
   {
@@ -16,14 +16,15 @@ const router = createBrowserRouter([
     path: '/test',
     element: <Test />,
   },
+  ...(import.meta.env.DEV ? [{ path: '/design', element: <Design /> }] : []),
 ]);
 
 export const App: React.FC = () => {
-  useEffect(() => {
-    apiClient.getHello().then((res) => console.log(res));
-  }, []);
-
-  return <RouterProvider router={router} />;
+  return (
+    <Providers>
+      <RouterProvider router={router} />
+    </Providers>
+  );
 };
 
 export default App;

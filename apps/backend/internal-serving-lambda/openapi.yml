@@ -345,6 +345,63 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+  /me:
+    get:
+      summary: Get the signed-in user
+      description: Returns the user that the access token belongs to.
+      operationId: getMe
+      tags:
+        - Users
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: The signed-in user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrentUser'
+              example:
+                id: 1
+                email: admin@example.org
+                role: ADMIN
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /users:
+    get:
+      summary: List users
+      description: >-
+        Returns every user, ordered by `id`. Any signed-in user can call this,
+        whatever their role.
+      operationId: listUsers
+      tags:
+        - Users
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: All users. `users` is empty when there are none.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserList'
+              example:
+                users:
+                  - id: 1
+                    email: admin@example.org
+                    firstName: Ada
+                    lastName: Admin
+                    role: ADMIN
+                  - id: 2
+                    email: standard@example.org
+                    firstName: Sam
+                    lastName: Standard
+                    role: STANDARD
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         '500':
           $ref: '#/components/responses/InternalServerError'
 
@@ -576,6 +633,55 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EntryVersion'
+    UserRole:
+      type: string
+      enum:
+        - ADMIN
+        - STANDARD
+    CurrentUser:
+      type: object
+      required:
+        - id
+        - email
+        - role
+      properties:
+        id:
+          type: integer
+          description: The user's id in the database, not their Cognito `sub`.
+        email:
+          type: string
+          format: email
+        role:
+          $ref: '#/components/schemas/UserRole'
+    UserSummary:
+      type: object
+      required:
+        - id
+        - email
+        - firstName
+        - lastName
+        - role
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+          format: email
+        firstName:
+          type: string
+        lastName:
+          type: string
+        role:
+          $ref: '#/components/schemas/UserRole'
+    UserList:
+      type: object
+      required:
+        - users
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserSummary'
     HealthResponse:
       type: object
       required:
@@ -612,7 +718,9 @@ components:
           example:
             message: 'kind must be one of: daily, historical'
     Unauthorized:
-      description: The request has no valid access token.
+      description: >-
+        The request has no valid access token, or no user in the database is
+        linked to the token's Cognito `sub`.
       content:
         application/json:
           schema:

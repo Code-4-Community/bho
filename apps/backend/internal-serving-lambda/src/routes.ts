@@ -6,6 +6,7 @@ import { healthHandler } from './routes/health';
 import { listEntriesHandler } from './routes/list-entries';
 import { listEntryVersionsHandler } from './routes/list-entry-versions';
 import { listImportsHandler } from './routes/list-imports';
+import { meHandler, usersHandler } from './routes/user-endpoints';
 
 export type RouteHandler = (
   event: APIGatewayProxyEvent,
@@ -19,4 +20,6 @@ export const routes: Record<string, RouteHandler> = {
   'GET /entries': listEntriesHandler,
   'GET /entries/{date}': getEntryHandler,
   'GET /entries/{date}/versions': listEntryVersionsHandler,
+  'GET /me': meHandler,
+  'GET /users': usersHandler,
 };

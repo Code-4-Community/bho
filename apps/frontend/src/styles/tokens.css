@@ -1,0 +1,137 @@
+/*
+ * Design tokens from the BHO Figma file, read in Dev Mode. The palette is the
+ * "Brand colors" variable collection; the semantic tokens are what the Hi-Fi
+ * dashboard, tags, tile and table components reference. Components use the
+ * semantic tokens.
+ *
+ * Three hex labels on the Design System swatch board (mustard 100 and 500, deep
+ * blue 300) are stale; the values here are the variables.
+ */
+:root {
+  --mustard-100: #fff0dc;
+  --mustard-200: #ebd2b0;
+  --mustard-300: #e1bc88;
+  --mustard-400: #d5a359;
+  --mustard-500: #de9300;
+  --mustard-600: #a16c06;
+  --mustard-700: #7b5203;
+  --mustard-800: #533601;
+
+  --sea-green-100: #d8ece2;
+  --sea-green-200: #b4dac9;
+  --sea-green-300: #8ec8ae;
+  --sea-green-400: #61b392;
+  --sea-green-500: #1d9e75;
+  --sea-green-600: #157e5d;
+  --sea-green-700: #0e6046;
+  --sea-green-800: #06402d;
+
+  --beige-100: #fdfdfc;
+  --beige-200: #fcfbf9;
+  --beige-300: #faf9f6;
+  --beige-400: #f9f6f3;
+  --beige-500: #f7f4ef;
+  --beige-600: #c7c5c0;
+  --beige-700: #999794;
+  --beige-800: #686764;
+
+  --blue-50: #eef5fa;
+  --blue-100: #d4e6f3;
+  --blue-200: #aed0e8;
+  --blue-300: #85b8dc;
+  --blue-400: #559ece;
+  --blue-500: #0083bf;
+  --blue-600: #006899;
+  --blue-700: #004f75;
+  --blue-800: #00344f;
+
+  /* Named "Deep Blue/50" in Figma even though it is a neutral grey. */
+  --deep-blue-50: #f3f3f3;
+  --deep-blue-100: #c9ced5;
+  --deep-blue-200: #9aa3b1;
+  --deep-blue-300: #637083;
+  --deep-blue-400: #3b4b64;
+  --deep-blue-500: #0d1f3c;
+  --deep-blue-600: #08172e;
+  --deep-blue-700: #050f21;
+  --deep-blue-800: #020713;
+
+  --error-100: #fee2e2;
+  --error-500: #d30000;
+
+  --color-brand: var(--deep-blue-500);
+  /* Buttons and the active nav item in the Hi-Fis are sea green. */
+  --color-primary: var(--sea-green-500);
+
+  --color-text: var(--deep-blue-500);
+  --color-text-muted: var(--deep-blue-300);
+  --color-text-inverse: #ffffff;
+
+  --color-bg-page: var(--deep-blue-50);
+  --color-bg-card: #ffffff;
+  --color-bg-card-header: var(--beige-300);
+  --color-bg-table-header: var(--deep-blue-400);
+
+  --color-border: var(--deep-blue-100);
+
+  /* Status pairs, from the tags. The tag backgrounds are plain hex in Figma,
+     not variables; the danger tag uses #FFEBEB rather than Error/100. */
+  --color-success: var(--sea-green-500);
+  --color-success-bg: #e9fff4;
+  --color-warning: var(--mustard-500);
+  --color-warning-bg: #fffee6;
+  --color-danger: var(--error-500);
+  --color-danger-bg: #ffebeb;
+  --color-info: var(--blue-500);
+  --color-info-bg: #ebf7ff;
+
+  /* Georgia for headings, Arial for data, per the Figma typographic system.
+     Both ship with every OS, so nothing is downloaded. */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body: Arial, Helvetica, sans-serif;
+
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 2.125rem;
+  --font-size-h3: 1.875rem;
+  --font-size-body-lg: 1.5rem;
+  --font-size-body-md: 1.125rem;
+  --font-size-body-sm: 1rem;
+  /* The Tile number is Georgia 48px; Figma has no named text style for it. */
+  --font-size-tile-number: 3rem;
+
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  /* Every Figma text style uses a 24px line height, headings included. */
+  --line-height: 1.5rem;
+
+  --text-page-title: var(--font-weight-bold) var(--font-size-h1) /
+    var(--line-height) var(--font-heading);
+  --text-heading-2: var(--font-weight-bold) var(--font-size-h2) /
+    var(--line-height) var(--font-heading);
+  --text-section-title: var(--font-weight-bold) var(--font-size-h3) /
+    var(--line-height) var(--font-heading);
+  --text-body-lg: var(--font-weight-regular) var(--font-size-body-lg) /
+    var(--line-height) var(--font-body);
+  --text-body: var(--font-weight-regular) var(--font-size-body-md) /
+    var(--line-height) var(--font-body);
+  --text-caption: var(--font-weight-regular) var(--font-size-body-sm) /
+    var(--line-height) var(--font-body);
+  --text-tile-number: var(--font-weight-bold) var(--font-size-tile-number) /
+    var(--line-height) var(--font-heading);
+
+  /* Figma's Spacing-N variables are N x 4px. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  /* Tiles and table header corners are 8px, cards 10px, tags fully round. */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-pill: 999px;
+}

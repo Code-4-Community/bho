@@ -385,7 +385,7 @@ historical parser.
 Run the tests (from the repo root):
 
 ```
-npx nx test upload-lambda
+npx nx test internal-serving-lambda
 ```
 
 - Tests are in `../daily.test.ts`. They run on `../__fixtures__/daily.csv`,
@@ -393,10 +393,10 @@ npx nx test upload-lambda
 - Most tests take July 1 (rows 1–60), edit one cell, and check the field or error.
   The helper `edit(table, row, col, value)` sets a cell by 1-based row and 0-based column.
 
-**Try a real CSV and see the JSON.** From `apps/backend/upload-lambda`:
+**Try a real CSV and see the JSON.** From `apps/backend/internal-serving-lambda`:
 
 ```
-yarn parse:daily                                  # uses src/parsers/__fixtures__/daily.csv
+yarn parse:daily                                  # uses src/parsing/__fixtures__/daily.csv
 yarn parse:daily path/to/export.csv               # your own file
 yarn parse:daily path/to/export.csv path/to/out   # and your own output folder
 ```

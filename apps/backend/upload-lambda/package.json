@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "test": "jest",
-    "parse:daily": "npx ts-node --transpile-only scripts/parse-daily.ts"
+    "test": "jest"
   },
   "dependencies": {
     "@bho/weather-parsing": "file:../../../libs/weather-parsing",
