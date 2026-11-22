@@ -38,6 +38,7 @@ See [db/README.md](db/README.md) for details, writing migrations, and troublesho
 ## Frontend development
 
 ### Run it
+
 To run just the frontend (port 4200):
 
 ```bash
@@ -46,20 +47,22 @@ nx serve frontend
 
 ### Project layout
 
-| Path | What |
-|---|---|
-| `src/containers/` | Pages |
-| `src/components/` | Shared components |
-| `src/api/` | `apiClient`, the axios client. It attaches the Cognito access token when auth is on. |
-| `src/auth/` | Amplify and Cognito configuration |
-| `src/styles/tokens.css` | Design tokens from Figma |
-| `src/utils/` | Helpers |
-| `src/providers.tsx` | App-wide providers (Chakra) |
+| Path                    | What                                                                                 |
+| ----------------------- | ------------------------------------------------------------------------------------ |
+| `src/containers/`       | Pages                                                                                |
+| `src/components/`       | Shared components                                                                    |
+| `src/api/`              | `apiClient`, the axios client. It attaches the Cognito access token when auth is on. |
+| `src/hooks/`            | Data hooks used by pages (import as `@hooks/...`)                                    |
+| `src/auth/`             | Amplify and Cognito configuration                                                    |
+| `src/styles/tokens.css` | Design tokens from Figma                                                             |
+| `src/utils/`            | Helpers                                                                              |
+| `src/providers.tsx`     | App-wide providers (Chakra)                                                          |
 
 To add a page, add a new file in `/src/containers/` then a route in `src/app.tsx`.
 
 ### Tests
-The frontend uses [vitest](https://vitest.dev) and [Testing Library](https://testing-library.com/docs/react-testing-library/intro/). Put tests next to the code as `*.spec.tsx`.
+
+The frontend uses [vitest](https://vitest.dev) and [Testing Library](https://testing-library.com/docs/react-testing-library/intro/). Put tests next to the code as `*.spec.tsx`. Tests for Chakra components should render with `renderWithProviders` from `src/test/render.tsx`, which wraps them in `Providers`.
 
 ```bash
 # run all frontend tests
@@ -69,6 +72,7 @@ npx vitest run src/app.spec.tsx
 ```
 
 ### Lint and format checking
+
 ```bash
 # lint on frontend only
 nx lint frontend
@@ -93,10 +97,10 @@ Colors, type, spacing and radii from the Figma design system are CSS variables i
 
 Named type styles (`--text-page-title`, `--text-section-title`, `--text-body`, `--text-caption`, `--text-tile-number`) are `font` shorthands. While `nx serve frontend` is running, http://localhost:4200/design shows every token for comparing against Figma.
 
-
 ## Backend
 
 ### Tests
+
 ```bash
 nx test internal-serving-lambda
 # or run all four at once:

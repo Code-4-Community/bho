@@ -33,6 +33,7 @@
     "@nestjs/swagger": "^7.1.12",
     "@nestjs/typeorm": "^11.0.3",
     "@nx/eslint": "22.7.5",
+    "@tanstack/react-query": "^5.108.2",
     "@types/pg": "^8.15.5",
     "amazon-cognito-identity-js": "^6.3.5",
     "aws-amplify": "^6.17.0",
