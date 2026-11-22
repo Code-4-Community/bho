@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { renderWithProviders } from '../test/render';
+import { renderWithProviders } from '../../test/render';
 import { type Column, DataTable } from './DataTable';
 
 interface Person {

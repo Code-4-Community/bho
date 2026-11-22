@@ -1,7 +1,7 @@
 import { Box, Text } from '@chakra-ui/react';
 import type { EntryListItem } from '@api/types';
 import { formatDay, formatMonthDayET, formatTimeET } from '@utils/date';
-import { type Column, DataTable } from './DataTable';
+import { type Column, DataTable } from '../DataTable';
 
 const TONES: Record<EntryListItem['status'], string> = {
   Submitted: 'success',

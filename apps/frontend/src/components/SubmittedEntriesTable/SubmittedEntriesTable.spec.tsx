@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { mockEntries } from '@api/mocks/entries';
-import { renderWithProviders } from '../test/render';
+import { renderWithProviders } from '../../test/render';
 import { SubmittedEntriesTable } from './SubmittedEntriesTable';
 
 describe('SubmittedEntriesTable', () => {

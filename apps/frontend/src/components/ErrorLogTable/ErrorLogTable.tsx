@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import type { ErrorLogEntry, PipelineSource } from '@api/types';
 import { formatMonthDayET, formatTimeET } from '@utils/date';
-import { type Column, DataTable } from './DataTable';
+import { type Column, DataTable } from '../DataTable';
 
 export type ErrorLogSource = PipelineSource | 'all';
 export type ErrorLogRange = '24h' | 'month';

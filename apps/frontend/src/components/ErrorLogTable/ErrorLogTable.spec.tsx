@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { mockErrorLog } from '@api/mocks/errorLog';
-import { renderWithProviders } from '../test/render';
+import { renderWithProviders } from '../../test/render';
 import { ErrorLogTable } from './ErrorLogTable';
 
 describe('ErrorLogTable', () => {
