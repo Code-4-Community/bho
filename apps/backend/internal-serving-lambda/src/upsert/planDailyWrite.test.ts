@@ -2,12 +2,12 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import type { DbDay } from '@bho/db-client';
 import type { ParsedDay } from '@bho/weather-parsing';
-import { parseDaily } from '../parsers/daily';
+import { parseDaily } from '../parsing/daily';
 import { planDailyWrite } from './planDailyWrite';
 import { toDbRows } from './toDbRows';
 
 const parsed = parseDaily(
-  readFileSync(join(__dirname, '../parsers/__fixtures__/daily.csv'), 'utf8'),
+  readFileSync(join(__dirname, '../parsing/__fixtures__/daily.csv'), 'utf8'),
 );
 if (parsed.ok === false) throw new Error('fixture should parse');
 const [july1, july2] = parsed.rows;
