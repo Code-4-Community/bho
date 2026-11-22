@@ -1,6 +1,13 @@
 export { createDb } from './client';
 export { closeConnection } from './connection';
 export { recordImport } from './imports';
+export { writeDailyObservations } from './dailyObservations';
+export type {
+  DailyObservation,
+  NewDailyObservation,
+  WriteDailyObservationsInput,
+  WritePlan,
+} from './dailyObservations';
 export type {
   HourlyObservation,
   NewHourlyObservation,
