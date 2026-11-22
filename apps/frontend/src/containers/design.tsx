@@ -1,5 +1,15 @@
 // Temporary page (#68) for checking the tokens against Figma. Only routed in dev.
 
+import { useEffect, useState } from 'react';
+import { mockEntries } from '@api/mocks/entries';
+import { mockErrorLog } from '@api/mocks/errorLog';
+import {
+  ErrorLogTable,
+  type ErrorLogRange,
+  type ErrorLogSource,
+} from '@components/ErrorLogTable';
+import { SubmittedEntriesTable } from '@components/SubmittedEntriesTable';
+
 const SHADES = [100, 200, 300, 400, 500, 600, 700, 800];
 const PALETTE: [string, number[]][] = [
   ['mustard', SHADES],
@@ -72,6 +82,65 @@ const section = {
   display: 'grid',
   gap: 'var(--space-6)',
 } as const;
+
+const caption = {
+  font: 'var(--text-caption)',
+  color: 'var(--color-text-muted)',
+  margin: 0,
+};
+
+function Tables() {
+  const [source, setSource] = useState<ErrorLogSource>('all');
+  const [range, setRange] = useState<ErrorLogRange>('24h');
+  const [opened, setOpened] = useState('none');
+  const filterKey = `${source} ${range}`;
+  const [loadedKey, setLoadedKey] = useState<string>();
+  useEffect(() => {
+    const timer = setTimeout(() => setLoadedKey(filterKey), 800);
+    return () => clearTimeout(timer);
+  }, [filterKey]);
+  const filters = {
+    source,
+    range,
+    onSourceChange: setSource,
+    onRangeChange: setRange,
+    onClearFilters: () => {
+      setSource('all');
+      setRange('24h');
+    },
+  };
+  const noop = () => undefined;
+
+  return (
+    <>
+      <p style={caption}>With data. Last opened row: {opened}</p>
+      <SubmittedEntriesTable
+        entries={mockEntries}
+        onRowClick={setOpened}
+        onClearFilters={noop}
+      />
+      <p style={caption}>Empty</p>
+      <SubmittedEntriesTable
+        entries={[]}
+        onRowClick={setOpened}
+        onClearFilters={noop}
+      />
+      <p style={caption}>
+        With data. Changing a filter fakes an 800ms fetch, and Source filters
+        the mocks.
+      </p>
+      <ErrorLogTable
+        entries={mockErrorLog.filter(
+          (e) => source === 'all' || e.source === source,
+        )}
+        loading={loadedKey !== filterKey}
+        {...filters}
+      />
+      <p style={caption}>Empty</p>
+      <ErrorLogTable entries={[]} {...filters} />
+    </>
+  );
+}
 
 const Design: React.FC = () => (
   <main
@@ -156,6 +225,11 @@ const Design: React.FC = () => (
           <span style={{ font: `var(--text-${token})` }}>{sample}</span>
         </div>
       ))}
+    </section>
+
+    <section style={section}>
+      <h3>Tables</h3>
+      <Tables />
     </section>
   </main>
 );
