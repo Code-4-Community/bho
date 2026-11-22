@@ -14,11 +14,10 @@ You can optionally install `nx` globally with `npm install -g nx` - if you don't
 
 ### Architecture
 
-The backend is **Lambda-only**. Four independent Lambda functions live under `apps/backend/`:
+The backend is **Lambda-only**. Three independent Lambda functions live under `apps/backend/`:
 
 - `internal-serving-lambda` — the authenticated API the frontend calls (staff/admin)
 - `upload-lambda` — S3-upload-triggered, parses and imports spreadsheet/CSV data
-- `ingestion-lambda` — EventBridge-scheduled, pulls live conditions from the Davis weather station **(No longer needed - to be deleted)**
 - `public-lambda` — serve the public dashboard
 
 ### Database
@@ -99,11 +98,34 @@ Named type styles (`--text-page-title`, `--text-section-title`, `--text-body`, `
 
 ## Backend
 
+### Run it locally
+
+Starts Postgres, the internal API and file uploads on http://localhost:3000. Needs Docker.
+
+```bash
+cp example.env .env                         # once; Nx loads .env into every task
+nx run internal-serving-lambda:local:up     # start Postgres, migrate, seed, then serve the API
+nx run internal-serving-lambda:local:down   # stop Postgres (Ctrl+C stops the API)
+```
+
+The API restarts when a source file changes. With Postgres already up, `nx run internal-serving-lambda:serve` starts just the API.
+
+- **Signed-in user:** every request runs as `DEV_USER_ID` from `.env`. The seed creates an admin (`1`) and a standard user (`2` on a fresh database; `docker exec db-db-1 psql -U postgres -c 'select id, email, status from users'` shows the ids). Restart the API after changing `.env`.
+- **Uploads:** with `LOCAL_UPLOAD_DIR` set, `POST /imports/upload-url/{kind}` returns a `http://localhost:3000/local-uploads/<key>` URL, and a PUT to it saves the file in that folder. Unset it to use S3. Local uploads don't trigger the upload Lambda.
+
+```bash
+curl localhost:3000/health
+curl -X POST localhost:3000/imports/upload-url/daily -d '{"fileName":"obs.csv"}'
+# Send the file as text/csv, as S3 requires
+curl -X PUT -H 'Content-Type: text/csv' --data-binary @obs.csv '<uploadUrl from the response>'
+curl localhost:3000/imports
+```
+
 ### Tests
 
 ```bash
 nx test internal-serving-lambda
-# or run all four at once:
+# or run all three at once:
 nx run-many -t test -p internal-serving-lambda upload-lambda public-lambda
 ```
 
