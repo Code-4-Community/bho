@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "parse:daily": "npx ts-node --transpile-only scripts/parse-daily.ts",
     "build": "tsc",
     "test": "jest"
   },
@@ -12,6 +13,7 @@
     "@bho/lambda-auth": "file:../../../libs/lambda-auth",
     "@bho/file-store": "file:../../../libs/file-store",
     "kysely": "^0.27.0",
+    "microdiff": "^1.6.0",
     "pg": "^8.11.0"
   },
   "devDependencies": {
