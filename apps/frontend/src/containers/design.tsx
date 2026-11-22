@@ -1,6 +1,6 @@
 // Temporary page (#68) for checking the tokens against Figma. Only routed in dev.
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { mockEntries } from '@api/mocks/entries';
 import { mockErrorLog } from '@api/mocks/errorLog';
 import {
@@ -93,6 +93,12 @@ function Tables() {
   const [source, setSource] = useState<ErrorLogSource>('all');
   const [range, setRange] = useState<ErrorLogRange>('24h');
   const [opened, setOpened] = useState('none');
+  const filterKey = `${source} ${range}`;
+  const [loadedKey, setLoadedKey] = useState<string>();
+  useEffect(() => {
+    const timer = setTimeout(() => setLoadedKey(filterKey), 800);
+    return () => clearTimeout(timer);
+  }, [filterKey]);
   const filters = {
     source,
     range,
@@ -119,17 +125,19 @@ function Tables() {
         onRowClick={setOpened}
         onClearFilters={noop}
       />
-      <p style={caption}>With data; the source filter filters the mocks</p>
+      <p style={caption}>
+        With data. Changing a filter fakes an 800ms fetch, and Source filters
+        the mocks.
+      </p>
       <ErrorLogTable
         entries={mockErrorLog.filter(
           (e) => source === 'all' || e.source === source,
         )}
+        loading={loadedKey !== filterKey}
         {...filters}
       />
       <p style={caption}>Empty</p>
       <ErrorLogTable entries={[]} {...filters} />
-      <p style={caption}>Loading (always on here)</p>
-      <ErrorLogTable entries={[]} loading {...filters} />
     </>
   );
 }

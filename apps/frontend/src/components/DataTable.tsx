@@ -7,6 +7,7 @@ import {
   Table,
   Text,
 } from '@chakra-ui/react';
+import { ChevronRight, Search } from 'lucide-react';
 import type { KeyboardEvent, ReactNode } from 'react';
 
 export interface Column<T> {
@@ -86,19 +87,7 @@ export function DataTable<T>({
   } else if (rows.length === 0) {
     body = message(
       <>
-        <svg
-          width="46"
-          height="46"
-          viewBox="0 0 46 46"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.875"
-          strokeLinecap="round"
-          aria-hidden
-        >
-          <circle cx="20.125" cy="20.125" r="11.02" />
-          <path d="m28.75 28.75 7.67 7.67" />
-        </svg>
+        <Search size={46} strokeWidth={1.5} />
         <Text fontSize="var(--font-size-body-md)" fontWeight="bold">
           No entries match these filters.
         </Text>
@@ -135,19 +124,7 @@ export function DataTable<T>({
         ))}
         {onRowClick && (
           <Table.Cell w="1%">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden
-            >
-              <path d="m9 18 6-6-6-6" />
-            </svg>
+            <ChevronRight size={16} />
           </Table.Cell>
         )}
       </Table.Row>
