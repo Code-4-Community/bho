@@ -16,7 +16,10 @@ const fixture = (name: string) =>
 const body = (text: string) =>
   ({ transformToByteArray: async () => Buffer.from(text) } as never);
 
-beforeEach(() => s3.reset());
+beforeEach(() => {
+  s3.reset();
+  delete process.env.LOCAL_UPLOAD_DIR;
+});
 
 describe('parseUpload', () => {
   it('reads the object at the location, parses it and hashes it', async () => {

@@ -1,6 +1,9 @@
 import type { Kysely } from 'kysely';
 import type { Database } from '@bho/db-client';
-import type { UploadType } from './presigned-upload-url';
+
+// imports.kind, and the first part of every upload key (docs/upload-keys.md)
+export const UPLOAD_TYPES = ['daily', 'historical'] as const;
+export type UploadType = (typeof UPLOAD_TYPES)[number];
 
 export const IMPORT_STATUSES = ['succeeded', 'failed'] as const;
 export type ImportStatus = (typeof IMPORT_STATUSES)[number];

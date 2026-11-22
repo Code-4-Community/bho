@@ -25,6 +25,37 @@
       "options": {
         "lintFilePatterns": ["apps/backend/internal-serving-lambda/**/*.ts"]
       }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "metadata": {
+        "description": "Local API and uploads on http://localhost:3000 (src/dev-server.ts). ts-node reads tsconfig.base.json because tsconfig-paths resolves inherited paths against the extending tsconfig's folder."
+      },
+      "options": {
+        "command": "node --watch -r ts-node/register -r tsconfig-paths/register apps/backend/internal-serving-lambda/src/dev-server.ts",
+        "env": {
+          "TS_NODE_PROJECT": "tsconfig.base.json",
+          "TS_NODE_TRANSPILE_ONLY": "true",
+          "TS_NODE_COMPILER_OPTIONS": "{\"module\":\"commonjs\"}"
+        }
+      }
+    },
+    "local:up": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx run db:install",
+          "nx run db:up",
+          "nx run db:migrate",
+          "nx run db:seed",
+          "nx run internal-serving-lambda:serve"
+        ],
+        "parallel": false
+      }
+    },
+    "local:down": {
+      "executor": "nx:run-commands",
+      "options": { "command": "nx run db:down" }
     }
   },
   "tags": []

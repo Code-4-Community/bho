@@ -5,6 +5,14 @@ services:
       - "127.0.0.1:5432:5432"
     environment:
       POSTGRES_PASSWORD: password
+    # Lets `up --wait` return only once migrations can connect. Checks TCP, not
+    # the socket: on first start, init runs a server that only listens on the
+    # socket.
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "127.0.0.1", "-U", "postgres"]
+      interval: 1s
+      timeout: 5s
+      retries: 30
     volumes:
       - db_data:/var/lib/postgresql/data
 

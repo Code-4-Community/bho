@@ -1,16 +1,11 @@
-import { S3Client } from '@aws-sdk/client-s3';
+import { randomUUID } from 'crypto';
+import { createUploadUrl } from '@bho/file-store';
 import type { RouteHandler } from '../routes';
 import { response } from '../response';
 import { getCurrentUser } from '../auth';
-import {
-  createPresignedUploadUrl,
-  UPLOAD_TYPES,
-  UPLOAD_URL_EXPIRES_IN_SECONDS,
-  type UploadType,
-} from '../presigned-upload-url';
+import { UPLOAD_TYPES, type UploadType } from '../imports';
 
-// The presign helper requires WHEN_REQUIRED. See docs/upload-keys.md.
-const s3 = new S3Client({ requestChecksumCalculation: 'WHEN_REQUIRED' });
+const UPLOAD_URL_EXPIRES_IN_SECONDS = 300;
 
 const isUploadType = (value: unknown): value is UploadType =>
   UPLOAD_TYPES.includes(value as UploadType);
@@ -44,14 +39,14 @@ export const createUploadUrlHandler: RouteHandler = async (event) => {
     return response(400, { message: 'Only .csv files can be uploaded' });
   }
 
-  const bucket = process.env.UPLOAD_BUCKET_NAME;
-  if (!bucket) throw new Error('UPLOAD_BUCKET_NAME is not set');
+  // <uploadType>/<UTC date>/<uuid>.csv. See docs/upload-keys.md.
+  const date = new Date().toISOString().slice(0, 10);
+  const key = `${kind}/${date}/${randomUUID()}.csv`;
 
-  const { url, key } = await createPresignedUploadUrl({
-    s3,
-    bucket,
-    uploadType: kind,
-    fileName,
+  const url = await createUploadUrl({
+    key,
+    contentType: 'text/csv',
+    expiresInSeconds: UPLOAD_URL_EXPIRES_IN_SECONDS,
     // S3 metadata values must be ASCII, so the file name is URI-encoded
     metadata: {
       'uploaded-by': user.id,

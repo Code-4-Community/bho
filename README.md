@@ -43,6 +43,29 @@ To run just the frontend (port 4200):
 nx serve frontend
 ```
 
+### Running the backend locally
+
+Starts Postgres, the internal API and file uploads on http://localhost:3000. Needs Docker.
+
+```bash
+cp example.env .env                         # once; Nx loads .env into every task
+nx run internal-serving-lambda:local:up     # start Postgres, migrate, seed, then serve the API
+nx run internal-serving-lambda:local:down   # stop Postgres (Ctrl+C stops the API)
+```
+
+The API restarts when a source file changes. With Postgres already up, `nx run internal-serving-lambda:serve` starts just the API.
+
+- **Signed-in user:** every request runs as `DEV_USER_ID` from `.env`. The seed creates an admin (`1`) and a standard user (`2` on a fresh database; `docker exec db-db-1 psql -U postgres -c 'select id, email, status from users'` shows the ids). Restart the API after changing `.env`.
+- **Uploads:** with `LOCAL_UPLOAD_DIR` set, `POST /imports/upload-url/{kind}` returns a `http://localhost:3000/local-uploads/<key>` URL, and a PUT to it saves the file in that folder. Unset it to use S3. Local uploads don't trigger the upload Lambda.
+
+```bash
+curl localhost:3000/health
+curl -X POST localhost:3000/imports/upload-url/daily -d '{"fileName":"obs.csv"}'
+# Send the file as text/csv, as S3 requires
+curl -X PUT -H 'Content-Type: text/csv' --data-binary @obs.csv '<uploadUrl from the response>'
+curl localhost:3000/imports
+```
+
 ### Frontend styles
 
 Colors, type, spacing and radii from the Figma design system are CSS variables in `apps/frontend/src/styles/tokens.css`, loaded globally through `src/styles.css`. Use the semantic tokens in components, not the raw palette or hex values:
