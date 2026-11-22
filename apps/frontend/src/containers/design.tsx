@@ -9,6 +9,7 @@ import {
   type ErrorLogSource,
 } from '@components/ErrorLogTable';
 import { SubmittedEntriesTable } from '@components/SubmittedEntriesTable';
+import { ButtonsDemo, FiltersDemo, FilterBarDemo } from './button-filter-demo';
 
 const SHADES = [100, 200, 300, 400, 500, 600, 700, 800];
 const PALETTE: [string, number[]][] = [
@@ -230,6 +231,21 @@ const Design: React.FC = () => (
     <section style={section}>
       <h3>Tables</h3>
       <Tables />
+    </section>
+
+    <section style={section}>
+      <h3>Buttons</h3>
+      <ButtonsDemo />
+    </section>
+
+    <section style={section}>
+      <h3>Filters</h3>
+      <FiltersDemo />
+    </section>
+
+    <section style={section}>
+      <h3>Filter bar</h3>
+      <FilterBarDemo />
     </section>
   </main>
 );
