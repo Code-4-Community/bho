@@ -4,6 +4,7 @@ import Root from '@containers/root';
 import NotFound from '@containers/404';
 import Test from '@containers/test';
 import Design from '@containers/design';
+import ComponentsPreview from '@containers/components-preview';
 import { Providers } from './providers';
 
 const router = createBrowserRouter([
@@ -16,7 +17,12 @@ const router = createBrowserRouter([
     path: '/test',
     element: <Test />,
   },
-  ...(import.meta.env.DEV ? [{ path: '/design', element: <Design /> }] : []),
+  ...(import.meta.env.DEV
+    ? [
+        { path: '/design', element: <Design /> },
+        { path: '/dev/components', element: <ComponentsPreview /> },
+      ]
+    : []),
 ]);
 
 export const App: React.FC = () => {
