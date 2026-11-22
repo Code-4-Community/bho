@@ -40,7 +40,11 @@ describe('createUploadUrlHandler', () => {
       UPLOAD_BUCKET_NAME: BUCKET,
     };
     jest.useFakeTimers({ now: new Date('2026-10-26T12:00:00Z') });
-    jest.mocked(getCurrentUser).mockResolvedValue({ id: 'user-123' });
+    jest.mocked(getCurrentUser).mockResolvedValue({
+      id: 7,
+      email: 'dev@example.com',
+      role: 'ADMIN',
+    });
   });
 
   afterEach(() => {
@@ -76,7 +80,7 @@ describe('createUploadUrlHandler', () => {
     );
 
     const params = new URL(body.uploadUrl).searchParams;
-    expect(params.get('x-amz-meta-uploaded-by')).toBe('user-123');
+    expect(params.get('x-amz-meta-uploaded-by')).toBe('7');
     expect(params.get('x-amz-meta-file-name')).toBe('July%20obs.csv');
   });
 

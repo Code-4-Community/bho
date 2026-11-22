@@ -1,12 +1,14 @@
 import type { APIGatewayProxyEvent } from 'aws-lambda';
 import { AuthError, createVerifier } from '@bho/lambda-auth';
 import { getCurrentUser, resetVerifier } from '../auth';
+import { getDb } from '../db';
 
 // Only tests how auth.ts uses lambda-auth
 jest.mock('@bho/lambda-auth', () => ({
   ...jest.requireActual('@bho/lambda-auth'),
   createVerifier: jest.fn(),
 }));
+jest.mock('../db');
 
 const ENV = {
   COGNITO_REGION: 'us-east-2',
@@ -14,18 +16,31 @@ const ENV = {
   COGNITO_CLIENT_ID: 'test-client-id',
 };
 
+const ROW = { id: 7, email: 'dev@example.com', status: 'ADMIN' };
+const USER = { id: 7, email: 'dev@example.com', role: 'ADMIN' };
+
 const buildEvent = (headers: Record<string, string> = {}) =>
   ({ headers } as unknown as APIGatewayProxyEvent);
 
 describe('getCurrentUser', () => {
   const originalEnv = process.env;
   const verifyToken = jest.fn();
+  // Stands in for getDb().selectFrom(...).select(...).where(...).executeTakeFirst()
+  const executeTakeFirst = jest.fn();
+  const query = { select: jest.fn(), where: jest.fn(), executeTakeFirst };
+  const db = { selectFrom: jest.fn() };
 
   beforeEach(() => {
     process.env = { ...originalEnv, ...ENV };
     resetVerifier();
     verifyToken.mockResolvedValue({ sub: 'user-123' });
     jest.mocked(createVerifier).mockReturnValue(verifyToken);
+    // Set here because afterEach's resetAllMocks clears implementations
+    db.selectFrom.mockReturnValue(query);
+    query.select.mockReturnValue(query);
+    query.where.mockReturnValue(query);
+    executeTakeFirst.mockResolvedValue(ROW);
+    jest.mocked(getDb).mockReturnValue(db as never);
   });
 
   afterEach(() => {
@@ -38,8 +53,33 @@ describe('getCurrentUser', () => {
       buildEvent({ Authorization: 'Bearer good-token' }),
     );
 
-    expect(user).toEqual({ id: 'user-123' });
+    expect(user).toEqual(USER);
     expect(verifyToken).toHaveBeenCalledWith('good-token');
+  });
+
+  it('looks the user up by Cognito sub', async () => {
+    await getCurrentUser(buildEvent({ Authorization: 'Bearer good-token' }));
+
+    expect(db.selectFrom).toHaveBeenCalledWith('users');
+    expect(query.where).toHaveBeenCalledWith('cognitoSub', '=', 'user-123');
+  });
+
+  it('returns null when no user has that sub', async () => {
+    executeTakeFirst.mockResolvedValue(undefined);
+
+    const user = await getCurrentUser(
+      buildEvent({ Authorization: 'Bearer good-token' }),
+    );
+
+    expect(user).toBeNull();
+  });
+
+  it('throws database errors', async () => {
+    executeTakeFirst.mockRejectedValue(new Error('connection refused'));
+
+    await expect(
+      getCurrentUser(buildEvent({ Authorization: 'Bearer good-token' })),
+    ).rejects.toThrow('connection refused');
   });
 
   it('configures the verifier from env vars', async () => {
@@ -66,7 +106,7 @@ describe('getCurrentUser', () => {
       buildEvent({ authorization: 'bearer good-token' }),
     );
 
-    expect(user).toEqual({ id: 'user-123' });
+    expect(user).toEqual(USER);
   });
 
   it.each([
@@ -96,6 +136,7 @@ describe('getCurrentUser', () => {
     );
 
     expect(user).toBeNull();
+    expect(getDb).not.toHaveBeenCalled();
   });
 
   it('throws unexpected verifier errors', async () => {

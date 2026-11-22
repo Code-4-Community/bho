@@ -1,9 +1,13 @@
 import type { APIGatewayProxyEvent } from 'aws-lambda';
 import { AuthError, createVerifier } from '@bho/lambda-auth';
+import { getDb } from './db';
+
+export type UserRole = 'ADMIN' | 'STANDARD';
 
 export interface CurrentUser {
-  // Cognito `sub` claim
-  id: string;
+  id: number;
+  email: string;
+  role: UserRole;
 }
 
 type VerifyToken = ReturnType<typeof createVerifier>;
@@ -38,20 +42,32 @@ const getBearerToken = (event: APIGatewayProxyEvent): string | null => {
   return match ? match[1] : null;
 };
 
-// Null for a missing or invalid token (401); other errors throw (500).
+// Null for a missing or invalid token, or a valid token with no matching
+// users row (401); other errors throw (500).
 export const getCurrentUser = async (
   event: APIGatewayProxyEvent,
 ): Promise<CurrentUser | null> => {
   const token = getBearerToken(event);
   if (!token) return null;
 
+  let sub: string;
   try {
-    const claims = await getVerifier()(token);
-    return { id: claims.sub };
+    sub = (await getVerifier()(token)).sub;
   } catch (err) {
     if (err instanceof AuthError) return null;
     throw err;
   }
+
+  // get user id, email, and status (role) from database
+  const user = await getDb()
+    .selectFrom('users')
+    .select(['id', 'email', 'status'])
+    .where('cognitoSub', '=', sub)
+    .executeTakeFirst();
+  if (!user) return null;
+
+  // users.status holds the role (ADMIN or STANDARD); see docs/database-schema.md.
+  return { id: user.id, email: user.email, role: user.status as UserRole };
 };
 
 // Test-only
