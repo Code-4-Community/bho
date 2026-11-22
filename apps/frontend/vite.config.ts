@@ -41,6 +41,7 @@ export default defineConfig(({ mode }) => {
         dir: '../../node_modules/.vitest',
       },
       environment: 'jsdom',
+      setupFiles: ['./src/test/setup.ts'],
       include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     },
 
@@ -49,6 +50,7 @@ export default defineConfig(({ mode }) => {
         '@api': path.resolve(__dirname, './src/api'),
         '@components': path.resolve(__dirname, './src/components'),
         '@containers': path.resolve(__dirname, './src/containers'),
+        '@hooks': path.resolve(__dirname, './src/hooks'),
         '@public': path.resolve(__dirname, './public'),
         '@shared': path.resolve(__dirname, '../../shared'),
         '@utils': path.resolve(__dirname, './src/utils'),
